@@ -10,6 +10,6 @@ Hello world from jekyll :)
 def print_hi(name)
   puts "Hi, #{name}"
 end
-print_hi('Marcin')
-#=> prints 'Hi, Marcin' to STDOUT.
+print_hi('marcinstanek.pl')
+#=> prints 'Hi, marcinstanek.pl' to STDOUT.
 {% endhighlight %}
