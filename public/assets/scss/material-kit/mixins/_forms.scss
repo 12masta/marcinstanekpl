@@ -74,8 +74,8 @@
     // underline animation color on focus
     $underline-background-image: linear-gradient(
         to top,
-        $label-color-focus 2px,
-        fade-out($label-color-focus, 1) 2px
+        #6f5cff 2px,
+        fade-out(#6f5cff, 1) 2px
       ),
       linear-gradient(
         to top,
