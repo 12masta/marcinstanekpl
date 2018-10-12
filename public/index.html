@@ -4,6 +4,8 @@
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119547384-2"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+  <script src="js/firebaseInit.js"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
 
@@ -14,6 +16,7 @@
 
     gtag('config', 'UA-119547384-2');
   </script>
+  
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
@@ -26,7 +29,8 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
-  <link href="./assets/css/material-kit.css?v=2.0.3" rel="stylesheet" />
+  <link href="./assets/css/custom.css" rel="stylesheet" />
+  <link href="./assets/css/material-kit.css" rel="stylesheet" />
 </head>
 
 <body class="index-page sidebar-collapse">
@@ -42,10 +46,11 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
+      
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                  <a class="nav-link" href="https://www.marcinstanek.pl/blog/index.html"  style="color:#3c4857;">Blog</a>
+                  <a class="nav-link" href="/blog/index.html"  style="color:#3c4857;">Blog</a>
                 </li>
           <li class="nav-item">
             <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://github.com/12masta/" target="_blank" data-original-title="Śledź mnie na Github" style="color:#3c4857;">
@@ -273,6 +278,41 @@
       </div>
       </div>
     </div>
+
+    <div class="section section-examples">
+        <div class="container-fluid">
+            <h2 class="text-center">Kontakt</h2>
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-8">
+            <form id="messageForm">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" class="bmd-label-floating">Email</label>
+                  <input id="emailInput" type="email" class="form-control" id="inputEmail">
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea" class="bmd-label-floating">Wiadomość</label>
+                    <textarea class="form-control" id="messageTextArea" rows="6"></textarea>
+                  </div>
+                  <div class="text-center">
+
+                <div class="checkbox">
+                  <label>
+                    <input id="messageCheckbox" type="checkbox"> Dodam Cię do listy mailowej, z której możesz wypisać się w dowolnym momencie (jeden klik) <a href="/regulamin">Polityka Prywatności</a>
+                  </label>
+                </div>
+
+                <button class="btn btn-default">Anuluj</button>
+                <button id="SendButton" type="submit" class="btn btn-primary btn-raised ">Wyślij</button>
+                </div>
+              </form>
+            </div>
+                  <div class="col-md-2">
+                    </div>
+                  </div>
+        </div>
+      </div>
   </div>
 
   <footer class="footer" data-background-color="black">
@@ -348,7 +388,12 @@
   ga('create', 'UA-119547384-2', 'auto');
   ga('send', 'pageview');
 </script>
+
+
 <!-- End Google Analytics -->
+<script src="js/bootstrap-notify/bootstrap-notify.js"></script>
+<script src="js/sendButton.js"></script>
+<script src="js/preventDefaultForm.js"></script>
 
 </body>
 
