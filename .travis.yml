@@ -11,4 +11,4 @@ before_deploy: "cd .."
 deploy:
   provider: firebase
   token:
-    secure: lf5psSIBzZsJ6QVo4Vc6CYmO62QhxEKRnfMUz8c2DoflyYwWb0vbJ7vaeqwpk4CrirI0cOeNtmrufCuJ0V8KirBZFUaU2
+    secure: "lf5psSIBzZsJ6QVo4Vc6CYmO62QhxEKRnfMUz8c2DoflyYwWb0vbJ7vaeqwpk4CrirI0cOeNtmrufCuJ0V8KirBZFUaU2"
