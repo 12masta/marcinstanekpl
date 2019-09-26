@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-25T18:49:49+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">marcinstanek.pl</title><subtitle>marcinstanek.pl blog, od QA dla QA</subtitle><entry><title type="html">Przygotowanie srodowiska</title><link href="http://localhost:4000/blog/environment/2019/09/18/environment-setup.html" rel="alternate" type="text/html" title="Przygotowanie srodowiska" /><published>2019-09-18T18:03:22+02:00</published><updated>2019-09-18T18:03:22+02:00</updated><id>http://localhost:4000/blog/environment/2019/09/18/environment-setup</id><content type="html" xml:base="http://localhost:4000/blog/environment/2019/09/18/environment-setup.html">## Wstęp
+---
+layout: post
+title:  "Przygotowanie srodowiska"
+date:   2019-09-18 18:03:22 +0200
+categories: environment
+---
+
+## Wstęp
 
 Chciałbym Ci pokazać poniżej jak przygotować swoje lokalne srodowisko, które można wykorzystać do pracy nad automatyzacją testów.
 Repozytoria które sforkowalem można znaleźć tutaj:
@@ -84,12 +91,4 @@ Należy zmienić wartość dla:
 
 Naprzykład:
 
-    http://localhost:3000</content><author><name></name></author><summary type="html">Wstęp</summary></entry><entry><title type="html">Hello world!</title><link href="http://localhost:4000/blog/jekyll/2018/10/09/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Hello world!" /><published>2018-10-09T18:03:22+02:00</published><updated>2018-10-09T18:03:22+02:00</updated><id>http://localhost:4000/blog/jekyll/2018/10/09/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/blog/jekyll/2018/10/09/welcome-to-jekyll.html">Hello world from jekyll :)
-
-{% highlight ruby %}
-def print_hi(name)
-  puts &quot;Hi, #{name}&quot;
-end
-print_hi('marcinstanek.pl')
-#=&gt; prints 'Hi, marcinstanek.pl' to STDOUT.
-{% endhighlight %}</content><author><name></name></author><summary type="html">Hello world from jekyll :)</summary></entry></feed>
+    http://localhost:3000

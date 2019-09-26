@@ -1883,7 +1883,7 @@ pre {
   .form-control::-webkit-input-placeholder {
     color: #6c757d;
     opacity: 1; }
-  .form-control:-ms-input-placeholder {
+  .form-control::-moz-placeholder {
     color: #6c757d;
     opacity: 1; }
   .form-control::-ms-input-placeholder {
@@ -4021,8 +4021,10 @@ tbody.collapse.show {
 @media (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 3;
+       -moz-column-count: 3;
             column-count: 3;
     -webkit-column-gap: 1.25rem;
+       -moz-column-gap: 1.25rem;
             column-gap: 1.25rem; }
     .card-columns .card {
       display: inline-block;
@@ -10490,7 +10492,7 @@ fieldset[disabled][disabled] .has-rose .form-control, .has-rose .form-control.di
     line-height: 1.1; }
   .bmd-form-group .form-control,
   .bmd-form-group label,
-  .bmd-form-group input:-ms-input-placeholder {
+  .bmd-form-group input::-moz-placeholder {
     line-height: 1.1; }
   .bmd-form-group .form-control,
   .bmd-form-group label,
@@ -10547,7 +10549,7 @@ fieldset[disabled][disabled] .has-rose .form-control, .has-rose .form-control.di
     line-height: 1.1; }
   .bmd-form-group.bmd-form-group-sm .form-control,
   .bmd-form-group.bmd-form-group-sm label,
-  .bmd-form-group.bmd-form-group-sm input:-ms-input-placeholder {
+  .bmd-form-group.bmd-form-group-sm input::-moz-placeholder {
     line-height: 1.1; }
   .bmd-form-group.bmd-form-group-sm .form-control,
   .bmd-form-group.bmd-form-group-sm label,
@@ -10604,7 +10606,7 @@ fieldset[disabled][disabled] .has-rose .form-control, .has-rose .form-control.di
     line-height: 1.1; }
   .bmd-form-group.bmd-form-group-lg .form-control,
   .bmd-form-group.bmd-form-group-lg label,
-  .bmd-form-group.bmd-form-group-lg input:-ms-input-placeholder {
+  .bmd-form-group.bmd-form-group-lg input::-moz-placeholder {
     line-height: 1.1; }
   .bmd-form-group.bmd-form-group-lg .form-control,
   .bmd-form-group.bmd-form-group-lg label,
@@ -10663,7 +10665,7 @@ input::-webkit-input-placeholder {
 
 .form-control,
 label,
-input:-ms-input-placeholder {
+input::-moz-placeholder {
   line-height: 1.1; }
 
 .form-control,
