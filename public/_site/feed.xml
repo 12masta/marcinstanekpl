@@ -1,95 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-25T18:49:49+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">marcinstanek.pl</title><subtitle>marcinstanek.pl blog, od QA dla QA</subtitle><entry><title type="html">Przygotowanie srodowiska</title><link href="http://localhost:4000/blog/environment/2019/09/18/environment-setup.html" rel="alternate" type="text/html" title="Przygotowanie srodowiska" /><published>2019-09-18T18:03:22+02:00</published><updated>2019-09-18T18:03:22+02:00</updated><id>http://localhost:4000/blog/environment/2019/09/18/environment-setup</id><content type="html" xml:base="http://localhost:4000/blog/environment/2019/09/18/environment-setup.html">## Wstęp
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-09-26T13:33:23+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">marcinstanek.pl</title><subtitle>marcinstanek.pl blog, od QA dla QA</subtitle><entry><title type="html">Przygotowanie srodowiska</title><link href="http://localhost:4000/blog/environment/2019/09/18/environment-setup.html" rel="alternate" type="text/html" title="Przygotowanie srodowiska" /><published>2019-09-18T18:03:22+02:00</published><updated>2019-09-18T18:03:22+02:00</updated><id>http://localhost:4000/blog/environment/2019/09/18/environment-setup</id><content type="html" xml:base="http://localhost:4000/blog/environment/2019/09/18/environment-setup.html">&lt;h2 id=&quot;wstęp&quot;&gt;Wstęp&lt;/h2&gt;
 
-Chciałbym Ci pokazać poniżej jak przygotować swoje lokalne srodowisko, które można wykorzystać do pracy nad automatyzacją testów.
-Repozytoria które sforkowalem można znaleźć tutaj:
+&lt;p&gt;Chciałbym Ci pokazać poniżej jak przygotować swoje lokalne srodowisko, które można wykorzystać do pracy nad automatyzacją testów.
+Repozytoria które sforkowalem można znaleźć tutaj:&lt;/p&gt;
 
-    https://github.com/gothinkster/realworld
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://github.com/gothinkster/realworld
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-## Backend
+&lt;h2 id=&quot;backend&quot;&gt;Backend&lt;/h2&gt;
 
-    https://github.com/12masta/aspnetcore-realworld-example-app
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://github.com/12masta/aspnetcore-realworld-example-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Aby przygotować środowiska potrzebujesz gita. Jak zainstalować gita?
+&lt;p&gt;Aby przygotować środowiska potrzebujesz gita. Jak zainstalować gita?&lt;/p&gt;
 
-    https://git-scm.com/book/en/v1/Getting-Started
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://git-scm.com/book/en/v1/Getting-Started
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Oprócz gita potrzebujesz Dockera: 
+&lt;p&gt;Oprócz gita potrzebujesz Dockera:&lt;/p&gt;
 
-    https://docs.docker.com/get-started/
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://docs.docker.com/get-started/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Kiedy mamy już gita, w naszym lokalnym katalogu musimy wykonać następujące polecenie w terminalu:
+&lt;p&gt;Kiedy mamy już gita, w naszym lokalnym katalogu musimy wykonać następujące polecenie w terminalu:&lt;/p&gt;
 
-    git clone https://github.com/12masta/aspnetcore-realworld-example-app.git
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/12masta/aspnetcore-realworld-example-app.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Przejdź do katalogu poleceniem 
+&lt;p&gt;Przejdź do katalogu poleceniem&lt;/p&gt;
 
-    cd aspnetcore-realworld-example-app
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd aspnetcore-realworld-example-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Kiedy masz już Dockera, przejdź do katalogu który został utworzony po wykonaniu polecenia git clone. Następnie w terminalu uruchom polecenie:
+&lt;p&gt;Kiedy masz już Dockera, przejdź do katalogu który został utworzony po wykonaniu polecenia git clone. Następnie w terminalu uruchom polecenie:&lt;/p&gt;
 
-    make build
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-A następnie:
+&lt;p&gt;A następnie:&lt;/p&gt;
 
-    make run
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Po wykonaniu tych kroków pod adresem:
+&lt;p&gt;Po wykonaniu tych kroków pod adresem:&lt;/p&gt;
 
-    http://localhost:5000/swagger
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://localhost:5000/swagger
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Powinieneś mieć dostęp do dokumentacji API - a więc gotowe, czas na front.
+&lt;p&gt;Powinieneś mieć dostęp do dokumentacji API - a więc gotowe, czas na front.&lt;/p&gt;
 
-## Frontend
+&lt;h2 id=&quot;frontend&quot;&gt;Frontend&lt;/h2&gt;
 
-    https://github.com/12masta/react-redux-realworld-example-app
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://github.com/12masta/react-redux-realworld-example-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Aby moc zbudować front projektu potrzebujesz narzedzia npm ktore instaluje sie razem z node.js. Jak go zainstalować?
+&lt;p&gt;Aby moc zbudować front projektu potrzebujesz narzedzia npm ktore instaluje sie razem z node.js. Jak go zainstalować?&lt;/p&gt;
 
-    https://www.npmjs.com/get-npm
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.npmjs.com/get-npm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Kiedy będziesz miał już npm. Otwórz terminal i wykonaj polecenie w katalogu, w którym chcesz utworzyć projekt:
+&lt;p&gt;Kiedy będziesz miał już npm. Otwórz terminal i wykonaj polecenie w katalogu, w którym chcesz utworzyć projekt:&lt;/p&gt;
 
-    git clone https://github.com/12masta/react-redux-realworld-example-app.git
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/12masta/react-redux-realworld-example-app.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Przejdź do katalogu poleceniem:
+&lt;p&gt;Przejdź do katalogu poleceniem:&lt;/p&gt;
 
-    cd react-redux-realworld-example-app
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cd react-redux-realworld-example-app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Teraz wykonujemy polecenie, aby zainstalować wszystkie wymagane zależności:
+&lt;p&gt;Teraz wykonujemy polecenie, aby zainstalować wszystkie wymagane zależności:&lt;/p&gt;
 
-    npm install
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Nastepenie, aby uruchomić nasz lokalny serwer:
+&lt;p&gt;Nastepenie, aby uruchomić nasz lokalny serwer:&lt;/p&gt;
 
-    npm start
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-## Łączymy to w całość
+&lt;h2 id=&quot;łączymy-to-w-całość&quot;&gt;Łączymy to w całość&lt;/h2&gt;
 
-Pamietaj, aby aplikacja działała prawidłowo po wykonaniu polecenia.
+&lt;p&gt;Pamietaj, aby aplikacja działała prawidłowo po wykonaniu polecenia.&lt;/p&gt;
 
-    npm start
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Wymagane jest, aby działał również backend aplikacji, tj. z poziomu katalogu do którego poleceniem git clone skopiowaliśmy projekt backendu.
-Należy wykonać polecenie:
+&lt;p&gt;Wymagane jest, aby działał również backend aplikacji, tj. z poziomu katalogu do którego poleceniem git clone skopiowaliśmy projekt backendu.
+Należy wykonać polecenie:&lt;/p&gt;
 
-    make run
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;make run
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Jeżeli z jakiegoś powodu potrzebujesz zmienić adres backendu, możesz to zrobić w pliku:
+&lt;p&gt;Jeżeli z jakiegoś powodu potrzebujesz zmienić adres backendu, możesz to zrobić w pliku:&lt;/p&gt;
 
-    src/agent.js
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;src/agent.js
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Należy zmienić wartość dla:
+&lt;p&gt;Należy zmienić wartość dla:&lt;/p&gt;
 
-    API_ROOT
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;API_ROOT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Naprzykład:
+&lt;p&gt;Naprzykład:&lt;/p&gt;
 
-    http://localhost:3000</content><author><name></name></author><summary type="html">Wstęp</summary></entry><entry><title type="html">Hello world!</title><link href="http://localhost:4000/blog/jekyll/2018/10/09/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Hello world!" /><published>2018-10-09T18:03:22+02:00</published><updated>2018-10-09T18:03:22+02:00</updated><id>http://localhost:4000/blog/jekyll/2018/10/09/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/blog/jekyll/2018/10/09/welcome-to-jekyll.html">Hello world from jekyll :)
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://localhost:3000
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">Wstęp</summary></entry><entry><title type="html">Hello world!</title><link href="http://localhost:4000/blog/jekyll/2018/10/09/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Hello world!" /><published>2018-10-09T18:03:22+02:00</published><updated>2018-10-09T18:03:22+02:00</updated><id>http://localhost:4000/blog/jekyll/2018/10/09/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/blog/jekyll/2018/10/09/welcome-to-jekyll.html">&lt;p&gt;Hello world from jekyll :)&lt;/p&gt;
 
-{% highlight ruby %}
-def print_hi(name)
-  puts &quot;Hi, #{name}&quot;
-end
-print_hi('marcinstanek.pl')
-#=&gt; prints 'Hi, marcinstanek.pl' to STDOUT.
-{% endhighlight %}</content><author><name></name></author><summary type="html">Hello world from jekyll :)</summary></entry></feed>
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'marcinstanek.pl'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, marcinstanek.pl' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Hello world from jekyll :)</summary></entry></feed>
