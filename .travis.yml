@@ -2,12 +2,12 @@ language: node_js
 sudo: false
 node_js:
 - '4.1'
-- '4.0'
 install:
 - cd public
 - npm install
 script:
 - npm test
+before_deploy: "cd .."
 deploy:
   provider: firebase
   token:
