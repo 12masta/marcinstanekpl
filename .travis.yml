@@ -1,10 +1,14 @@
 language: node_js
 sudo: false
 node_js:
-  - "4.1"
-  - "4.0"
+- '4.1'
+- '4.0'
 install:
-  - cd public
-  - npm install
+- cd public
+- npm install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: firebase
+  token:
+    secure: lf5psSIBzZsJ6QVo4Vc6CYmO62QhxEKRnfMUz8c2DoflyYwWb0vbJ7vaeqwpk4CrirI0cOeNtmrufCuJ0V8KirBZFUaU2
