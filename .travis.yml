@@ -5,7 +5,6 @@ node_js:
 install:
 - cd public
 - npm install
-- bundle install
 - gem install jekyll
 - gem install jekyll-sitemap
 script:
