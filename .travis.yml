@@ -12,7 +12,9 @@ script:
 - npm test
 - jekyll build --trace
 before_deploy: 
+- ls
 - cd ..
+- ls
 - echo $PWD
 deploy:
   provider: firebase
