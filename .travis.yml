@@ -11,7 +11,9 @@ install:
 script:
 - npm test
 - jekyll build --trace
-before_deploy: cd ..
+before_deploy: 
+- cd ..
+- echo $PWD
 deploy:
   provider: firebase
   token:
