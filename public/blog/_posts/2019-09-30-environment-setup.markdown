@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Przygotowanie srodowiska"
-date:   2019-09-18 18:03:22 +0200
+date:   2019-09-30 16:03:22 +0200
 categories: environment
 ---
 
