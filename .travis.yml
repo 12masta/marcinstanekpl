@@ -9,7 +9,7 @@ install:
 - gem install jekyll-sitemap
 script:
 - npm test
-- jekyll build
+- jekyll build --trace
 before_deploy: cd ..
 deploy:
   provider: firebase
