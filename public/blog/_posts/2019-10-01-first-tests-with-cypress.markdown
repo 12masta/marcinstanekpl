@@ -95,7 +95,7 @@ Kiedy zamienimy selektor na naprzyklad:
 
 Zobaczymy następujący rezultat:
 
-![3-first-get](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-01-first-tests-with-cypress%2F3-first-get.png?alt=media&token=03193d23-1e6b-41d7-b84c-a977bf79d4e5)
+![3-first-get](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-01-first-tests-with-cypress%2F3-first-get-v2.png?alt=media&token=aee6da24-3e1e-4fbe-9936-ad5d7ae36338)
 
 ## Klik!
 
