@@ -50,7 +50,7 @@ Powinieneś mieć dostęp do dokumentacji API - a więc gotowe, czas na front.
 
     https://github.com/12masta/react-redux-realworld-example-app
 
-Aby, móc zbudować front projektu potrzebujesz narzedzia npm ktore instaluje się razem z node.js. Jak go zainstalować?
+Aby móc zbudować front projektu potrzebujesz narzedzia npm ktore instaluje się razem z node.js. Jak go zainstalować?
 
     https://www.npmjs.com/get-npm
 

@@ -87,7 +87,7 @@ Oraz przekazać do niej lokator, za którego pomocą znajdziemy element. W tym p
       cy.get('.navbar-brand')
     })
 
-Po zapisaniu i uruchomieniu testu weryfikacja powinna zakończyć się powodzeniem. Nawet kiedy nie dodaliśmy asercji wiemy ze wszystko jest OK ponieważ część metod w Cypress jest zaprojektowana tak, aby zweryfikować czy wszystko jest w porządku nawet bez dodawania asercji, w tym przypadku, gdyby nie udało się znaleźć elementu na stronie przy pomocy wyżej podanego selektora test zakończyłby się niepowodzeniem.
+Po zapisaniu i uruchomieniu testu weryfikacja powinno zakończyć się powodzeniem. Nawet kiedy nie dodaliśmy asercji wiemy ze wszystko jest OK ponieważ część metod w Cypress jest zaprojektowana tak, aby zweryfikować czy wszystko jest w porządku nawet bez dodawania asercji, w tym przypadku, gdyby nie udało się znaleźć elementu na stronie przy pomocy wyżej podanego selektora test zakończyłby się niepowodzeniem.
 
 Kiedy zamienimy selektor na naprzyklad:
 
@@ -116,7 +116,7 @@ Gotowy test będzie wyglądał tak:
       cy.get(':nth-child(3) > .nav-link').click()
     })
 
-Okno aplikacji po utworzeniu tego testu powinna wyglądać w ten sposób:
+Okno aplikacji po utworzeniu tego testu powinno wyglądać w ten sposób:
 
 ![4-first-click](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-01-first-tests-with-cypress%2F4-first-click.png?alt=media&token=6848ffb6-57d6-457c-b115-294b1f81ee53)
 
@@ -136,7 +136,7 @@ Taki test będzie wyglądał w następujący sposób:
 
 Test składa się z 3 kroków, przechodzimy na stronę aplikacji która właśnie testujemy. Potem klikamy w przycisk który powinien przenieść nas na stronę rejestracji. Następnie weryfikujemy czy rzeczywiście znajdujemy się pod właściwym adresem URL.
 
-Okno aplikacji po utworzeniu tego testu powinna wyglądać w ten sposób:
+Okno aplikacji po utworzeniu tego testu powinno wyglądać w ten sposób:
 
 ![5-first-assertion](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-01-first-tests-with-cypress%2F5-first-assertion.png?alt=media&token=673b7b71-2bac-4dc6-be71-8f40f6619c91)
 
@@ -162,7 +162,7 @@ Test otwiera podstronę pod adresem /register. Znajduje pole do którego zostani
 
 Zostaje wykonana asercja czy pole zawiera odpowiednia wartość po zakończeniu reszty operacji.
 
-Okno aplikacji po utworzeniu tego testu powinna wyglądać w ten sposób:
+Okno aplikacji po utworzeniu tego testu powinno wyglądać w ten sposób:
 
 ![6-first-type](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-01-first-tests-with-cypress%2F6-first-type.png?alt=media&token=4a7866a6-bc0a-4115-a798-7271a20b33a5)
 
