@@ -28,7 +28,7 @@ Otwieramy IDE, wybieramy Create New Project. Pojawia nam sie okno, wybieramy Mav
 
     com.szkolqa
 
-ArtifactId: 
+ArtifactId:
 
     mavenspockseleniumwebdriverboilerplate
 

@@ -7,10 +7,10 @@ categories: materials
 
 ## ISTQB
 
-Jeżeli to dla Ciebie oczywiste, wybacz. Dzisiaj chcę się podzielić skarbem który umożliwił mi znalezienie mojej pierwszej pracy.
+Jeżeli to dla Ciebie oczywiste, wybacz. Dzisiaj chcę się podzielić materiałem który umożliwił mi znalezienie mojej pierwszej pracy.
 
-Sylabus ISTQB. Nie musisz zdawać egzaminu ISTQB na początku swojej kariery. Wystarczy, że zapoznasz się z treścią sylabusa. Z powodzeniem możesz wpisać samą znajomość sylabusa do CV, jednak najpierw polecam przeczytać go co najmniej dwa razy i rozwiązać publiczne pytania z egzaminu. Zrobiłem tak na początku swojej drogi. 
-Link: 
+Sylabus ISTQB. Nie musisz zdawać egzaminu ISTQB na początku swojej kariery. Wystarczy, że zapoznasz się z treścią sylabusa. Z powodzeniem możesz wpisać samą znajomość sylabusa do CV, jednak najpierw polecam przeczytać go co najmniej dwa razy i rozwiązać publiczne pytania z egzaminu. Zrobiłem tak na początku swojej drogi.
+Link:
 
     http://sjsi.org/ist-qb/do-pobrania/
 
