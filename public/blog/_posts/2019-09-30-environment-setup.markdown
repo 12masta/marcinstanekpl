@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Przygotowanie srodowiska"
+title:  "Przygotowanie środowiska"
 date:   2019-09-30 16:03:22 +0200
 categories: environment
 ---
@@ -50,7 +50,7 @@ Powinieneś mieć dostęp do dokumentacji API - a więc gotowe, czas na front.
 
     https://github.com/12masta/react-redux-realworld-example-app
 
-Aby moc zbudować front projektu potrzebujesz narzedzia npm ktore instaluje sie razem z node.js. Jak go zainstalować?
+Aby, móc zbudować front projektu potrzebujesz narzedzia npm ktore instaluje się razem z node.js. Jak go zainstalować?
 
     https://www.npmjs.com/get-npm
 
@@ -89,6 +89,6 @@ Należy zmienić wartość dla:
 
     API_ROOT
 
-Naprzykład:
+Na przykład:
 
     http://localhost:3000

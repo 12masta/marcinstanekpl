@@ -1,22 +1,18 @@
 ---
 layout: post
-title:  "Wygrywać ludzi"
+title:  "Na Lekko - Vlog"
 date:   2019-09-01 18:03:22 +0200
 categories: materials
 ---
 
-## Wstęp
+## Dzisiaj na lekko. 
 
-Często jestem pytany o materiały, które pomogły mi w mojej karierze. Chciałbym podzielić się z Tobą skarbami, które zrobiły diametralną różnicę w moim życiu. To materiały różnego typu, z różnych momentów mojej kariery, nie tylko związane z testowaniem, dlatego warto zwrócić na nie uwagę nawet, jeśli nie jesteś jeszcze testerem. Dzisiaj pierwszy z nich.
+Vlog Miroburn na YouTube. Odrobina inspiracji, jak można zbudować markę w IT nie będąc wybitnym w technicznych tematach. Szeroka tematyka. Doskonałe case study, jak możemy uzupełnić braki technicznych umiejętności innego typu talentami.
+Link:
 
-## Wygrywać ludzi
+    https://www.youtube.com/channel/UCwmFNbGnBeEy9nTt42F4WHw
 
-Książka "How to Win Friends and Influence People" autora Dale Carnegie. Moim zdaniem powinien ją przeczytać każdy tester. Absolutnie rewelacyjne jest to, że wiemy wszystko to, co autor napisał w tej książce, jednak nie zdajemy sobie z tego sprawy w naszym codziennym życiu. Umiejętność komunikacji i obchodzenia się z ludźmi jest bezcenna w zawodzie testera. Musisz to przeczytać!
-Link: 
-
-    http://lubimyczytac.pl/ksiazka/50522/jak-zdobyc-przyjaciol-i-zjednac-sobie-ludzi
-
-P.S. Jeżeli nie znalazłeś tu czegoś, co możesz mi polecić, to odpisz na tego maila. Z chęcią dodam coś nowego.
+Jaką formę dzielenia się wiedzą preferujesz? Vlog? Podcast? Klasyczne książki? Masz coś z czym chcesz się podzielić? Napisz na maila:
 
     kontakt@marcinstanek.pl
 
