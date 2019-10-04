@@ -5,7 +5,11 @@ date:   2019-09-01 18:03:22 +0200
 categories: materials
 ---
 
-## Dzisiaj na lekko. 
+## Wstęp
+
+Często jestem pytany o materiały, które pomogły mi w mojej karierze. Chciałbym podzielić się z Tobą materiałami, które zrobiły diametralną różnicę w moim życiu. To treśći różnego typu, z różnych momentów mojej kariery, nie tylko związane z testowaniem, dlatego warto zwrócić na nie uwagę nawet, jeśli nie jesteś jeszcze testerem. Dzisiaj pierwszy z nich.
+
+## Dzisiaj na lekko
 
 Vlog Miroburn na YouTube. Odrobina inspiracji, jak można zbudować markę w IT nie będąc wybitnym w technicznych tematach. Szeroka tematyka. Doskonałe case study, jak możemy uzupełnić braki technicznych umiejętności innego typu talentami.
 Link:
