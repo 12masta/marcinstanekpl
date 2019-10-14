@@ -8,9 +8,10 @@ install:
 - gem install jekyll
 - gem install jekyll-sitemap
 - gem install minima
+- gem install jekyll-analytics
 script:
 - npm test
-- jekyll build --trace
+- JEKYLL_ENV=production jekyll build --trace
 before_deploy: 
 - ls
 - cd ..
