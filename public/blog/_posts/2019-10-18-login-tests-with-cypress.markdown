@@ -16,7 +16,7 @@ Poprzedni post znajdziesz tutaj: [Zapoznanie się z Cypress]({% post_url 2019-10
 
 Lecimy z kodem!
 
-![1-coding](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F1-coding.mp4?alt=media&token=b85589b4-8ada-4feb-9011-eaa95b1dcfd3)
+![1-coding](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F1-coding_gfy.mp4?alt=media&token=7de01396-ac52-4060-8b1a-e91b26007718)
 
 Nie, najpierw przygotujemy przypadki, które zostaną zautomatyzowane.
 
@@ -171,7 +171,7 @@ Mają za zadanie sprawdzić, czy użytkownik jest zalogowany. Sprawdzają, czy w
 
 Egzekucja testu wygląda tak.:
 
-![2-successfull-login](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F2-successfull-login-recording.mov?alt=media&token=e53c8569-7d6f-443a-84e8-287f35005392)
+![2-successfull-login](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F2-successfull-login-recording_gfy.mp4?alt=media&token=2500776b-97ee-48af-ba98-2990a93f64a2)
 
 Mam wrażenie że czas wykonania się testu był naprawdę krotki, zwłaszcza w porównaniu do Selenium. Wow, nie mogę doczekać się bardziej skomplikowanych przypadków, aby zobaczyć jak to się rozwinie. Jednak na razie nie został zrealizowany jeden Precondition, sorry puryści słowni, chodzi mi dokładnie o ten punkt z przypadku testowego:
 
@@ -291,44 +291,44 @@ Więc nareszcie możemy napisać kompletny pierwszy test. Kod wygląda tak:
 
 Egzekucja:
 
-![6-successfull-login-complete](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F6-successfull-login-complete.mov?alt=media&token=5509cac0-c3ec-491d-bae2-1b48d78a0d9b)
+![6-successfull-login-complete](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F6-successfull-login-complete_gfy.mp4?alt=media&token=7a7f941f-6748-459c-bdd7-7e5bfdd247bd)
 
 ## Implementacja kolejnych testów
 
 Myślę, że mamy już wszystkie składniki potrzebne do implementacji reszty przypadków i powinno pójść to bardzo sprawnie. Kolejny test to _Incorrect password_. W kroku podawania hasła należy podać błędne hasło i stworzyć asercje, która zweryfikuje czy został wyświetlony poprawny komunikat użytkownikowi. Do dzieła:
 
-  it('Incorrect password', function () {
-    cy.request('DELETE', 'http://localhost:5000/users', {
-      user: {
-        username: 'test',
-        email: 'test@test.com',
-        password: 'test'
-      }
+    it('Incorrect password', function () {
+        cy.request('DELETE', 'http://localhost:5000/users', {
+        user: {
+            username: 'test',
+            email: 'test@test.com',
+            password: 'test'
+        }
+        })
+        cy.request('POST', 'http://localhost:5000/users', {
+        user: {
+            username: 'test',
+            email: 'test@test.com',
+            password: 'test'
+        }
+        })
+
+        cy.visit('http://localhost:4100/login')
+
+        cy.get(':nth-child(1) > .form-control')
+        .type('test@test.com')
+        cy.get(':nth-child(2) > .form-control')
+        .type('test-icorrect')
+        cy.get('.btn')
+        .click()
+
+        cy.url()
+        .should('contain', 'http://localhost:4100/login')
+        cy.get('.error-messages > li')
+        .should('have.text', 'Error Invalid email / password.')
     })
-    cy.request('POST', 'http://localhost:5000/users', {
-      user: {
-        username: 'test',
-        email: 'test@test.com',
-        password: 'test'
-      }
-    })
 
-    cy.visit('http://localhost:4100/login')
-
-    cy.get(':nth-child(1) > .form-control')
-      .type('test@test.com')
-    cy.get(':nth-child(2) > .form-control')
-      .type('test-icorrect')
-    cy.get('.btn')
-      .click()
-
-    cy.url()
-      .should('contain', 'http://localhost:4100/login')
-    cy.get('.error-messages > li')
-      .should('have.text', 'Error Invalid email / password.')
-  })
-
-![7-incorrect-password](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F7-incorrect-password.mov?alt=media&token=0a1acb58-a335-4dd9-90f8-13801fe2d32d)
+![7-incorrect-password](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F7-incorrect-password_gfy.mp4?alt=media&token=ebe263e6-8971-4d25-845c-153bf47c3a62)
 
 Implementacja testu _Not existing user_ również będzie prosta. Należy usunąć krok tworzenia użytkownika, musimy zadbac o to zeby miec pewnosc ze nie istnieje on w bazie i że zostanie zastosowana odpowiednie asercja ktora sprawdzi czy został wyświetlony poprawny komunikat błędu.:
 
@@ -356,7 +356,7 @@ Implementacja testu _Not existing user_ również będzie prosta. Należy usuną
         .should('have.text', 'Error Invalid email / password.')
     })
 
-![8-not-existing-user](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F8-not-existing-user.mov?alt=media&token=0e8fcc92-7438-44bc-8d2b-b4236e398a20)
+![8-not-existing-user](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F8-not-existing-user_gfy.mp4?alt=media&token=d07b476b-9aef-4e17-a2a9-770d8d67204a)
 
 Pozostał jedynie przypadek _Empty fields_ tutaj zostawiamy pola puste i naciskamy przycisk Logowania, powinien pojawić się użytkownikowi odpowiedni komunikat błędu:
 
@@ -376,7 +376,7 @@ Pozostał jedynie przypadek _Empty fields_ tutaj zostawiamy pola puste i naciska
 
 Jak widać oczekiwany tekst to: 'Email' must not be empty. Jako ze znak ' jest użyty jako znak zarezerwowany do przekazywania argumentu do funkcji typu string musiałem użyć znaku ucieczki \ który służy do obejścia tego problemu. W tym przypadku dla Cypressa \'Email\' must not be empty. oznacza 'Email' must not be empty. Zobaczmy egzekucje testu:
 
-![9-empty-fields](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F9-empty-fields.mov?alt=media&token=024a08b0-de75-4e11-b057-b38bc4d19c87)
+![9-empty-fields](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F9-empty-fields_gfy.mp4?alt=media&token=00c333c1-c8ea-41fd-bf0f-3cea817a91de)
 
 Jak widać nie został zaliczony poniewaz komunikat bledu nie jest poprawny: _User.Email 'Email' must not be empty._ oraz _User.Password 'Password' must not be empty._ Właśnie znaleźliśmy pierwszego buga w aplikacji. :)
 
