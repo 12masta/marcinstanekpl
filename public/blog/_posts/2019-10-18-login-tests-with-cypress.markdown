@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Testy logowania z Cypress"
-date:   2019-10-02 10:03:22 +0200
+date:   2019-10-17 08:03:22 +0200
 categories: [testautomation, cypress]
 tags: [testautomation, cypress]
 ---
