@@ -16,7 +16,7 @@ Poprzedni post znajdziesz tutaj: [Zapoznanie się z Cypress]({% post_url 2019-10
 
 Lecimy z kodem!
 
-![1-coding](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F1-coding_gfy.mp4?alt=media&token=7de01396-ac52-4060-8b1a-e91b26007718)
+![1-coding](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F1-coding_gfy.mp4?alt=media)
 
 Nie, najpierw przygotujemy przypadki, które zostaną zautomatyzowane.
 
@@ -171,7 +171,7 @@ Mają za zadanie sprawdzić, czy użytkownik jest zalogowany. Sprawdzają, czy w
 
 Egzekucja testu wygląda tak.:
 
-![2-successfull-login](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F2-successfull-login-recording_gfy.mp4?alt=media&token=2500776b-97ee-48af-ba98-2990a93f64a2)
+![2-successfull-login](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F2-successfull-login-recording_gfy.mp4?alt=media)
 
 Mam wrażenie że czas wykonania się testu był naprawdę krotki, zwłaszcza w porównaniu do Selenium. Wow, nie mogę doczekać się bardziej skomplikowanych przypadków, aby zobaczyć jak to się rozwinie. Jednak na razie nie został zrealizowany jeden Precondition, sorry puryści słowni, chodzi mi dokładnie o ten punkt z przypadku testowego:
 
@@ -183,7 +183,7 @@ Na ten moment test działa tylko dlatego ponieważ użytkownik który został wy
 
 Jak to localhost?! Jeżeli zadajesz to pytanie to zajrzyj do tego postu: [Przygotowanie środowiska]({% post_url 2019-09-30-environment-setup %}). Więc zaglądam pod ten adres, znajduje sekcje users i bingo, endpoint POST na pewno służy do utworzenia użytkownika. Skąd to wiem? To API REST-owe wiec jeżeli trzyma się konwencji i dobrych praktyk to właśnie ten endpoint typu POST o nazwie users będzie do tego służył. Model który musimy przekazac z zapytaniem tez na to wskazuje wiec jedziemy.
 
-![3-swagger](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F3-swagger.png?alt=media&token=f283bce0-330f-4d08-b87c-980a4a8992ad)
+![3-swagger](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F3-swagger.png?alt=media)
 
 Aby wysłać takie zapytanie musimy użyć funkcji:
 
@@ -207,7 +207,7 @@ Wiem ze muszę przekazać URL, typ endpointu i body. Użycie będzie wyglądać 
 
 Jednak po uruchomieniu testu widzimy następujący błąd:
 
-![4-failing-request](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F4-failing-request.png?alt=media&token=a28b56cf-5a97-4914-a60b-a410def4a50e)
+![4-failing-request](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F4-failing-request.png?alt=media)
 
     Status: 400 - Bad Request
     Headers: {
@@ -228,7 +228,7 @@ Oznacza to że API odpowiedziało kodem 400 - Bad request, a powodem było to ze
 
 Jednak myślę, że nie chce tego robić, ponieważ użytkownik, którego chce utworzyć może już istnieć w systemie, np. z innym hasłem. Więc aby być pewnym stanu aplikacji powinienem usunąć użytkownika, a następnie utworzyć go w takim stanie, jakiego wymaga test. Więc następnym krokiem będzie znów odwiedzenie dokumentacji API i znalezienie endpointu, który odpowiada za usunięcie użytkownika. Szukamy najprawdopobniej endpointu o nazwie user lub users typu DELETE.
 
-![5-swagger-delete](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F5-swagger-delete.png?alt=media&token=9b156dcc-9236-466b-a6e8-21622ec3d2d8)
+![5-swagger-delete](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F5-swagger-delete.png?alt=media)
 
 Niestety nie ma takiego endpointu. Co można zrobić w takim przypadku? Jeżeli pracujemy nad komercyjnym projektem, prawdopodobnie idziemy do naszych developerów i planujemy dodanie endpointu na kolejny sprint. Słabo. Ja wyznaje zasadę, że specjalista od automatyzacji, jakkolwiek by go nie nazwać, powinien mieć też wystarczająco wiedzy, aby móc dostarczyć sobie wystarczająco funkcji od strony aplikacji, którą testuje, aby moc ją najzwyczajniej w świecie przetestować. A więc? Otwieram projekt backendu i dopisuje sobie ten endpoint. Jedna uwaga, w prawdziwym projekcie prawdopodobnie powinno to być osobne testowe API niewystawione do klienta, zapewnie nie chcemy mu udostępnić, ot, tak, funkcji usunięcia każdego użytkownika w systemie? Nie będę opisywał tego procesu. Jeżeli jednak jesteś ciekawy, changeset znajdziesz tu:
 
@@ -248,7 +248,7 @@ Należy uruchomić komendę:
 
 Która spowoduje utworzenie obrazu na nowo. Po wykonaniu tych czynności mam dostęp endpointu DELETE users:
 
-![5-swagger-delete-exists](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F5-swagger-delete-exists.png?alt=media&token=596c0107-4e61-41ab-9c77-9af9c6d89a94)
+![5-swagger-delete-exists](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F5-swagger-delete-exists.png?alt=media)
 
 Więc nareszcie możemy napisać kompletny pierwszy test. Kod wygląda tak:
 
@@ -291,7 +291,7 @@ Więc nareszcie możemy napisać kompletny pierwszy test. Kod wygląda tak:
 
 Egzekucja:
 
-![6-successfull-login-complete](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F6-successfull-login-complete_gfy.mp4?alt=media&token=7a7f941f-6748-459c-bdd7-7e5bfdd247bd)
+![6-successfull-login-complete](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F6-successfull-login-complete_gfy.mp4?alt=media)
 
 ## Implementacja kolejnych testów
 
@@ -328,7 +328,7 @@ Myślę, że mamy już wszystkie składniki potrzebne do implementacji reszty pr
         .should('have.text', 'Error Invalid email / password.')
     })
 
-![7-incorrect-password](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F7-incorrect-password_gfy.mp4?alt=media&token=ebe263e6-8971-4d25-845c-153bf47c3a62)
+![7-incorrect-password](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F7-incorrect-password_gfy.mp4?alt=media)
 
 Implementacja testu _Not existing user_ również będzie prosta. Należy usunąć krok tworzenia użytkownika, musimy zadbac o to zeby miec pewnosc ze nie istnieje on w bazie i że zostanie zastosowana odpowiednie asercja ktora sprawdzi czy został wyświetlony poprawny komunikat błędu.:
 
@@ -356,7 +356,7 @@ Implementacja testu _Not existing user_ również będzie prosta. Należy usuną
         .should('have.text', 'Error Invalid email / password.')
     })
 
-![8-not-existing-user](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F8-not-existing-user_gfy.mp4?alt=media&token=d07b476b-9aef-4e17-a2a9-770d8d67204a)
+![8-not-existing-user](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F8-not-existing-user_gfy.mp4?alt=media)
 
 Pozostał jedynie przypadek _Empty fields_ tutaj zostawiamy pola puste i naciskamy przycisk Logowania, powinien pojawić się użytkownikowi odpowiedni komunikat błędu:
 
@@ -376,7 +376,7 @@ Pozostał jedynie przypadek _Empty fields_ tutaj zostawiamy pola puste i naciska
 
 Jak widać oczekiwany tekst to: 'Email' must not be empty. Jako ze znak ' jest użyty jako znak zarezerwowany do przekazywania argumentu do funkcji typu string musiałem użyć znaku ucieczki \ który służy do obejścia tego problemu. W tym przypadku dla Cypressa \'Email\' must not be empty. oznacza 'Email' must not be empty. Zobaczmy egzekucje testu:
 
-![9-empty-fields](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F9-empty-fields_gfy.mp4?alt=media&token=00c333c1-c8ea-41fd-bf0f-3cea817a91de)
+![9-empty-fields](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F9-empty-fields_gfy.mp4?alt=media)
 
 Jak widać nie został zaliczony poniewaz komunikat bledu nie jest poprawny: _User.Email 'Email' must not be empty._ oraz _User.Password 'Password' must not be empty._ Właśnie znaleźliśmy pierwszego buga w aplikacji. :)
 
