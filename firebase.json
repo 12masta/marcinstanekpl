@@ -6,14 +6,17 @@
       "**/.*",
       "**/node_modules/**"
     ],
+    "redirects":[ 
+      {
+        "source": "/cypress-3",
+        "destination": "/cypress-3.html",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
         "source": "**",
         "destination": "/index.html"
-      },
-      {
-        "source": "/cypress-3",
-        "destination": "/cypress-3.html"
       }
     ]
   }
