@@ -4,7 +4,7 @@ title:  "Refaktoryzacja testów - App Actions vs Page Object Model"
 date:   2019-11-04 08:00:00 +0200
 categories: [testautomation, cypress]
 tags: [testautomation, cypress]
-permalink: /cypress-3.html
+permalink: /cypress-3
 ogimage:
   - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-11-05-refactor%2Fblog_post_cover.png?alt=media&token=5dc8a4e0-cda0-4138-99d6-25cea5138a2d
 ogimagetype:
@@ -15,15 +15,15 @@ ogdescription:
 
 ## Wstęp
 
-Jak niektórzy w komentarzach zdążyli zauwazyć kod testów jest bardzo niskiej jakości, dlatego dzisiaj postaram się poprawić scenariusze i przejść proces ich refaktoryzacji. Pierwsze co przychodzi do głowy w tej sytuacji to użycie wzorcu Page Object Model, aby uczynić nasze testy bardziej logicznymi jednoznacznie uwypuklając ich sens biznesowy. W dokumentacji jednak znalazłem taki wpis: [Stop using Page Objects and Start using App Actions](https://www.cypress.io/blog/2019/01/03/stop-using-page-objects-and-start-using-app-actions/) Sugeruje on jednak aby spróbować podejścia do problemu z innej strony-dlatego implementuje oba sposoby i zobaczę, co z tego będzie.
+Jak niektórzy w komentarzach zdążyli zauważyć kod testów jest bardzo niskiej jakości, dlatego dzisiaj postaram się poprawić scenariusze i przejść proces ich refaktoryzacji. Pierwsze co przychodzi do głowy w tej sytuacji to użycie wzorcu Page Object Model, aby uczynić nasze testy bardziej logicznymi jednoznacznie uwypuklając ich sens biznesowy. W dokumentacji jednak, znalazłem taki wpis: [Stop using Page Objects and Start using App Actions](https://www.cypress.io/blog/2019/01/03/stop-using-page-objects-and-start-using-app-actions/) sugeruje on jednak, aby spróbować podejścia do problemu z innej strony - dlatego implementuje oba sposoby i zobaczę, co z tego będzie.
 
 ## App Actions
 
-Jako że jestem ciekawy nowego podejścia zaczynam od App Actions bo tak właśnie jest ono nazwane. Tworzę nowy plik o nazwie:
+Jako, że jestem ciekawy nowego podejścia zaczynam od App Actions, bo tak właśnie jest ono nazwane. Tworzę nowy plik o nazwie:
 
     LoginTests.AppActions.spec.js
 
-Następnie kopiuje do niego zawartość pliku _LoginTests.spec.js_ Okazuję się, że twórcy narzędzia wystawili API umożliwiające rozszerzenie wachlarzu funkcji dostępnych pod obiektem:
+Następnie kopiuje do niego zawartość pliku _LoginTests.spec.js_ Okazuję się, że twórcy narzędzia wystawili API umożliwiające rozszerzenie wachlarza funkcji dostępnych pod obiektem:
 
     cy.<custom_command>
 
@@ -98,7 +98,7 @@ Mój test wygląda teraz dużo prościej:
             (...)
     })
 
-Podążam tym tropem podczas refaktoryzacji i aktualizuje kolejne przypadki, okazuje się, że w wielu miejscach mogę reużyc funkcje _cy.login_ oraz _cy.createNewUserAPI_ Podczas pracy orientuje się, że potrzebuje jeszcze funkcji: _cy.deleteUser('test','test@test.com','test')_:
+Podążam tym tropem podczas refaktoryzacji i aktualizuje kolejne przypadki. Okazuje się, że w wielu miejscach mogę użyc ponownie funkcje _cy.login_ oraz _cy.createNewUserAPI_. Podczas pracy orientuje się, że potrzebuje jeszcze funkcji: _cy.deleteUser_:
 
     Cypress.Commands.add('deleteUserAPI', (username, email, password) => {
         Cypress.log({
@@ -130,7 +130,7 @@ Ponadto użycie tego podejścia pozwala na [chaining](https://javascriptissexy.c
             .should('have.attr', 'href', '/editor')
     })
 
-Myślę że można jeszcze ukryć techniczne zawiłości w asercji testu ukrywając jej logikę w Custom Command:
+Myślę, że można jeszcze ukryć techniczne zawiłości w asercji testu ukrywając jej logikę w Custom Command:
 
     Cypress.Commands.add('shouldBeLoggedIn', (username, email, password) => {
         Cypress.log({
@@ -211,7 +211,7 @@ Po zastosowaniu powyższych praktyk kończymy z testami wyglądającymi w ten sp
         })
     })
 
-Okazuję się, że test: _Empty fields_ zakończył się niepowodzeniem z powodu błędu: _CypressError: cy.type() cannot accept an empty String. You need to actually type something._ Oznacza to, że wysłanie ciągu znaków o wartości: _''_ do funkcji _cy.type_ kończy się niepowodzeniem, ponieważ nie jest to poprawne użycie tej funkcji. Wolę podejście z Selenium gdzie nie jest to problemem, okazuje się, że twórcy Cypressa są z tym podejściem OK i nie jest to bug w ich mniemaniu: [GitHub Issue - .type() will not accept an empty string](https://github.com/cypress-io/cypress/issues/3587). Ja wolę móc reużyć utworzoną przeze mnie funkcję w sposób, w jaki ją utworzyłem dlatego modyfikuje kod funkcji _cy.login_ aby pominąć interakcje z polami login i password jeżeli argumenty przekazane do funkcji są pustymi stringami:
+Okazuje się, że test: _Empty fields_ zakończył się niepowodzeniem z powodu błędu: _CypressError: cy.type() cannot accept an empty String. You need to actually type something._ Oznacza to, że wysłanie ciągu znaków o wartości: _''_ do funkcji _cy.type_ kończy się niepowodzeniem, ponieważ nie jest to poprawne użycie tej funkcji. Wolę podejście z Selenium, gdzie nie jest to problemem. Okazuje się jednak, że twórcy Cypressa są innego zdania na ten temat i nie jest to defekt w ich mniemaniu: [GitHub Issue - .type() will not accept an empty string](https://github.com/cypress-io/cypress/issues/3587). Ja wolę móc swobodnie sparametryzować utworzoną przeze mnie funkcję w sposób, w jaki ją utworzyłem, dlatego modyfikuje kod funkcji _cy.login_ aby pominąć interakcje z polami login i password, jeżeli argumenty przekazane do funkcji są pustymi ciągami znaków:
 
     Cypress.Commands.add('login', (username, password) => {
         Cypress.log({
@@ -230,8 +230,7 @@ Okazuję się, że test: _Empty fields_ zakończył się niepowodzeniem z powodu
             .click()
     })
 
-Po powyższych zmianach okazuję się, że same testy są dużo czytelniejsze, jednak sporo ze złych praktyk zostało przesuniętych do pliku commands.js. Większość z nich nie będę na ten moment poprawiał, zamierzam je jednak logiczniej ułożyć i odseparować.
-Tworzę nowy folder o nazwie _login_ na ścieżce _cypress/support/. W tym folderze tworzę plik o nazwie: loginCommands.js_ i kopiuje z pliku _commands.js_ implementacje funkcji _cy.login_. Następnie tworzę kolejny plik _loginAssertionsCommands.js_ i kopiuje do niego implementacje funkcji: _cy.shouldBeLoggedIn_, _cy.shouldErrorMessageBeValid(arg)_ i _cy.shouldErrorMessagesBeValid(arg, arg)_ Analogiczne operacje wykonuje dla funkcji _cy.createNewUserAPI_, _cy.deleteUserAPI_ i _cy.shouldUrlContain_ Ostatecznie, aby mieć dostęp do tych funkcji w nowo utworzonych plikach muszę zmodyfikować plik: _index.js_ w katalogu: cypress/support/index.js, i dodać odpowiednie importy.:
+Po powyższych zmianach okazuje się, że same testy są dużo czytelniejsze, jednak sporo ze złych praktyk zostało przesuniętych do pliku commands.js. Większośći z nich nie będę na ten moment poprawiał, zamierzam jednak logiczniej ułożyć pliki i odseparować od siebie osobne bloki logiczne. Tworzę nowy folder o nazwie _login_ na ścieżce _cypress/support/. W tym folderze tworzę plik o nazwie: loginCommands.js_ i kopiuję z pliku _commands.js_ implementacje funkcji _cy.login_. Następnie tworzę kolejny plik _loginAssertionsCommands.js_ i kopiuję do niego implementacje funkcji: _cy.shouldBeLoggedIn_, _cy.shouldErrorMessageBeValid(arg)_ i _cy.shouldErrorMessagesBeValid(arg, arg)_ Analogiczne operacje wykonuję dla funkcji _cy.createNewUserAPI_, _cy.deleteUserAPI_ i _cy.shouldUrlContain_ Ostatecznie, aby mieć dostęp do tych funkcji w nowo utworzonych plikach muszę zmodyfikować plik: _index.js_ w katalogu: cypress/support/index.js i dodać odpowiednie importy:
 
     import './commands'
     import './api/apiCommands'
@@ -239,13 +238,13 @@ Tworzę nowy folder o nazwie _login_ na ścieżce _cypress/support/. W tym folde
     import './login/loginAssertionsCommands'
     import './login/loginCommands'
 
-Po tej operacji na pewno będzie łatwiej znaleźć interesujące nas funkcje, ponieważ są w mojej opinii o wiele logiczniej poukładane. Benefity tej refaktoryzacji będzie można odczuć dopiero, wtedy kiedy ilość funkcji będzie rosnąć wraz z pokryciem testami funkcji aplikacji.
+Po tej operacji na pewno będzie łatwiej znaleźć interesujące nas funkcje, ponieważ w mojej opinii są o wiele logiczniej poukładane. Benefity tej refaktoryzacji będzie można odczuć dopiero wtedy, kiedy ilość funkcji będzie rosnąć wraz z pokryciem testami funkcji aplikacji.
 
-Nasuwa się jeszcze jedno pytanie, dlaczego to działa? Przecież te funkcje nie powinny być widoczne w testach. Ten mechanizm funkcjonuje, ponieważ wszystkie zależności z pliku: _cypress/support/index.js_ są automatycznie załadowane przed wykonaniem każdej specyfikacji przez mechanizm Cypressa.
+Nasuwa się jeszcze jedno pytanie: dlaczego to działa? Przecież te funkcje nie powinny być widoczne w testach. Ten mechanizm funkcjonuje, ponieważ wszystkie zależności z pliku: _cypress/support/index.js_ są automatycznie załadowane przed wykonaniem każdej specyfikacji przez mechanizm Cypressa.
 
 ### App Actions - commit
 
-Wszystkie zmiany w kodzie dotyczące App Actions znajdziesz [tutaj](https://github.com/12masta/react-redux-realworld-example-app/commit/11d965258e549f1de7cc003858aba7ee6e0baba4)
+Wszystkie zmiany w kodzie dotyczące App Actions znajdziesz [tutaj](https://github.com/12masta/react-redux-realworld-example-app/commit/11d965258e549f1de7cc003858aba7ee6e0baba4).
 
 {% include_relative subForm.markdown %}
 
@@ -337,7 +336,7 @@ Już wiem jak ma wyglądać mój interfejs(to na razie tylko klasa, jednak myśl
 
     export default HomePage;
 
-Następnie wykonuje te same operacja dla reuqestów do API. Utworzę nową klasę, która odpowiedzialnością będzie zarządzanie stanem użytkownika. Prototypuje jak chciałbym, żeby wyglądał test:
+Następnie wykonuję te same operacje dla reuqestów do API. Utworzę nową klasę, którą odpowiedzialnością będzie zarządzanie stanem użytkownika. Prototypuję jak chciałbym żeby wyglądał test:
 
     it('Successfull login', function () {
         new User('test', 'test@test.com', 'test')
@@ -358,7 +357,7 @@ Następnie wykonuje te same operacja dla reuqestów do API. Utworzę nową klas�
         .should('have.attr', 'href', '/editor')
     })
 
-Kiedy już wiem co chce osiągnąć przechodzę do implementacji klasy: _cypress/requests/User.js_:
+Kiedy już wiem co chcę osiągnąć przechodzę do implementacji klasy: _cypress/requests/User.js_:
 
     class User {
 
@@ -402,7 +401,7 @@ Kiedy już wiem co chce osiągnąć przechodzę do implementacji klasy: _cypres
 
     export default User;
 
-Teraz kiedy mam pierwszy test, który wygląda tak jak bym tego oczekiwał kontynuuje refaktoryzacje kolejnych scenariuszy. Okazuję się źe dla testu: _Incorrect password_ utworzona funkcja _LoginPage.login(arg, arg)_ nie jest wystarczająca, ponieważ zwraca obiekt typu HomePage, a wiemy, że po niepoprawnym logowaniu powinniśmy pozostać na PageObject typu LoginPage dlatego też wymagana jest zmiana tej klasy. Klasa LoginPage po refaktoryzacji będzie wyglądać tak:
+Teraz kiedy mam pierwszy test, który wygląda tak jakbym tego oczekiwał kontynuuję refaktoryzacje kolejnych scenariuszy. Okazuje się że dla testu: _Incorrect password_ utworzona funkcja _LoginPage.login(arg, arg)_ nie jest wystarczająca, ponieważ zwraca obiekt typu HomePage, a wiemy, że po niepoprawnym logowaniu powinniśmy pozostać na PageObject typu LoginPage. Dlatego też wymagana jest zmiana tej klasy. Klasa LoginPage po refaktoryzacji będzie wyglądać tak:
 
     import HomePage from './HomePage'
 
@@ -429,7 +428,7 @@ Teraz kiedy mam pierwszy test, który wygląda tak jak bym tego oczekiwał konty
 
     export default LoginPage;
 
-Po refaktoryzacji wszystkich testów używając wzorca otrzymuje taki kod:
+Po refaktoryzacji wszystkich testów używając wzorca otrzymuję taki kod:
 
     import LoginPage from '../pageobjects/LoginPage'
     import User from '../requests/User'
@@ -506,13 +505,13 @@ Z powodzeniem udało mi się zaimplementować wzorzec Page Object Model. Tak sa
 
 ### Page Object Model - commit
 
-Wszystkie zmiany w kodzie dotyczące Page Object Model znajdziesz [tutaj](https://github.com/12masta/react-redux-realworld-example-app/commit/c8408db5ec5d9dd23fc528bb692a2dff5cd91bae)
+Wszystkie zmiany w kodzie dotyczące Page Object Model znajdziesz [tutaj](https://github.com/12masta/react-redux-realworld-example-app/commit/c8408db5ec5d9dd23fc528bb692a2dff5cd91bae).
 
 ## Podsumowanie
 
-To, co spodobało mi się to możliwość głębokiej integracji z narzędziem, nie potrzebujemy - przynajmniej na tym etapie produkcji testów, tworzyć kolejnego zestawu interfejsów, bo mamy już gotowy i swobodnie nim zarządzamy rozszerzając jego funkcje. Ponadto testy napisane tym podejściem są bardzo czytelne. Spodziewałem się jednak czegoś więcej, wydaje mi się, że wraz z rozwojem zarządzanie tymi funkcjami stanie się uciążliwe i zbyt mało zorganizowane. Równocześnie myślę, że dopisanie większej ilości scenariuszy sprawi, że będę musiał bardziej pogłówkować i zmusi mnie to do okrycia potencjału drzemiącego w tym podejściu. Cieszy mnie za to fakt, że mamy wybór, z łatwością można zaimplementować wzorzec Page Object i pozostać przy starych nawykach, jeżeli nam na tym zależy.
+To, co spodobało mi się to możliwość głębokiej integracji z narzędziem, nie potrzebujemy - przynajmniej na tym etapie produkcji testów, tworzyć kolejnego frameworku, bo mamy już gotowy i swobodnie nim zarządzamy rozszerzając jego funkcje. Ponadto testy napisane tym podejściem są bardzo czytelne. Spodziewałem się jednak czegoś więcej, wydaje mi się, że wraz z rozwojem zarządzanie tymi funkcjami stanie się uciążliwe i zbyt mało zorganizowane. Równocześnie myślę, że dopisanie większej ilości scenariuszy sprawi, że będę musiał głębiej przeanalizować problem i zmusi mnie to do okrycia potencjału drzemiącego w tym podejściu. Cieszy mnie za to fakt, że mamy wybór, z łatwością można zaimplementować wzorzec Page Object i pozostać przy starych nawykach, jeżeli nam na tym zależy.
 
-Całość zmian znajdziesz na moim repo na branchu, tutaj:
+Całość zmian znajdziesz w moim repo na branchu, tutaj:
 
     https://github.com/12masta/react-redux-realworld-example-app/tree/3-cypress
 
