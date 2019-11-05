@@ -12,6 +12,8 @@ Dzisiaj na stół biorę pozornie proste testowanie logowania się użytkownika 
 
 Poprzedni post znajdziesz tutaj: [Zapoznanie się z Cypress]({% post_url 2019-10-01-first-tests-with-cypress %})
 
+{% include_relative subForm.markdown %}
+
 ## Krok pierwszy
 
 Lecimy z kodem! Nie, najpierw przygotujemy przypadki, które zostaną zautomatyzowane.
@@ -493,3 +495,5 @@ Po wykonaniu tych operacji specyfikacja testowa wygląda tak:
             .should('have.text', '\'Password\' must not be empty.')
         })
     })
+
+{% include_relative leadmagnet.markdown %}

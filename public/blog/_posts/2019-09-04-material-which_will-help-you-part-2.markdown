@@ -15,3 +15,5 @@ Dzisiaj mam dla Ciebie znowu coś pomocnego. Podcast DevTalk, Macieja Aniserowic
 Link:
 
     https://devtalk.pl
+
+{% include_relative leadmagnet.markdown %}

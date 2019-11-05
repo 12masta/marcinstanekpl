@@ -17,3 +17,5 @@ Już znasz? Daj mi znać o innych fajnych książkach, odpisz na tego maila.:
     kontakt@marcinstanek.pl
 
 Każdego maila czytam i odpisuje!
+
+{% include_relative leadmagnet.markdown %}

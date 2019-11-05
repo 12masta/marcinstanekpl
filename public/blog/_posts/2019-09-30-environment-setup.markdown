@@ -12,6 +12,8 @@ Repozytoria które sforkowalem można znaleźć tutaj:
 
     https://github.com/gothinkster/realworld
 
+{% include_relative subForm.markdown %}
+
 ## Backend
 
     https://github.com/12masta/aspnetcore-realworld-example-app
@@ -92,3 +94,5 @@ Należy zmienić wartość dla:
 Na przykład:
 
     http://localhost:3000
+
+{% include_relative leadmagnet.markdown %}
