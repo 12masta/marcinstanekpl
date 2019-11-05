@@ -32,106 +32,111 @@ Do tworzenia tego typu funkcji przewidziano właściwe miejsce - plik w katalogu
     cypress/support/index.js
 
 Dodaje tutaj część kodu, którą używam do procesu logowania się poprzez formatkę na stronie. Dodaje taki kod:
-
-    Cypress.Commands.add('login', (username, password) => {
-        Cypress.log({
-            name: 'login',
-            message: `${username} | ${password}`,
-        })
-        cy.get(':nth-child(1) > .form-control')
-            .type(username)
-        cy.get(':nth-child(2) > .form-control')
-            .type(password)
-        cy.get('.btn')
-            .click()
+{% highlight javascript %}
+Cypress.Commands.add('login', (username, password) => {
+    Cypress.log({
+        name: 'login',
+        message: `${username} | ${password}`,
     })
+    cy.get(':nth-child(1) > .form-control')
+        .type(username)
+    cy.get(':nth-child(2) > .form-control')
+        .type(password)
+    cy.get('.btn')
+           .click()
+})
+{% endhighlight %}
 
 Następnie przechodzę do zmian w pliku: _LoginTests.AppActions.spec_ zmieniając sposób obsługi wydarzenia logowania się użytkowników teście _Successfull login_:
 
-    it('Successfull login', function () {
-        (...)
-        cy.visit('http://localhost:4100/login')
-
-        cy.login('test@test.com', 'test')
-
-        cy.url()
-        .should('contain', 'http://localhost:4100/')
-        cy.get(':nth-child(4) > .nav-link')
-        (...)
-    })
+{% highlight javascript %}
+it('Successfull login', function () {
+    (...)
+    cy.visit('http://localhost:4100/login')
+    cy.login('test@test.com', 'test')
+    cy.url()
+    .should('contain', 'http://localhost:4100/')
+    cy.get(':nth-child(4) > .nav-link')
+    (...)
+})
+{% endhighlight %}
 
 Zwijam również do osobnych funkcji zapytania do API tj. wszystkich akcji typu: _cy.request_:
 
-    Cypress.Commands.add('createNewUserAPI', (username, email, password) => {
-        Cypress.log({
-            name: 'createNewUserAPI',
-            message: `${username} | ${email}| ${password}`
-        })
-        cy.request('DELETE', 'http://localhost:5000/users', {
-            user: {
-            username: 'test',
-            email: 'test@test.com',
-            password: 'test'
-            }
-        })
-        cy.request('POST', 'http://localhost:5000/users', {
-            user: {
-            username: 'test',
-            email: 'test@test.com',
-            password: 'test'
-            }
-        })
+{% highlight javascript %}
+Cypress.Commands.add('createNewUserAPI', (username, email, password) => {
+    Cypress.log({
+        name: 'createNewUserAPI',
+        message: `${username} | ${email}| ${password}`
     })
+    cy.request('DELETE', 'http://localhost:5000/users', {
+        user: {
+        username: 'test',
+        email: 'test@test.com',
+        password: 'test'
+        }
+    })
+    cy.request('POST', 'http://localhost:5000/users', {
+        user: {
+        username: 'test',
+        email: 'test@test.com',
+        password: 'test'
+        }
+    })
+})
+{% endhighlight %}
 
 Mój test wygląda teraz dużo prościej:
-
-        it('Successfull login', function () {
-
-            cy.createNewUserAPI('test', 'test@test.com', 'test')
-            
-            cy.visit('http://localhost:4100/login')
-
-            cy.login('test@test.com', 'test')
-
-            cy.url()
-                .should('contain', 'http://localhost:4100/')
-            (...)
-    })
+{% highlight javascript %}
+it('Successfull login', function () {
+    cy.createNewUserAPI('test', 'test@test.com', 'test')
+    cy.visit('http://localhost:4100/login')
+    cy.login('test@test.com', 'test')
+    cy.url()
+        .should('contain', 'http://localhost:4100/')
+    (...)
+})
+{% endhighlight %}
 
 Podążam tym tropem podczas refaktoryzacji i aktualizuje kolejne przypadki. Okazuje się, że w wielu miejscach mogę użyc ponownie funkcje _cy.login_ oraz _cy.createNewUserAPI_. Podczas pracy orientuje się, że potrzebuje jeszcze funkcji: _cy.deleteUser_:
 
-    Cypress.Commands.add('deleteUserAPI', (username, email, password) => {
-        Cypress.log({
-            name: 'deleteUserAPI',
-            message: `${username} | ${email}| ${password}`
-        })
-        cy.request('DELETE', 'http://localhost:5000/users', {
-            user: {
-                username: 'test',
-                email: 'test@test.com',
-                password: 'test'
-            }
-        })
+{% highlight javascript %}
+Cypress.Commands.add('deleteUserAPI', (username, email, password) => {
+    Cypress.log({
+        name: 'deleteUserAPI',
+        message: `${username} | ${email}| ${password}`
     })
+    cy.request('DELETE', 'http://localhost:5000/users', {
+        user: {
+            username: 'test',
+            email: 'test@test.com',
+            password: 'test'
+        }
+    })
+})
+{% endhighlight %}
 
 Ponadto użycie tego podejścia pozwala na [chaining](https://javascriptissexy.com/beautiful-javascript-easily-create-chainable-cascading-methods-for-expressiveness/) funkcji. Praktyczne użycie App Actions powoduje, że test _Successfull login_ wygląda dużo przejrzyściej.
 
-    it('Successfull login', function () {
-        cy.createNewUserAPI('test', 'test@test.com', 'test')
-        .visit('http://localhost:4100/login')
-        .login('test@test.com', 'test')
-        .url()
-            .should('contain', 'http://localhost:4100/')
-        .get(':nth-child(4) > .nav-link')
-            .should('have.attr', 'href', '/@test')
-        .get(':nth-child(3) > .nav-link')
-            .should('have.attr', 'href', '/settings')
-        .get('.container > .nav > :nth-child(2) > .nav-link')
-            .should('have.attr', 'href', '/editor')
-    })
+{% highlight javascript %}
+it('Successfull login', function () {
+    cy.createNewUserAPI('test', 'test@test.com', 'test')
+    .visit('http://localhost:4100/login')
+    .login('test@test.com', 'test')
+    .url()
+        .should('contain', 'http://localhost:4100/')
+    .get(':nth-child(4) > .nav-link')
+        .should('have.attr', 'href', '/@test')
+    .get(':nth-child(3) > .nav-link')
+        .should('have.attr', 'href', '/settings')
+    .get('.container > .nav > :nth-child(2) > .nav-link')
+        .should('have.attr', 'href', '/editor')
+})
+{% endhighlight %}
 
 Myślę, że można jeszcze ukryć techniczne zawiłości w asercji testu ukrywając jej logikę w Custom Command:
 
+{% highlight javascript %}
     Cypress.Commands.add('shouldBeLoggedIn', (username, email, password) => {
         Cypress.log({
             name: 'shouldBeLoggedIn',
@@ -144,99 +149,108 @@ Myślę, że można jeszcze ukryć techniczne zawiłości w asercji testu ukrywa
             .get('.container > .nav > :nth-child(2) > .nav-link')
             .should('have.attr', 'href', '/editor')
     })
+{% endhighlight %}
 
 To samo mogę zrobić dla walidowania wyświetlonego komunikatu o błędzie i walidacji adresu URL:
 
-    Cypress.Commands.add('shouldErrorMessageBeValid', (text) => {
-        Cypress.log({
-            name: 'shouldErrorMessageBeValid',
-            message: `${text}`
-        })
-        cy.get('.error-messages > li')
-            .should('have.text', text)
+{% highlight javascript %}
+Cypress.Commands.add('shouldErrorMessageBeValid', (text) => {
+    Cypress.log({
+        name: 'shouldErrorMessageBeValid',
+        message: `${text}`
     })
+    cy.get('.error-messages > li')
+        .should('have.text', text)
+})
 
-    Cypress.Commands.add('shouldErrorMessagesBeValid', (message, secondeMessgae) => {
-        Cypress.log({
-            name: 'shouldErrorMessagesBeValid',
-            message: `${message} | ${secondeMessgae}`
-        })
-        cy.get('.error-messages > :nth-child(1)')
-            .should('have.text', message)
-            .get('.error-messages > :nth-child(2)')
-            .should('have.text', secondeMessgae)
+Cypress.Commands.add('shouldErrorMessagesBeValid', (message, secondeMessgae) => {
+    Cypress.log({
+        name: 'shouldErrorMessagesBeValid',
+        message: `${message} | ${secondeMessgae}`
     })
+    cy.get('.error-messages > :nth-child(1)')
+        .should('have.text', message)
+        .get('.error-messages > :nth-child(2)')
+        .should('have.text', secondeMessgae)
+})
 
-    Cypress.Commands.add('shouldUrlContain', (url) => {
-        Cypress.log({
-            name: 'shouldUrlContain',
-            message: `${url}`
-        })
-        cy.url()
-            .should('contain', url)
+Cypress.Commands.add('shouldUrlContain', (url) => {
+    Cypress.log({
+        name: 'shouldUrlContain',
+        message: `${url}`
     })
+    cy.url()
+        .should('contain', url)
+})
+{% endhighlight %}
 
 Po zastosowaniu powyższych praktyk kończymy z testami wyglądającymi w ten sposób:
 
-    describe('Login Tests App Actions', function () {
-        it('Successfull login', function () {
-            cy.createNewUserAPI('test', 'test@test.com', 'test')
-                .visit('http://localhost:4100/login')
-                .login('test@test.com', 'test')
-                .shouldUrlContain('http://localhost:4100/')
-                .shouldBeLoggedIn('test', 'test@test.com', 'test')
-        })
-
-        it('Incorrect password', function () {
-            cy.createNewUserAPI('test', 'test@test.com', 'test')
-                .visit('http://localhost:4100/login')
-                .login('test@test.com', 'test2')
-                .shouldUrlContain('http://localhost:4100/login')
-                .shouldErrorMessageBeValid('Error Invalid email / password.')
-        })
-
-        it('Not existing user', function () {
-            cy.deleteUserAPI('test', 'test@test.com', 'test')
-                .visit('http://localhost:4100/login')
-                .login('test@test.com', 'test')
-                .shouldUrlContain('http://localhost:4100/login')
-                .shouldErrorMessageBeValid('Error Invalid email / password.')
-        })
-
-        it('Empty fields', function () {
-            cy.visit('http://localhost:4100/login')
-                .login('', '')
-                .shouldUrlContain('http://localhost:4100/login')
-                .shouldErrorMessagesBeValid('\'Email\' must not be empty.', '\'Password\' must not be empty.')
-        })
+{% highlight javascript %}
+describe('Login Tests App Actions', function () {
+    it('Successfull login', function () {
+        cy.createNewUserAPI('test', 'test@test.com', 'test')
+            .visit('http://localhost:4100/login')
+            .login('test@test.com', 'test')
+            .shouldUrlContain('http://localhost:4100/')
+            .shouldBeLoggedIn('test', 'test@test.com', 'test')
     })
+
+    it('Incorrect password', function () {
+        cy.createNewUserAPI('test', 'test@test.com', 'test')
+            .visit('http://localhost:4100/login')
+            .login('test@test.com', 'test2')
+            .shouldUrlContain('http://localhost:4100/login')
+            .shouldErrorMessageBeValid('Error Invalid email / password.')
+    })
+
+    it('Not existing user', function () {
+        cy.deleteUserAPI('test', 'test@test.com', 'test')
+            .visit('http://localhost:4100/login')
+            .login('test@test.com', 'test')
+            .shouldUrlContain('http://localhost:4100/login')
+            .shouldErrorMessageBeValid('Error Invalid email / password.')
+    })
+
+    it('Empty fields', function () {
+        cy.visit('http://localhost:4100/login')
+            .login('', '')
+            .shouldUrlContain('http://localhost:4100/login')
+            .shouldErrorMessagesBeValid('\'Email\' must not be empty.', '\'Password\' must not be empty.')
+    })
+})
+{% endhighlight %}
 
 Okazuje się, że test: _Empty fields_ zakończył się niepowodzeniem z powodu błędu: _CypressError: cy.type() cannot accept an empty String. You need to actually type something._ Oznacza to, że wysłanie ciągu znaków o wartości: _''_ do funkcji _cy.type_ kończy się niepowodzeniem, ponieważ nie jest to poprawne użycie tej funkcji. Wolę podejście z Selenium, gdzie nie jest to problemem. Okazuje się jednak, że twórcy Cypressa są innego zdania na ten temat i nie jest to defekt w ich mniemaniu: [GitHub Issue - .type() will not accept an empty string](https://github.com/cypress-io/cypress/issues/3587). Ja wolę móc swobodnie sparametryzować utworzoną przeze mnie funkcję w sposób, w jaki ją utworzyłem, dlatego modyfikuje kod funkcji _cy.login_ aby pominąć interakcje z polami login i password, jeżeli argumenty przekazane do funkcji są pustymi ciągami znaków:
 
-    Cypress.Commands.add('login', (username, password) => {
-        Cypress.log({
-            name: 'login',
-            message: `${username} | ${password}`,
-        })
-        if (username) {
-            cy.get(':nth-child(1) > .form-control')
-                .type(username)
-        }
-        if (password) {
-            cy.get(':nth-child(2) > .form-control')
-                .type(password)
-        }
-        cy.get('.btn')
-            .click()
+{% highlight javascript %}
+Cypress.Commands.add('login', (username, password) => {
+    Cypress.log({
+        name: 'login',
+        message: `${username} | ${password}`,
     })
+    if (username) {
+        cy.get(':nth-child(1) > .form-control')
+            .type(username)
+    }
+    if (password) {
+        cy.get(':nth-child(2) > .form-control')
+            .type(password)
+    }
+    cy.get('.btn')
+        .click()
+})
+{% endhighlight %}
 
 Po powyższych zmianach okazuje się, że same testy są dużo czytelniejsze, jednak sporo ze złych praktyk zostało przesuniętych do pliku commands.js. Większośći z nich nie będę na ten moment poprawiał, zamierzam jednak logiczniej ułożyć pliki i odseparować od siebie osobne bloki logiczne. Tworzę nowy folder o nazwie _login_ na ścieżce _cypress/support/. W tym folderze tworzę plik o nazwie: loginCommands.js_ i kopiuję z pliku _commands.js_ implementacje funkcji _cy.login_. Następnie tworzę kolejny plik _loginAssertionsCommands.js_ i kopiuję do niego implementacje funkcji: _cy.shouldBeLoggedIn_, _cy.shouldErrorMessageBeValid(arg)_ i _cy.shouldErrorMessagesBeValid(arg, arg)_ Analogiczne operacje wykonuję dla funkcji _cy.createNewUserAPI_, _cy.deleteUserAPI_ i _cy.shouldUrlContain_ Ostatecznie, aby mieć dostęp do tych funkcji w nowo utworzonych plikach muszę zmodyfikować plik: _index.js_ w katalogu: cypress/support/index.js i dodać odpowiednie importy:
 
-    import './commands'
-    import './api/apiCommands'
-    import './common/urlAssertionsCommands'
-    import './login/loginAssertionsCommands'
-    import './login/loginCommands'
+{% highlight javascript %}
+import './commands'
+import './api/apiCommands'
+import './common/urlAssertionsCommands'
+import './login/loginAssertionsCommands'
+import './login/loginCommands'
+{% endhighlight %}
 
 Po tej operacji na pewno będzie łatwiej znaleźć interesujące nas funkcje, ponieważ w mojej opinii są o wiele logiczniej poukładane. Benefity tej refaktoryzacji będzie można odczuć dopiero wtedy, kiedy ilość funkcji będzie rosnąć wraz z pokryciem testami funkcji aplikacji.
 
@@ -258,108 +272,121 @@ Tworzę nowy plik o nazwie:
 
 Następnie kopiuje do niego zawartość pliku _LoginTests.spec.js_ Kolejnym krokiem jest utworzenie nowej klasy, która będzie reprezentować obiekt strony logowania. Tworzę ją w tym miejscu: _cypress/pageobjects/LoginPage.js_ Następnie prototypuje jak będzie wyglądać użycie klasy w teście, wiem, że kod będzie wyglądał mniej więcej tak:
 
-    it('Successfull login', function () {
-      (...)
+{% highlight javascript %}
+it('Successfull login', function () {
+  (...)
   
-      cy.visit('http://localhost:4100/login')
+  cy.visit('http://localhost:4100/login')
         
-      const homePage = new LoginPage()
-        .login('test@test.com', 'test')
+  const homePage = new LoginPage()
+    .login('test@test.com', 'test')
   
-      cy.url()
-        .should('contain', 'http://localhost:4100/')
-      (...)
-    })
+  cy.url()
+    .should('contain', 'http://localhost:4100/')
+  (...)
+})
+{% endhighlight %}
 
 Widzę też, że będę potrzebował klasy HomePage która będzie reprezentować stronę domową aplikacji. Tworzę ją w tym miejscu projektu: _cypress/pageobjects/HomePage.js_ i przechodzę do implementacji funkcji _LoginPage.login_:
 
-    import HomePage from './HomePage'
+{% highlight javascript %}
+import HomePage from './HomePage'
 
-    class LoginPage {
-        login(email, password) {
-            cy.get(':nth-child(1) > .form-control')
-                .type(email)
-            cy.get(':nth-child(2) > .form-control')
-            .type(password)
-            cy.get('.btn')
-                .click()
+class LoginPage {
+    login(email, password) {
+        cy.get(':nth-child(1) > .form-control')
+            .type(email)
+        cy.get(':nth-child(2) > .form-control')
+        .type(password)
+        cy.get('.btn')
+            .click()
 
-            return new HomePage()
-        }
+        return new HomePage()
     }
+}
 
-    export default LoginPage;
+export default LoginPage;
+{% endhighlight %}
 
 Uruchamiam test, otrzymuje błąd: _ReferenceError: LoginPage is not defined_ okazuję się, że w pliku z testami zapomniałem zaimportować użytych przeze mnie nowo utworzonych klas, naprawiam to dodając następujący kod w pliku: _LoginTests.PageObjectModel.spec.js_
 
+{% highlight javascript %}
     import LoginPage from '../pageobjects/LoginPage'
+{% endhighlight %}
 
 Kontynuuje prototypowanie dla asercji:
 
-    it('Successfull login', function () {
-        (...)
+{% highlight javascript %}
+it('Successfull login', function () {
+    (...)
 
-        cy.visit('http://localhost:4100/login')
+    cy.visit('http://localhost:4100/login')
 
-        const homePage = new LoginPage()
+    const homePage = new LoginPage()
         .login('test@test.com', 'test')
 
-        homePage.url()
+    homePage.url()
         .should('contain', 'http://localhost:4100/')
-        homePage.userProfile()
+    homePage.userProfile()
         .should('have.attr', 'href', '/@test')
-        homePage.settings()
+    homePage.settings()
         .should('have.attr', 'href', '/settings')
-        homePage.editor()
+    homePage.editor()
         .should('have.attr', 'href', '/editor')
-    })
+})
+{% endhighlight %}
 
 Już wiem jak ma wyglądać mój interfejs(to na razie tylko klasa, jednak myślę o niej jak o przyszłym interfejsie), dlatego też przechodzę do implementacji:
 
-    class HomePage {
-        url() {
-            return cy.url()
-        }
-
-        userProfile() {
-            return cy.get(':nth-child(4) > .nav-link')
-        }
-
-        settings() {
-            return cy.get(':nth-child(3) > .nav-link')
-        }
-
-        editor() {
-            return cy.get('.container > .nav > :nth-child(2) > .nav-link')
-        }
+{% highlight javascript %}
+class HomePage {
+    url() {
+        return cy.url()
     }
 
-    export default HomePage;
+    userProfile() {
+        return cy.get(':nth-child(4) > .nav-link')
+    }
+
+    settings() {
+        return cy.get(':nth-child(3) > .nav-link')
+    }
+
+    editor() {
+        return cy.get('.container > .nav > :nth-child(2) > .nav-link')
+    }
+}
+
+export default HomePage;
+{% endhighlight %}
 
 Następnie wykonuję te same operacje dla reuqestów do API. Utworzę nową klasę, którą odpowiedzialnością będzie zarządzanie stanem użytkownika. Prototypuję jak chciałbym żeby wyglądał test:
 
-    it('Successfull login', function () {
-        new User('test', 'test@test.com', 'test')
+{% highlight javascript %}
+it('Successfull login', function () {
+    new User('test', 'test@test.com', 'test')
         .remove()
         .create()
 
-        cy.visit('http://localhost:4100/login')
-        const homePage = new LoginPage()
+    cy.visit('http://localhost:4100/login')
+    const homePage = new LoginPage()
         .login('test@test.com', 'test')
 
-        homePage.url()
+    homePage.url()
         .should('contain', 'http://localhost:4100/')
-        homePage.userProfile()
+    homePage.userProfile()
         .should('have.attr', 'href', '/@test')
-        homePage.settings()
+    homePage.settings()
         .should('have.attr', 'href', '/settings')
-        homePage.editor()
+    homePage.editor()
         .should('have.attr', 'href', '/editor')
-    })
+})
+{% endhighlight %}
 
 Kiedy już wiem co chcę osiągnąć przechodzę do implementacji klasy: _cypress/requests/User.js_:
 
-    class User {
+{% highlight javascript %}
+class User {
 
     constructor(username, email, password) {
         this.username = username;
@@ -397,109 +424,125 @@ Kiedy już wiem co chcę osiągnąć przechodzę do implementacji klasy: _cypre
         })
         return this;
     }
-    }
+}
 
-    export default User;
+export default User;
+{% endhighlight %}
 
 Teraz kiedy mam pierwszy test, który wygląda tak jakbym tego oczekiwał kontynuuję refaktoryzacje kolejnych scenariuszy. Okazuje się że dla testu: _Incorrect password_ utworzona funkcja _LoginPage.login(arg, arg)_ nie jest wystarczająca, ponieważ zwraca obiekt typu HomePage, a wiemy, że po niepoprawnym logowaniu powinniśmy pozostać na PageObject typu LoginPage. Dlatego też wymagana jest zmiana tej klasy. Klasa LoginPage po refaktoryzacji będzie wyglądać tak:
+{% highlight javascript %}
 
-    import HomePage from './HomePage'
+import HomePage from './HomePage'
 
-    class LoginPage {
-        login(email, password) {
+class LoginPage {
+    login(email, password) {
+        if (email) {
             cy.get(':nth-child(1) > .form-control')
                 .type(email)
+        }
+        if (password) {
             cy.get(':nth-child(2) > .form-control')
                 .type(password)
-            cy.get('.btn')
-                .click()
         }
-
-        loginIncorrectPass(email, password) {
-            this.login(email, password)
-            return new LoginPage()
-        }
-
-        loginCorrectPass(email, password) {
-            this.login(email, password)
-            return new HomePage()
-        }
+        cy.get('.btn')
+            .click()
     }
 
-    export default LoginPage;
+    loginIncorrectPass(email, password) {
+        this.login(email, password)
+        return new LoginPage()
+    }
 
+    loginCorrectPass(email, password) {
+        this.login(email, password)
+        return new HomePage()
+    }
+
+    url() {
+        return cy.url()
+    }
+
+    errorMessage() {
+        return cy.get('.error-messages > li')
+    }
+}
+
+export default LoginPage;
+{% endhighlight %}
 Po refaktoryzacji wszystkich testów używając wzorca otrzymuję taki kod:
 
-    import LoginPage from '../pageobjects/LoginPage'
-    import User from '../requests/User'
+{% highlight javascript %}
+import LoginPage from '../pageobjects/LoginPage'
+import User from '../requests/User'
 
-    describe('Login Tests Page Objects', function () {
-        it('Successfull login', function () {
-            new User('test', 'test@test.com', 'test')
-            .remove()
-            .create()
+describe('Login Tests Page Objects', function () {
+  it('Successfull login', function () {
+    new User('test', 'test@test.com', 'test')
+      .remove()
+      .create()
 
-            cy.visit('http://localhost:4100/login')
-            const homePage = new LoginPage()
-            .loginCorrectPass('test@test.com', 'test')
+    cy.visit('http://localhost:4100/login')
+    const homePage = new LoginPage()
+      .loginCorrectPass('test@test.com', 'test')
 
-            homePage.url()
-            .should('contain', 'http://localhost:4100/')
-            homePage.userProfile()
-            .should('have.attr', 'href', '/@test')
-            homePage.settings()
-            .should('have.attr', 'href', '/settings')
-            homePage.editor()
-            .should('have.attr', 'href', '/editor')
-        })
+    homePage.url()
+      .should('contain', 'http://localhost:4100/')
+    homePage.userProfile()
+      .should('have.attr', 'href', '/@test')
+    homePage.settings()
+      .should('have.attr', 'href', '/settings')
+    homePage.editor()
+      .should('have.attr', 'href', '/editor')
+  })
 
-        it('Incorrect password', function () {
-            new User('test', 'test@test.com', 'test')
-            .remove()
-            .create()
+  it('Incorrect password', function () {
+    new User('test', 'test@test.com', 'test')
+      .remove()
+      .create()
 
-            cy.visit('http://localhost:4100/login')
+    cy.visit('http://localhost:4100/login')
 
-            const loginPage = new LoginPage()
-            .loginIncorrectPass('test@test.com', 'test-incorrect')
+    const loginPage = new LoginPage()
+      .loginIncorrectPass('test@test.com', 'test-incorrect')
 
-            loginPage.url()
-            .should('contain', 'http://localhost:4100/login')
-            loginPage.errorMessage()
-            .should('have.text', 'Error Invalid email / password.')
-        })
+    loginPage.url()
+      .should('contain', 'http://localhost:4100/login')
+    loginPage.errorMessage()
+      .should('have.text', 'Error Invalid email / password.')
+  })
 
-        it('Not existing user', function () {
-            new User('test', 'test@test.com', 'test')
-            .remove()
+  it('Not existing user', function () {
+    new User('test', 'test@test.com', 'test')
+      .remove()
 
-            cy.visit('http://localhost:4100/login')
+    cy.visit('http://localhost:4100/login')
 
-            const loginPage = new LoginPage()
-            .loginIncorrectPass('test@test.com', 'test')
+    const loginPage = new LoginPage()
+      .loginIncorrectPass('test@test.com', 'test')
 
-            loginPage.url()
-            .should('contain', 'http://localhost:4100/login')
-            loginPage.errorMessage()
-            .should('have.text', 'Error Invalid email / password.')
-        })
+    loginPage.url()
+      .should('contain', 'http://localhost:4100/login')
+    loginPage.errorMessage()
+      .should('have.text', 'Error Invalid email / password.')
+  })
 
-        it('Empty fields', function () {
-            cy.visit('http://localhost:4100/login')
+  it('Empty fields', function () {
+    cy.visit('http://localhost:4100/login')
 
-            const loginPage = new LoginPage()
-            .loginIncorrectPass('', '')
+    const loginPage = new LoginPage()
+      .loginIncorrectPass('', '')
 
-            loginPage.url()
-            .should('contain', 'http://localhost:4100/login')
-            loginPage.errorMessages()
-            .should('have.length', 2)
-            loginPage.errorMessages().first()
-            .should('have.text', '\'Email\' must not be empty.')
-            .next()
-            .should('have.text', '\'Password\' must not be empty.')
-        })
-    })
+    loginPage.url()
+      .should('contain', 'http://localhost:4100/login')
+    loginPage.errorMessage()
+      .should('have.length', 2)
+    loginPage.errorMessage().first()
+      .should('have.text', '\'Email\' must not be empty.')
+      .next()
+      .should('have.text', '\'Password\' must not be empty.')
+  })
+})
+{% endhighlight %}
 
 Z powodzeniem udało mi się zaimplementować wzorzec Page Object Model. Tak samo, jak dla App Actions, w dalszym ciągu jest sporo do poprawy, jednak na ten moment skupiłem się na podstawowej implementacji założeń wzorca.
 

@@ -21,3 +21,5 @@ Jaką formę dzielenia się wiedzą preferujesz? Vlog? Podcast? Klasyczne ksią�
     kontakt@marcinstanek.pl
 
 Każdego maila czytam i odpisuje!
+
+{% include_relative leadmagnet.markdown %}

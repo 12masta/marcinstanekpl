@@ -18,6 +18,8 @@ Ten i następne posty zakładają ze jeżeli chcesz razem ze mną podążać kro
 
 Ich setup opisałem w tym poście: [Przygotowanie środowiska]({% post_url 2019-09-30-environment-setup %})
 
+{% include_relative subForm.markdown %}
+
 ## Szybki setup
 
 Aby moc używać tego narzędzia najpierw musimy go zainstalować w naszym projekcie. Najlepiej jest zastosować się do artykuły Getting Started na stronie twórców:
@@ -205,3 +207,5 @@ Całość zmian znajdziesz również na moim repo na branchu który znajdziesz t
     https://github.com/12masta/react-redux-realworld-example-app/tree/1-cypress
 
 Cypress wygląda na obiecujące narzędzie i zamierzam kontynuować rozwój testów, dlatego wyczekuj następnego postu. ;)
+
+{% include_relative leadmagnet.markdown %}

@@ -19,3 +19,5 @@ P.S. Podobają Ci się moje skarby? Daj znać pisząc na maila:
     kontakt@marcinstanek.pl
 
 Każdego maila czytam i odpisuje!
+
+{% include_relative leadmagnet.markdown %}

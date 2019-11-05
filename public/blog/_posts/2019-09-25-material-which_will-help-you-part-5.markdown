@@ -17,3 +17,5 @@ P.S. Jeżeli nie znalazłeś tu czegoś, co możesz mi polecić, to odpisz na te
     kontakt@marcinstanek.pl
 
 Każdego maila czytam i odpisuje!
+
+{% include_relative leadmagnet.markdown %}
