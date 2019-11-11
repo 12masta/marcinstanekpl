@@ -15,7 +15,7 @@ ogdescription:
 
 ## Wstęp
 
-Dzisiaj na moją testerską kuchenkę wjeżdża kolejny wielki nieobecny element w moich testach, czyli odpowiednie zarządzanie adresami URL. Do dzieła.
+W tym poście poruszam kolejny istotny, brakujący element w moich testach. Jest to odpowiednie zarządzania adresami URL aplikacji, której testy automatyzuję.
 
 Poprzedni post w tej tematyce znajdziesz tutaj: [Refaktoryzacja testów - App Actions vs Page Object Model]({% post_url 2019-11-05-refactor %})
 
@@ -29,7 +29,7 @@ Pierwszym elementem, który kwalifikuje się do dzisiejszej refaktoryzacji, jest
 cy.visit('http://localhost:4100/login')
 {% endhighlight %}
 
-Z pewnością nie jedna osoba zauważyła, że to bez sensu i powinno zostać rozwiązane w lepszy, czystszy sposób. Oczywiście Cypress udostępnia narzędzia, które pozwolą nam posprzątać ten nie porządek. Jak większość narzędzi, frameworków czy bibliotek testowych mamy dostęp do funkcji pozwalających nam uruchomić kod przed lub po wykonanym teście. Twórcy Cypressa nazywają je _hooks_. Mamy do wyboru, jak to zwykle bywa, 4 tego typu funkcje:
+Z pewnością niejedna osoba zauważyła, że to bez sensu i powinno zostać rozwiązane w lepszy, czystszy sposób. Oczywiście Cypress udostępnia narzędzia, które pozwolą nam posprzątać ten nieporządek. Jak większość narzędzi, frameworków czy bibliotek testowych mamy dostęp do funkcji pozwalających nam uruchomić kod przed lub po wykonanym teście. Twórcy Cypressa nazywają je _hooks_. Mamy do wyboru, jak to zwykle bywa, 4 tego typu funkcje:
 
 {% highlight javascript %}
 describe('Haki', function() {
@@ -51,7 +51,7 @@ describe('Haki', function() {
 })
 {% endhighlight %}
 
-Przenosząc to do realiów aplikacji, której testy staram się zautomatyzować, wiem, że przed każdym testem muszę dokonać nawigacji do konkretnej strony. Wygląda na doskonałego kandydata do użycia funkcji _beforeEach()_. Implementacja nie będzie zbyt skomplikowana:
+Przenosząc to do realiów aplikacji, której testy staram się zautomatyzować wiem, że przed każdym testem muszę dokonać nawigacji do konkretnej strony. Wygląda na doskonałego kandydata do użycia funkcji _beforeEach()_. Implementacja nie będzie zbyt skomplikowana:
 
 {% highlight javascript %}
 describe('Login Tests App Actions', function () {
@@ -78,7 +78,7 @@ Z łatwością można zauważyć, że taka prosta zmiana znacząco poprawiła ja
 
 ## Centralizacja adresów URL
 
-Następnym problemem jest rozsianie adresów URL w argumentach funkcji. Próba zmiany adresu w celu przetestowania aplikacji na innym, na przykład nielokalnym środowisku, skończyłaby się dużym bólem zmiany każdego miejsca gdzie jest użyty tenże adres. Do naprawy tej sytuacji użyje dwóch mechanizmów. Pierwszy z nich to ustawienie: _baseUrl_ oraz możliwość ustawienia zmiennych środowiskowych, oba odnoszą się do przechowywania zmiennych w pliku konfiguracyjnym. Ustawienie _baseUrl_ polega na dodaniu odpowiedniego wpisu do pliku konfiguracyjnego, które zmodyfikuje domyślne działanie funkcji _cy.visit()_ oraz _cy.request(). Przechodząc do implementacji modyfikuje plik _cypress.json_ do postaci:
+Następnym problemem jest rozsianie adresów URL w argumentach funkcji. Próba zmiany adresu w celu przetestowania aplikacji na innym, na przykład nielokalnym środowisku, skończyłaby się dużym bólem zmiany każdego miejsca, gdzie jest użyty tenże adres. Do naprawy tej sytuacji użyję dwóch mechanizmów. Pierwszy z nich to ustawienie: _baseUrl_, a kolejnym jest możliwość ustawienia zmiennych środowiskowych. Oba odnoszą się do przechowywania zmiennych w pliku konfiguracyjnym. Ustawienie _baseUrl_ polega na dodaniu odpowiedniego wpisu do pliku konfiguracyjnego, które zmodyfikuję domyślne działanie funkcji _cy.visit()_ oraz _cy.request(). Przechodząc do implementacji modyfikuje plik _cypress.json_ do postaci:
 
 {% highlight json %}
 {
@@ -109,7 +109,7 @@ describe('Login Tests App Actions', function () {
 
 ![2-wrong-url-assertion](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-11-12-urls%2F2-wrong-url-assertion.png?alt=media&token=6cb3750d-5a44-480a-9b42-75c7febcdec8)
 
-Okazuje się, jednak że test nie jest dokładnie taki sam jak przed zmianami. W linii _URL ASSERT_ można zauważyć tego typu log: "_expected http://localhost:4100/ to include /_" test sprawdził jedynie, czy adres URL posiada w sobie następujący ciąg znaków: "/". Totalnie źle, to niedopuszczalna sytuacja należy ją poprawić. Na szczęście jest na to łatwy sposób, możemy z łatwością pobrać wartość parametru _baseUrl_ zapisanego w konfiguracji za pomocą funkcji: _Cypress.config('arg')_, implementacja wygląda w ten sposób:
+Okazuje się jednak, że test nie jest dokładnie taki sam jak przed zmianami. W linii _URL ASSERT_ można zauważyć tego typu log: "_expected http://localhost:4100/ to include /_". Test sprawdził jedynie to, czy adres URL posiada w sobie następujący ciąg znaków: "/". To niedopuszczalna sytuacja należy ją poprawić. Na szczęście jest na to łatwy sposób, możemy z łatwością pobrać wartość parametru _baseUrl_ zapisanego w konfiguracji za pomocą funkcji: _Cypress.config('arg')_, implementacja wygląda w ten sposób:
 
 {% highlight javascript %}
 Cypress.Commands.add('shouldUrlContain', (subPath) => {
@@ -122,7 +122,7 @@ Cypress.Commands.add('shouldUrlContain', (subPath) => {
 })
 {% endhighlight %}
 
-Naprawia to jeden z problemów tej funkcji. Niestety jest w niej kolejny poważny defekt. Sprawdza jedynie, czy URL **zawiera** w sobie podany ciąg znaków. Jest to błędne podejście co zostało zauważone przed jedną osobę w komentarzach, za co dziękuje. Poprawnym podejściem jest sprawdzenie czy ciąg znaków jest równy temu którego czekujemy. Zamiast argumentu _'contain'_, należało użyć _'equal'_. Dlaczego? W obecnej sytuacji, jeżeli aplikacja po wykonaniu się logiki testu, błędnie, przekierowałaby na sna  stronę: _http://localhost:4100/you_should_not_be_here_, test zakończyłby się błędnie powodzeniem. Parę linijek kodu, a zdołały zawierać w sobie aż dwa defekty - całkiem niezły wynik. Zmieniam również nazwę funkcji na poprawnie odwzorowywującą aktualne działanie i poprawna implementacja wygląda tak:
+Naprawia to jeden z problemów tej funkcji. Niestety jest w niej kolejny poważny defekt. Sprawdza jedynie, czy URL **zawiera** w sobie podany ciąg znaków. Jest to błędne podejście co zostało zauważone przez jedną osobę w komentarzach, za co dziękuje. Poprawnym podejściem jest sprawdzenie czy ciąg znaków jest równy temu, którego oczekujemy. Zamiast argumentu _'contain'_, należało użyć _'equal'_. Dlaczego? W obecnej sytuacji, jeżeli aplikacja po wykonaniu się logiki testu, błędnie, przekierowałaby nas na stronę: _http://localhost:4100/you_should_not_be_here_, test zakończyłby się błędnie powodzeniem. Parę linijek kodu, a zdołały zawierać w sobie aż dwa defekty - całkiem niezły wynik. Zmieniam również nazwę funkcji na poprawnie odwzorowywującą aktualne działanie i poprawna implementacja wygląda tak:
 
 {% highlight javascript %}
 Cypress.Commands.add('shouldUrlBe', (subPath) => {
@@ -135,7 +135,7 @@ Cypress.Commands.add('shouldUrlBe', (subPath) => {
 })
 {% endhighlight %}
 
-Oczywiście należy teraz uważać, aby nie przekazać do funkcji pełnego adresu URL, jednak to podejście wydaje się spójne z natywnym działaniem Cypress, które proponują jego twórcy. Poza tym zawsze możemy w funkcji dodać odpowiedni blok _if_ który rozwiąże ten problem, obecnie nie jest to powodem do dalszych zmian dlatego nie zmieniam już tej funkcji w związku z tą uwagą. Widzę jeszcze drobną możliwość usprawnienia tego bloku kodu za pomocą wyciągnięcia budowy pełnego adresu URL do osobnej zmiennej, funkcja wygląda teraz tak i myślę, że nie potrzebuje już więcej zmian:
+Oczywiście należy teraz uważać, aby nie przekazać do funkcji pełnego adresu URL, jednak to podejście wydaje się spójne z natywnym działaniem Cypress, które proponują jego twórcy. Poza tym zawsze możemy w funkcji dodać odpowiedni blok _if_, który rozwiąże ten problem. Obecnie nie jest to powodem do dalszych zmian dlatego nie zmieniam już tej funkcji w związku z tą uwagą. Widzę jeszcze drobną możliwość usprawnienia tego bloku kodu za pomocą wyciągnięcia budowy pełnego adresu URL do osobnej zmiennej. Funkcja wygląda teraz tak i myślę, że nie potrzebuje już więcej zmian:
 
 {% highlight javascript %}
 Cypress.Commands.add('shouldUrlBe', (subPath) => {
@@ -149,7 +149,7 @@ Cypress.Commands.add('shouldUrlBe', (subPath) => {
 })
 {% endhighlight %}
 
-Aplikuje również wyżej opisane zmiany do testów korzystających z Page Object Pattern wyciągając URL do osobnej zmiennej i modyfikując asercje:
+Aplikuję również wyżej opisane zmiany do testów korzystających z Page Object Pattern, wyciągając URL do osobnej zmiennej i modyfikując asercje:
 
 {% highlight javascript %}
 import LoginPage from '../pageobjects/LoginPage'
@@ -199,7 +199,7 @@ describe('Login Tests Page Objects', function () {
 
 ## Zapytania do API
 
-Backend aplikacji znajduje się pod innym adresem więc również należy wyciągnąć go do konfiguracji. Dodaje nowy wpis do pliku _cypress.json_:
+Backend aplikacji znajduje się pod innym adresem, więc również należy wyciągnąć go do konfiguracji. Dodaję nowy wpis do pliku _cypress.json_:
 
 {% highlight json %}
 {
@@ -208,7 +208,7 @@ Backend aplikacji znajduje się pod innym adresem więc również należy wyci
 }
 {% endhighlight %}
 
-Następnie wyciągam URL do osobnej zmiennej w pliku _cypress/support/api/apiCommands.js_ Używając analogicznego podejścia co z _baseUrl_, zamieniam jedynie nazwę parawmetru którego poszukuje w pliku konfiguracyjnym czyli użycie funkcji będzie wyglądać tak _Cypress.config('apiUrl')_, a implementacja w następujący sposób:
+Następnie wyciągam URL do osobnej zmiennej w pliku _cypress/support/api/apiCommands.js_ Używając analogicznego podejścia co z _baseUrl_ zamieniam jedynie nazwę parametru którego poszukuję w pliku konfiguracyjnym, czyli użycie funkcji będzie wyglądać tak _Cypress.config('apiUrl')_, a implementacja w następujący sposób:
 
 {% highlight javascript %}
 
@@ -252,7 +252,7 @@ Cypress.Commands.add('createNewUserAPI', (username, email, password) => {
 })
 {% endhighlight %}
 
-Tutaj również aplikuje zmiany do pliku _cypress/requests/User.js_:
+Tutaj również aplikuję zmiany do pliku _cypress/requests/User.js_:
 
 {% highlight javascript %}
 class User {
@@ -278,7 +278,7 @@ class User {
 export default User;
 {% endhighlight %}
 
-Podobnie jak powyżej w tej funkcji również kryję się defekt. Jest to błąd logiczny - przed utworzeniem użytkownika nie usuwam go. Powód, dla którego to robię został omówiony w poście: [Testy logowania z Cypress]({% post_url 2019-10-17-login-tests-with-cypress %}) w sekcji _Implementacja pierwszego testu_. Poprawna wersji funkcji _create()_:
+Podobnie jak powyżej w tej funkcji również kryje się defekt. Jest to błąd logiczny - przed utworzeniem użytkownika nie usuwam go. Powód, dla którego to robię został omówiony w poście: [Testy logowania z Cypress]({% post_url 2019-10-17-login-tests-with-cypress %}) w sekcji _Implementacja pierwszego testu_. Poprawna wersji funkcji _create()_:
 
 {% highlight javascript %}
   create() {
@@ -306,7 +306,7 @@ Podobnie jak powyżej w tej funkcji również kryję się defekt. Jest to błąd
 
 ## Podsumowanie
 
-Jak widać Cypress daje nam możliwość łatwego zarządzania i czytania konfiguracji. Oczywiście to nie wszystkie możliwośći które są możliwe, z przydatnych funkcji, która jako pierwsza przychodzi do głowy jest możliwość nadpisywanie konfiguracji co z pewnością przyda się podczas konfiguracji CI i z pewnością zostanie opisane w przyszłości.
+Jak widać, Cypress daje nam możliwość łatwego zarządzania i czytania konfiguracji. Oczywiście to nie wszystko co oferuje dewelopereom. Z przydatnych funkcji, która jako pierwsza przychodzi na myśl to nadpisywanie konfiguracji, co z pewnością przyda się podczas jej zmiany w procesie CI i na pewno zostanie opisane w przyszłości.
 
 Całość zmian znajdziesz w moim repo na branchu, tutaj:
 
