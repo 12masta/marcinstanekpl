@@ -16,7 +16,7 @@ var Paths = {
   BLOG: '/blog/'
 };
 
-gulp.task('compile-scss', function() {
+gulp.task('compile-scss', function () {
   return gulp.src(Paths.SCSS_TOOLKIT_SOURCES)
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -43,13 +43,17 @@ gulp.task('jekyll', () => {
 });
 
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
   gulp.watch(Paths.SCSS, ['compile-scss']);
 });
 
-gulp.task('open', function() {
-  gulp.src('index.html')
-    .pipe(open());
+gulp.task('open', function () {
+  var options = {
+    uri: 'http://localhost:4000',
+    app: 'safari'
+  };
+  gulp.src(__filename)
+    .pipe(open(options));
 });
 
-gulp.task('open-app', ['open', 'jekyll' ,'watch']);
+gulp.task('open-app', ['open', 'jekyll', 'watch']);
