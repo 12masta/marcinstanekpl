@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Refaktoryzacja testów - App Actions vs Page Object Model"
-date:   2019-11-04 08:00:00 +0200
+date:   2019-11-05 08:00:00 +0200
 categories: [testautomation, cypress]
 tags: [testautomation, cypress]
 permalink: /cypress-3
@@ -16,6 +16,8 @@ ogdescription:
 ## Wstęp
 
 Jak niektórzy w komentarzach zdążyli zauważyć kod testów jest bardzo niskiej jakości, dlatego dzisiaj postaram się poprawić scenariusze i przejść proces ich refaktoryzacji. Pierwsze co przychodzi do głowy w tej sytuacji to użycie wzorcu Page Object Model, aby uczynić nasze testy bardziej logicznymi jednoznacznie uwypuklając ich sens biznesowy. W dokumentacji jednak, znalazłem taki wpis: [Stop using Page Objects and Start using App Actions](https://www.cypress.io/blog/2019/01/03/stop-using-page-objects-and-start-using-app-actions/) sugeruje on jednak, aby spróbować podejścia do problemu z innej strony - dlatego implementuje oba sposoby i zobaczę, co z tego będzie.
+
+Poprzedni post w tej tematyce znajdziesz tutaj: [Testy logowania z Cypress]({% post_url 2019-10-17-login-tests-with-cypress %})
 
 ## App Actions
 
@@ -430,8 +432,8 @@ export default User;
 {% endhighlight %}
 
 Teraz kiedy mam pierwszy test, który wygląda tak jakbym tego oczekiwał kontynuuję refaktoryzacje kolejnych scenariuszy. Okazuje się że dla testu: _Incorrect password_ utworzona funkcja _LoginPage.login(arg, arg)_ nie jest wystarczająca, ponieważ zwraca obiekt typu HomePage, a wiemy, że po niepoprawnym logowaniu powinniśmy pozostać na PageObject typu LoginPage. Dlatego też wymagana jest zmiana tej klasy. Klasa LoginPage po refaktoryzacji będzie wyglądać tak:
-{% highlight javascript %}
 
+{% highlight javascript %}
 import HomePage from './HomePage'
 
 class LoginPage {
@@ -469,6 +471,7 @@ class LoginPage {
 
 export default LoginPage;
 {% endhighlight %}
+
 Po refaktoryzacji wszystkich testów używając wzorca otrzymuję taki kod:
 
 {% highlight javascript %}

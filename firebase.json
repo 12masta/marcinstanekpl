@@ -8,9 +8,44 @@
     ],
     "redirects":[ 
       {
+        "source": "/cypress-0",
+        "destination": "/blog/cypress/testautomation/2019/10/01/first-tests-with-cypress.html",
+        "type": 301
+      },
+      {
+        "source": "/cypress-1",
+        "destination": "/blog/cypress/testautomation/2019/10/01/first-tests-with-cypress.html",
+        "type": 301
+      },
+      {
+        "source": "/cypress-2",
+        "destination": "/blog/testautomation/cypress/2019/10/17/login-tests-with-cypress.html",
+        "type": 301
+      },
+      {
+        "source": "/cypress-0.html",
+        "destination": "/blog/cypress/testautomation/2019/10/01/first-tests-with-cypress.html",
+        "type": 301
+      },
+      {
+        "source": "/cypress-1.html",
+        "destination": "/blog/cypress/testautomation/2019/10/01/first-tests-with-cypress.html",
+        "type": 301
+      },
+      {
+        "source": "/cypress-2.html",
+        "destination": "/blog/testautomation/cypress/2019/10/17/login-tests-with-cypress.html",
+        "type": 301
+      },
+      {
         "source": "/cypress-3",
         "destination": "/cypress-3.html",
         "type": 301
+      },
+      {
+        "source": "/cypress-4",
+        "destination": "/cypress-4.html",
+        "type": 301        
       }
     ],
     "rewrites": [
