@@ -15,7 +15,7 @@ ogdescription:
 
 ## Wstęp
 
-W tym poście poruszam kolejny istotny, brakujący element w moich testach. Jest to odpowiednie zarządzania adresami URL aplikacji, której testy automatyzuję.
+W tym poście poruszam kolejny istotny, brakujący element w moich testach. Jest to odpowiednie zarządzanie adresami URL aplikacji, której testy automatyzuję.
 
 Poprzedni post w tej tematyce znajdziesz tutaj: [Refaktoryzacja testów - App Actions vs Page Object Model]({% post_url 2019-11-05-refactor %})
 
