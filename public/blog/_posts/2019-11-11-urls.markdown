@@ -243,9 +243,9 @@ Cypress.Commands.add('createNewUserAPI', (username, email, password) => {
     })
     cy.request('DELETE', usersEndpointUrl, {
         user: {
-            username: this.username,
-            email: this.email,
-            password: this.password
+            username: username,
+            email: email,
+            password: password
         }
     })
     (...)
@@ -315,5 +315,9 @@ Całość zmian znajdziesz w moim repo na branchu, tutaj:
 Changeset:
 
     https://github.com/12masta/react-redux-realworld-example-app/pull/4/files
+
+Okazuje się że przypadkowo wprowadziłem jeszcze jeden defekt co uniemożliwia uruchomienie testów: _cypress/integration/LoginTests.AppActions.spec.js_. Rozwiązaniem problemu jest następujący kod:
+
+    https://github.com/12masta/react-redux-realworld-example-app/pull/5/files
 
 {% include_relative leadmagnet.markdown %}
