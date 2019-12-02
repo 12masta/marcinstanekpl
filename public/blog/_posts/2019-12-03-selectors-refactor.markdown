@@ -1,21 +1,21 @@
 ---
 layout: post
-title:  "Zmiana selektorów wg. wytycznych Cypress"
-date:   2019-11-11 08:00:00 +0200
+title:  "Cypress i poprawne użycie selektorów, atrybut data-cy"
+date:   2019-12-02 08:00:00 +0200
 categories: [testautomation, cypress]
 tags: [testautomation, cypress]
 permalink: /cypress-5
 ogimage:
-  - TODO
+  - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-12-03-selectors-refactor%2Fblog_post-cover.png?alt=media&token=6a825ffc-639e-42d8-a4fc-628c983dbfaa
 ogimagetype:
   - image/png
 ogdescription:
-  - Cypress i poprawne użycie selektorów, atrybut data-cy
+  - Zmiana selektorów wg. wytycznych Cypress, atrybuty, data-cy
 ---
 
 ## Wstęp
 
-Selektory i sposób ich budowania to szalenie istotny temat w kontekście stabilności, a co za tym idzie jakości, testów automatycznych. Do tej pory w moim projekcie były potraktowane po najmniejszej linii oporu. Najwyższa pora to zmienić.
+Selektory i sposób ich budowania to bardzo istotny temat w kontekście stabilności, a co za tym idzie jakości, testów automatycznych. Do tej pory w moim projekcie były potraktowane po najmniejszej linii oporu. Najwyższa pora to zmienić.
 
 Poprzedni post w tej tematyce znajdziesz tutaj: [Porządki, usystematyzowanie adresów URL]({% post_url 2019-11-11-urls %})
 
@@ -41,7 +41,7 @@ Nie biorą się one jednak znikąd. Wymagają one od testera otworzenia projektu
 
 ## Dodawanie atrybutów na ekranie logowania
 
-Mamy do czynienia z projektem utworzonym przy pomocy biblioteki React. A więc spodziewamy się, że w projekcie znajdziemy komponenty. Co to są komponenty? Tutaj jest to dość fajnie wyjaśnione na przykładzie: https://pl.reactjs.org/docs/components-and-props.html Ja rozumiem je jako reużywalne kawałki html'a do którego możemy przekazywać argumenty w celu sprecyzowania ich działania, wyglądu i przeznaczenia. Nie musisz ich teraz zrozumieć, wystarczy, że będziesz umiał przekazać do nich atrybut w celu jego przetestowania.
+Mamy do czynienia z projektem utworzonym przy pomocy biblioteki React. A więc spodziewamy się, że w projekcie znajdziemy komponenty. Co to są komponenty? [Tutaj](https://pl.reactjs.org/docs/components-and-props.html) jest to dość fajnie wyjaśnione na przykładzie. Ja rozumiem je jako reużywalne kawałki html'a do którego możemy przekazywać argumenty w celu sprecyzowania ich działania, wyglądu i przeznaczenia. Nie musisz ich teraz zrozumieć, wystarczy, że będziesz umiał przekazać do nich atrybut w celu jego przetestowania.
 
 W zależności od specyfiki projektu poprawny sposób dodawania atrybutu będzie się różnił. Myśle, jednak że ostatecznie jednak zawsze musimy zmodyfikować HTML - oprócz jakiś ekstremalnych przypadków brzegowych. ;)
 
@@ -53,7 +53,7 @@ Plik:
 
     src/components/Login.js
 
-Po otworzeniu go znajdujemy kod JavaScript, zwracający kod JSX. To JavaScriptu rozszerzony o możliwość zwracania znaczników HTML. Więcej tutaj: https://pl.reactjs.org/docs/introducing-jsx.html. Po analizie kodu widzę, że za wyświetlenie pól tekstowych odpowiedzialny jest po prostu tag _input_. W nazewnictwie Reacta nazywamy go komponentem kontrolowanym_:
+Po otworzeniu go znajdujemy kod JavaScript, zwracający kod JSX. To JavaScriptu rozszerzony o możliwość zwracania znaczników HTML. Więcej [tutaj](https://pl.reactjs.org/docs/introducing-jsx.html). Po analizie kodu widzę, że za wyświetlenie pól tekstowych odpowiedzialny jest po prostu tag _input_. W nazewnictwie Reacta nazywamy go komponentem kontrolowanym_:
 
 {% highlight javascript %}
 <input
