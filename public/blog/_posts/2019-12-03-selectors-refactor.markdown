@@ -27,7 +27,7 @@ Najpierw trochę kontekstu. Cypress posiada wbudowane narzędzie, które umożli
 
 {% include_relative video.html id="vid1" webm="https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-12-03-selectors-refactor%2Fcypress-5-1-selector-playground-.mp4?alt=media&token=c0deb5d1-16c8-4fb4-8869-950b7416a3af" mp4="https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-12-03-selectors-refactor%2Fcypress-5-1-selector-playground-.mp4?alt=media&token=c0deb5d1-16c8-4fb4-8869-950b7416a3af.mp4" img="https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-12-03-selectors-refactor%2Fcypress-5-1-selectors-playground.png?alt=media&token=6ea47fe8-e099-4768-ab34-dd38f0e4df45" imgalt="cypress-5-1-selectors-playground"%}
 
-Bardzo dobre narzędzie do prototypowania w kontekście tego projektu. Może się wydawać, że generuje słabej jakości selektory. Nic bardziej mylnego, napiszę jedynie, że po konfiguracji, jest taka możliwość, lub po podążaniu wytycznych twórców może ono generować dobrej jakości dane. Jednak zasługuje ono na osobny wpis i ucinam temat w tej chwili.
+Bardzo dobre narzędzie do prototypowania w kontekście tego projektu. Może się wydawać, że generuje słabej jakości selektory. Nic bardziej mylnego, napiszę jedynie, że po konfiguracji jest taka możliwość lub po podążaniu wytycznych twórców może ono generować dobrej jakości dane. Jednak zasługuje ono na osobny wpis i ucinam temat w tej chwili.
 
 ## Jakich selektorów użyć
 
@@ -37,13 +37,13 @@ Aby uniknąć problemów podczas tworzenia selektorów powinieneś pisać je w t
 
 Tego typu podejście rozwiązuje wiele przeciwności, a z pewnością ten czy musisz uczyć się ich składni, ponieważ w tym przypadku będzie banalnie prosta. Co jak wiadomo bywa skomplikowane.
 
-Nie biorą się one jednak znikąd. Wymagają one od testera otworzenia projektu testowego i dodania ich do odpowiednich miejsc w plikach .html. Jeżeli pracujesz nad projektem komercyjnym możesz oczywiście poprosić o to deweloperów, jednak nie będzie to wydajne podejście, moim zdaniem jest to obowiązek testera automatyzującego.
+Nie biorą się one jednak znikąd. Wymagają od testera otworzenia projektu testowego i dodania ich do odpowiednich miejsc w plikach .html. Jeżeli pracujesz nad projektem komercyjnym możesz oczywiście poprosić o to deweloperów, jednak nie będzie to wydajne podejście. Moim zdaniem jest to obowiązek testera automatyzującego.
 
 ## Dodawanie atrybutów na ekranie logowania
 
-Mamy do czynienia z projektem utworzonym przy pomocy biblioteki React. A więc spodziewamy się, że w projekcie znajdziemy komponenty. Co to są komponenty? [Tutaj](https://pl.reactjs.org/docs/components-and-props.html) jest to dość fajnie wyjaśnione na przykładzie. Ja rozumiem je jako reużywalne kawałki html'a do którego możemy przekazywać argumenty w celu sprecyzowania ich działania, wyglądu i przeznaczenia. Nie musisz ich teraz zrozumieć, wystarczy, że będziesz umiał przekazać do nich atrybut w celu jego przetestowania.
+Mamy do czynienia z projektem utworzonym przy pomocy biblioteki React. A więc spodziewamy się, że w projekcie znajdziemy komponenty. Co to są komponenty? [Tutaj](https://pl.reactjs.org/docs/components-and-props.html) jest to dość fajnie wyjaśnione na przykładzie. Ja rozumiem je jako reużywalne kawałki html'a do którego możemy przekazywać argumenty w celu sprecyzowania ich działania, wyglądu i przeznaczenia. Nie musisz ich teraz zrozumieć. Wystarczy, że będziesz umiał przekazać do nich atrybut w celu jego przetestowania.
 
-W zależności od specyfiki projektu poprawny sposób dodawania atrybutu będzie się różnił. Myśle, jednak że ostatecznie jednak zawsze musimy zmodyfikować HTML - oprócz jakiś ekstremalnych przypadków brzegowych. ;)
+W zależności od specyfiki projektu poprawny sposób dodawania atrybutu będzie się różnił. Myśle, jednak że ostatecznie zawsze musimy zmodyfikować HTML - oprócz jakichś ekstremalnych przypadków brzegowych. ;)
 
 Aby dodać taki atrybut do ekranu logowania należy zlokalizować w projekcie:
 
@@ -53,7 +53,7 @@ Plik:
 
     src/components/Login.js
 
-Po otworzeniu go znajdujemy kod JavaScript, zwracający kod JSX. To JavaScriptu rozszerzony o możliwość zwracania znaczników HTML. Więcej [tutaj](https://pl.reactjs.org/docs/introducing-jsx.html). Po analizie kodu widzę, że za wyświetlenie pól tekstowych odpowiedzialny jest po prostu tag _input_. W nazewnictwie Reacta nazywamy go komponentem kontrolowanym_:
+Po otworzeniu go znajdujemy kod JavaScript, zwracający kod JSX. To JavaScript rozszerzony o możliwość zwracania znaczników HTML. Więcej [tutaj](https://pl.reactjs.org/docs/introducing-jsx.html). Po analizie kodu widzę, że za wyświetlenie pól tekstowych odpowiedzialny jest po prostu tag _input_. W nazewnictwie Reacta nazywamy go komponentem kontrolowanym_:
 
 {% highlight javascript %}
 <input
@@ -129,15 +129,15 @@ Cypress.Commands.add('login', (username, password) => {
 })
 {% endhighlight %}
 
-Można zauważyć, że poziom skomplikowania selektorów zmalał. Zaszła również zależność, o której pisałem wyżej. Zunifikowany został sposób zapisu selektorów, od tego momentu wszystko, co musisz wiedzieć to, to że element na stronie można znaleźć przy pomocy ciągu znaków:
+Można zauważyć, że poziom skomplikowania selektorów zmalał. Zaszła również zależność, o której pisałem wyżej. Zunifikowany został sposób zapisu selektorów, od tego momentu wszystko, co musisz wiedzieć to to, że element na stronie można znaleźć przy pomocy ciągu znaków:
 
     [data-cy=]
 
 Proste i ekstremalnie skuteczne.
 
-## Dodawanie atrybutów do customowych komponentów
+## Dodawanie atrybutów do komponentów dodanych przez twórców aplikacji
 
-Dodanie atrybutu do komunikatów o błędzie na stronie logowania okazuję się odrobinę bardziej skomplikowane. Komponentem odpowiedzialnym za ich wyświetlenie jest _ListErrors_, jest to customowy komponent utwprzony przez twórcę projektu frontendu aplikacji. Do tej pory dodawałem atrybut jedynie do komponentów wbudowanych w bibliotekę React dlatego też proste doklejenie jednego argumentu było wystarczające. W tym przypadku ten kod nie jest wystarczający:
+Dodanie atrybutu do komunikatów o błędzie na stronie logowania okazuje się odrobinę bardziej skomplikowane. Komponentem odpowiedzialnym za ich wyświetlenie jest _ListErrors_, to komponent utworzony przez twórcę projektu frontendu aplikacji. Do tej pory dodawałem atrybut jedynie do komponentów wbudowanych w bibliotekę React, dlatego też proste doklejenie jednego argumentu było wystarczające. W tym przypadku ten kod nie jest wystarczający:
 
 {% highlight javascript %}
 <ListErrors errors={this.props.errors} data-cy="error-message" />
@@ -147,7 +147,8 @@ Aby zmiany zostały zastosowane zgodnie z założeniem należy otworzyć plik:
 
     src/components/ListErrors.js
 
-Nastepnie zmodyfikować jego zawartość do stanu:
+Następnie zmodyfikować jego zawartość do stanu:
+
 {% highlight javascript %}
 import React from 'react';
 
@@ -167,18 +168,18 @@ class ListErrors extends React.Component {
 (...)
 {% endhighlight %}
 
-Mamy tu połączenie dwóch technik. Pierwszą już nam znaną widzimy w tagu _ul_, tam po prostu przypisałem do niego atrybut z wartością, którą oczekiwałem. Drugą techniką jest przekazanie wartości dla atrybutu z zewnątrz komponentu. Polega ona na tym, że w kroku pierwszym nadaje wartość zmiennej, jest to właśnie:
+Mamy tu połączenie dwóch technik. Pierwszą już nam znaną widzimy w tagu _ul_, tam po prostu przypisałem do niego atrybut z wartością, którą oczekiwałem. Drugą techniką jest przekazanie wartości dla atrybutu z zewnątrz komponentu. Polega ona na tym, że w kroku pierwszym nadaję wartość zmiennej, jest to właśnie:
 
 {% highlight javascript %}
 <ListErrors (...) data-cy="error-message" />
 {% endhighlight %}
 
-Następnie przypisuje wartość argumentu z zewnątrz do zmiennej wewnątrz komponentu:
+Następnie przypisuję wartość argumentu z zewnątrz do zmiennej wewnątrz komponentu:
 {% highlight javascript %}
 const datacy = this.props.datacy;
 {% endhighlight %}
 
-Na końcu przypisuje wartość zmiennej do każdego atrybutu elementu na liście błedów - tag _li_:
+Na końcu przypisuję wartość zmiennej do każdego atrybutu elementu na liście błedów - tag _li_:
 {% highlight javascript %}
 <li (...) data-cy={datacy}>
 {% endhighlight %}
