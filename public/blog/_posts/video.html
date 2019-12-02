@@ -1,7 +1,19 @@
 <div>
-    <video width="100%" autoplay autobuffer loop muted playsinline>
+    <video width="100%" autoplay autobuffer loop muted playsinline id="{{ include.id }}" preload="auto">
         <source src="{{ include.webm }}" type="video/webm">
         <source src="{{ include.mp4 }}" type="video/mp4">
         <img src="{{ include.img }}" alt="{{ include.imgalt }}" title="Your browser does not support the video tag">
     </video>
 </div>
+
+<script>
+    var myVideo = document.getElementById("{{ include.id }}");
+
+    function playVid() {
+        myVideo.play();
+    }
+
+    function pauseVid() {
+        myVideo.pause();
+    }
+</script>
