@@ -46,6 +46,11 @@
         "source": "/cypress-4",
         "destination": "/cypress-4.html",
         "type": 301        
+      },
+      {
+        "source": "/cypress-5",
+        "destination": "/cypress-5.html",
+        "type": 301        
       }
     ],
     "rewrites": [
