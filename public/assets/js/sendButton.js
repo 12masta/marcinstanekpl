@@ -1,5 +1,4 @@
 $("#SendButton").on("click", function(e) {
-  alert("Yeah!");
   var emailFieldValue = $("#emailInput").val();
   if (validateEmail(emailFieldValue)) {
     console.log("Valid email");
