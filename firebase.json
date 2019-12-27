@@ -51,6 +51,11 @@
         "source": "/cypress-5",
         "destination": "/cypress-5.html",
         "type": 301        
+      },
+      {
+        "source": "/selenium",
+        "destination": "/selenium.html",
+        "type": 301        
       }
     ],
     "rewrites": [
