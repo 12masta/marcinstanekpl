@@ -1,0 +1,17 @@
+# Grupa 1
+User-agent: Googlebot
+Disallow: /regulamin.html
+
+# Grupa 1
+User-agent: Googlebot
+Disallow: /polityka_prywatnosci.html
+
+# Grupa 1
+User-agent: Googlebot
+Disallow: /dziekuje.html
+
+# Grupa 2
+User-agent: *
+Allow: /
+
+Sitemap: http://www.marcinstanek.pl/sitemap.xml
