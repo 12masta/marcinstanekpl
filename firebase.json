@@ -51,7 +51,12 @@
         "source": "/cypress-5",
         "destination": "/cypress-5.html",
         "type": 301        
-      }
+      },
+      {
+        "source": "/test-process-1",
+        "destination": "/test-process-1.html",
+        "type": 301        
+      }     
     ],
     "rewrites": [
       {
