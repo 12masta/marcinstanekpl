@@ -53,6 +53,10 @@
         "type": 301        
       },
       {
+        "source": "/test-process-1",
+        "destination": "/test-process-1.html",
+        "type": 301        
+      }, 
         "source": "/selenium",
         "destination": "/selenium.html",
         "type": 301        
