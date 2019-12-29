@@ -1,16 +1,16 @@
 ---
 layout: post
-title:  "Proces testowy do którego dążę w projektach nad którymi pracuję"
-date:   2019-12-08 08:00:00 +0200
+title:  "Proces testowy, do którego dążę w projektach, nad którymi pracuję"
+date:   2019-12-29 08:00:00 +0200
 categories: [testautomation, process, test-process]
 tags: [testautomation, process, test-process]
 permalink: /test-process-1
 ogimage:
-  - TODO
+  - gs://marcinstanek-a2c3b.appspot.com/2019-12-08-how-tests-process-should-looks-liks/blog_post-cover.png
 ogimagetype:
   - image/png
 ogdescription:
-  - Poprawne procesy dotyczących automatyzacji testów. Definicja drogi Inżyniera kontroli jakośći w kontekście automatyzacji testów
+  - Poprawne procesy dotyczących automatyzacji testów. Definicja drogi Inżyniera kontroli jakości w kontekście automatyzacji testów
 ---
 
 ## Wstęp
