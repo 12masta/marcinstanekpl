@@ -6,7 +6,7 @@ categories: [testautomation, process, test-process]
 tags: [testautomation, process, test-process]
 permalink: /test-process-1
 ogimage:
-  - gs://marcinstanek-a2c3b.appspot.com/2019-12-08-how-tests-process-should-looks-liks/blog_post-cover.png
+  - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-12-08-how-tests-process-should-looks-liks%2Fblog_post-cover.png?alt=media&token=b090c220-e684-4cb3-96f9-99e2f374c1cb
 ogimagetype:
   - image/png
 ogdescription:
