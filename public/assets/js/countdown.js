@@ -4,7 +4,7 @@ $(function () {
     /* =========================================
         COUNTDOWN 1
      ========================================= */
-    $('#clock').countdown('2020/1/27 19:00').on('update.countdown', function(event) {
+    $('#clock').countdown('2020/2/10 19:00').on('update.countdown', function(event) {
       var $this = $(this).html(event.strftime(''
         + '<span class="h1 font-weight-bold">%D</span> Dni'
         + '<span class="h1 font-weight-bold">%H</span> Godzin'
@@ -12,7 +12,7 @@ $(function () {
         + '<span class="h1 font-weight-bold">%S</span> Sekund'));
     });
 
-    $('#clock-2').countdown('2020/1/27 19:00').on('update.countdown', function(event) {
+    $('#clock-2').countdown('2020/2/10 19:00').on('update.countdown', function(event) {
         var $this = $(this).html(event.strftime(''
           + '<span class="h1 font-weight-bold">%D</span> Dni'
           + '<span class="h1 font-weight-bold">%H</span> Godzin'
@@ -20,7 +20,7 @@ $(function () {
           + '<span class="h1 font-weight-bold">%S</span> Sekund'));
       });
 
-      $('#clock-4').countdown('2020/1/27 19:00').on('update.countdown', function(event) {
+      $('#clock-4').countdown('2020/2/10 19:00').on('update.countdown', function(event) {
         var $this = $(this).html(event.strftime(''
           + '<span class="h1 font-weight-bold">%D</span> Dni'
           + '<span class="h1 font-weight-bold">%H</span> Godzin'
@@ -28,7 +28,7 @@ $(function () {
           + '<span class="h1 font-weight-bold">%S</span> Sekund'));
       });
 
-      $('#clock-webinar-1').countdown('2020/1/20 19:00').on('update.countdown', function(event) {
+      $('#clock-webinar-1').countdown('2020/2/03 19:00').on('update.countdown', function(event) {
         var $this = $(this).html(event.strftime(''
           + '<span class="h1 font-weight-bold">%D</span> Dni'
           + '<span class="h1 font-weight-bold">%H</span> Godzin'
@@ -36,7 +36,7 @@ $(function () {
           + '<span class="h1 font-weight-bold">%S</span> Sekund'));
       });
 
-      $('#clock-webinar-2').countdown('2020/1/20 19:00').on('update.countdown', function(event) {
+      $('#clock-webinar-2').countdown('2020/2/03 19:00').on('update.countdown', function(event) {
         var $this = $(this).html(event.strftime(''
           + '<span class="h1 font-weight-bold">%D</span> Dni'
           + '<span class="h1 font-weight-bold">%H</span> Godzin'
