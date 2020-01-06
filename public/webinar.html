@@ -43,9 +43,23 @@
                     <iframe src="https://player.vimeo.com/video/382952415" width="640" height="360" frameborder="0"
                         allow="autoplay; fullscreen" allowfullscreen></iframe>
                 </div>
-
+                <div class="row">
+                    <br />
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group d-flex">
+                            <input type="email" class="form-control" id="email-top"
+                                placeholder="twójemail@przykład.com">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        Dodam Cię do listy mailowej z której możesz się wypisać w każdym momencie (jeden klik) <a
+                            href="/polityka_prywatnosci.html">Polityka prywatności</a>
+                    </div>
+                </div>
                 <div class="mt-2">
-                    <p><a class="btn btn-success btn-lg btn-lg btn-block text-uppercase" href="#" role="button">Dołączam
+                    <p><a class="btn btn-success btn-lg btn-lg btn-block text-uppercase" href="#" role="button" id="button-top">Dołączam
                             do webinaru
                             &raquo;</a></p>
 
@@ -136,11 +150,25 @@
                     </p>
                 </div>
             </div>
+            <hr>
+        </div> <!-- /container -->
 
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group d-flex">
+                        <input type="email" class="form-control" id="email-bottom" placeholder="twójemail@przykład.com">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    Dodam Cię do listy mailowej z której możesz się wypisać w każdym momencie (jeden klik) <a
+                        href="/polityka_prywatnosci.html">Polityka prywatności</a>
+                </div>
+            </div>
 
             <div class="mt-2">
-                <p><a class="btn btn-success btn-lg btn-lg btn-block text-uppercase" href="#" role="button">Dołączam
-                    do webinaru
+                <p><a class="btn btn-success btn-lg btn-lg btn-block text-uppercase" href="#" role="button" id="button-bottom">Dołączam
+                        do webinaru
                         &raquo;</a></p>
 
             </div>
@@ -149,12 +177,7 @@
                 <div id="clock-webinar-2" class="countdown pt-4"></div>
             </div>
             <hr>
-
-        </div> <!-- /container -->
-
-
-
-
+        </div>
     </main>
 
     <footer class="container">
@@ -163,9 +186,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
+    <script src="assets/js/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
@@ -176,6 +197,8 @@
     </script>
     <script src="assets/js/countdown.js">
     </script>
+    <script src="vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script src="assets/js/sendButton-webinar.js"></script>
 </body>
 
 </html>
