@@ -60,6 +60,11 @@
         "source": "/selenium",
         "destination": "/selenium.html",
         "type": 301
+      },
+      {
+        "source": "/webinar",
+        "destination": "/webinar.html",
+        "type": 301
       }
     ],
     "rewrites": [{
