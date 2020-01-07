@@ -2,6 +2,7 @@ $("#SendButton").on("click", function(e) {
   var emailFieldValue = $("#emailInput").val();
   if (validateEmail(emailFieldValue)) {
     console.log("Valid email");
+    $("#SendButton").val("Trwa wysyłanie dokumentu...");
     createOrUpdateContact(emailFieldValue);
   } else {
     console.log("Invalid email");

@@ -15,10 +15,10 @@ function addToWebinarNewsletter(input, button) {
   var emailFieldValue = $(input).val();
   if (validateEmail(emailFieldValue)) {
     console.log("Valid email");
+    $(button).text("Trwa zapisywanie Cię do webinaru...");
     createOrUpdateContact(emailFieldValue, button);
   } else {
     console.log("Invalid email");
-    $(button).val("Spróbuj ponownie");
     $.notify(
       {
         icon: "fa fa-exclamation",
