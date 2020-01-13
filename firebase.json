@@ -65,7 +65,17 @@
         "source": "/webinar",
         "destination": "/webinar.html",
         "type": 301
-      }
+      },
+      {
+        "source": "/selenium-ai-1",
+        "destination": "/selenium-ai-1.html",
+        "type": 301
+      },
+      {
+        "source": "/selenium-webdriver-java-boilerplate",
+        "destination": "/selenium-webdriver-java-boilerplate.html",
+        "type": 301
+      }      
     ],
     "rewrites": [{
       "source": "**",

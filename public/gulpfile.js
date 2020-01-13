@@ -56,4 +56,5 @@ gulp.task('open', function () {
     .pipe(open(options));
 });
 
-gulp.task('open-app', ['open', 'jekyll', 'watch']);
+ gulp.task('open-app', gulp.series( 'jekyll', 'watch', 'open'));
+
