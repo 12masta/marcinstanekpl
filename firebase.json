@@ -75,7 +75,17 @@
         "source": "/selenium-webdriver-java-boilerplate",
         "destination": "/selenium-webdriver-java-boilerplate.html",
         "type": 301
-      }      
+      },
+      {
+        "source": "/selenium-zadanie-rekrutacyjne-dziekuje",
+        "destination": "/selenium-zadanie-rekrutacyjne-dziekuje.html",
+        "type": 301
+      },
+      {
+        "source": "/selenium-zadanie-rekrutacyjne",
+        "destination": "/selenium-zadanie-rekrutacyjne.html",
+        "type": 301
+      }     
     ],
     "rewrites": [{
       "source": "**",

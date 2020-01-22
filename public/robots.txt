@@ -18,6 +18,10 @@ Disallow: /selenium-webdriver-java-boilerplate-dziekuje.html
 User-agent: Googlebot
 Disallow: /webinar-dziekuje.html
 
+# Grupa 1
+User-agent: Googlebot
+Disallow: /selenium-zadanie-rekrutacyjne-dziekuje.html
+
 # Grupa 2
 User-agent: *
 Allow: /
