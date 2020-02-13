@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Proces testowy, do którego dążę w projektach, nad którymi pracuję"
-date:   2019-12-29 08:00:00 +0200
+date:   2019-12-08 08:00:00 +0200
 categories: [testautomation, process, test-process]
 tags: [testautomation, process, test-process]
 permalink: /test-process-1
@@ -17,7 +17,7 @@ ogdescription:
 
 Miałem ostatnio okazję zastanowić się nad tym, jak wyobrażam sobie idealny proces testowy. Jak każdy mam swoje przemyślenia i opinie na ten temat, pewnie lepsze lub gorsze. Stwierdziłem, że muszę je usystematyzować. Zapraszam do czytania i komentowania. :)
 
-Poprzedni post znajdziesz tutaj: [Porządki, usystematyzowanie adresów URL]({% post_url 2019-11-11-urls %})
+Poprzedni post znajdziesz tutaj: [Cypress i poprawne użycie selektorów, atrybut data-cy]({% post_url 2019-12-03-selectors-refactor %})
 
 {% include_relative subForm.markdown %}
 
