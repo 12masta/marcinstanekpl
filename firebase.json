@@ -85,7 +85,17 @@
         "source": "/selenium-zadanie-rekrutacyjne",
         "destination": "/selenium-zadanie-rekrutacyjne.html",
         "type": 301
-      }     
+      },
+      {
+        "source": "/selenium-zadanie-rekrutacyjne-1",
+        "destination": "/selenium-zadanie-rekrutacyjne-1.html",
+        "type": 301
+      },
+      {
+        "source": "/cypress-6",
+        "destination": "/cypress-6.html",
+        "type": 301
+      }          
     ],
     "rewrites": [{
       "source": "**",
