@@ -17,7 +17,7 @@ ogdescription:
 
 Przeczytałem ostatnio o sposobie użycia sztucznej inteligencji w celu zastąpienia zwykłych lokatorów w Selenium WebDriver. Nie mogę się doczekać, żeby przetestować to rozwiązanie dlatego zabieram się do pracy!
 
-Poprzedni post znajdziesz tutaj: [Porządki, usystematyzowanie adresów URL]({% post_url 2019-11-11-urls %})
+Poprzedni post znajdziesz tutaj: [Proces testowy, do którego dążę w projektach, nad którymi pracuję]({% post_url 2019-12-08-how-tests-process-should-looks-liks %})
 
 {% include_relative subForm.markdown %}
 

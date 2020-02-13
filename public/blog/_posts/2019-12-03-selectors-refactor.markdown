@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cypress i poprawne użycie selektorów, atrybut data-cy"
-date:   2019-12-02 08:00:00 +0200
+date:   2019-12-03 08:00:00 +0200
 categories: [testautomation, cypress]
 tags: [testautomation, cypress]
 permalink: /cypress-5
