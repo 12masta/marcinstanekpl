@@ -95,7 +95,12 @@
         "source": "/cypress-6",
         "destination": "/cypress-6.html",
         "type": 301
-      }          
+      },
+      {
+        "source": "/selenium-zadanie-rekrutacyjne-2",
+        "destination": "/selenium-zadanie-rekrutacyjne-2.html",
+        "type": 301
+      }             
     ],
     "rewrites": [{
       "source": "**",

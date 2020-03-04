@@ -28,6 +28,4 @@ Doskonała okazja żeby podejrzeć dobre praktyki i to, jak może wyglądać tak
 
 Poprzedni post znajdziesz tutaj: [AI dla Selenium WebDriver?!]({% post_url 2020-01-10-selenium-with-ai %})
 
-{% include_relative subForm.markdown %}
-
 {% include_relative leadmagnet-selenium-homework.markdown %}
