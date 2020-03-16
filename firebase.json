@@ -100,7 +100,12 @@
         "source": "/selenium-zadanie-rekrutacyjne-2",
         "destination": "/selenium-zadanie-rekrutacyjne-2.html",
         "type": 301
-      }             
+      },
+      {
+        "source": "/playwright-1",
+        "destination": "/playwright-1.html",
+        "type": 301
+      }                       
     ],
     "rewrites": [{
       "source": "**",

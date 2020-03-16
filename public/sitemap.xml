@@ -71,20 +71,18 @@
     <url>
         <loc>https://marcinstanek.pl/selenium-ai-1.html</loc>
         <lastmod>2020-01-10</lastmod>
-    </url>    
+    </url>
     <url>
         <loc>https://marcinstanek.pl/selenium-webdriver-java-boilerplate.html</loc>
         <lastmod>2020-01-10</lastmod>
     </url>
-        <url>
+    <url>
         <loc>https://marcinstanek.pl/selenium-zadanie-rekrutacyjne.html</loc>
         <lastmod>2020-01-22</lastmod>
     </url>
-    </url>
-        <url>
+    <url>
         <loc>https://marcinstanek.pl/selenium-zadanie-rekrutacyjne-1.html</loc>
         <lastmod>2020-01-22</lastmod>
-    </url>
     </url>
     <url>
         <loc>https://marcinstanek.pl/cypress-6.html</loc>
@@ -93,5 +91,9 @@
     <url>
         <loc>https://marcinstanek.pl/selenium-zadanie-rekrutacyjne-2.html</loc>
         <lastmod>2020-01-22</lastmod>
+    </url>
+    <url>
+        <loc>https://marcinstanek.pl/playwright-1.html</loc>
+        <lastmod>2020-03-16</lastmod>
     </url>
 </urlset>
