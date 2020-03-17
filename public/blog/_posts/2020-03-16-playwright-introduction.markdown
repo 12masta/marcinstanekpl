@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Pierwsze testy z Playwright"
-date:   2020-03-08 08:00:00 +0200
+date:   2020-03-16 08:00:00 +0200
 categories: [testautomation, playwright]
 tags: [testautomation, playwright]
 permalink: /playwright-1
