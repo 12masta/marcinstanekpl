@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Pierwsze testy z Playwright"
-date:   2020-03-08 08:00:00 +0200
+date:   2020-03-16 08:00:00 +0200
 categories: [testautomation, playwright]
 tags: [testautomation, playwright]
 permalink: /playwright-1
@@ -16,9 +16,11 @@ ogdescription:
 
 ## Nowa platforma przeznaczona do automatyzacji operacji wykonywanych w przeglądarce
 
-Niedawno Microsoft ogłosił jej wydanie. Ponoć tworzą jej autorzy narzędzia Puppeter - jednak Playwright wspiera wiele przeglądarek, obsługuję Chromium, WebKit, Firefox i Edge. Samo w sobie nie jest to narzędzie do automatyzacji testów. Jednak po dodaniu paru bibliotek osiągniemy oczekiwany efekt. Będę się opierał na bibliotekach Mocha i Chai, jednak wybór jest dużo szerszy. Wszystkie informacje dotyczące projektu znajdziesz po prostu na [githubie KLIK](https://github.com/microsoft/playwright).
+Niedawno Microsoft ogłosił jej wydanie. Tworzą ją autorzy narzędzia Puppeter. Playwright wspiera wiele przeglądarek, obsługuję Chromium, WebKit, Firefox i Edge. Samo w sobie nie jest to narzędzie do automatyzacji testów. Wszystkie informacje dotyczące projektu znajdziesz na [githubie KLIK](https://github.com/microsoft/playwright).
 
-Jeżeli chcesz podążać krok za krokiem mojego rozwiązanie u siebie lokalnie będziesz potrzebować, wykonać odrobinę pracy i przejść przez setup projektu, który opisałem już w poście: [Przygotowanie środowiska]({% post_url 2019-09-30-environment-setup %}) Playground jest ten sam co w przypadku serii testów o Cypress. Oba rozwiązania są stworzone na podstawie JS także będzie ciekawa okazja do porównania tych dwóch narzędzi.
+Po dodaniu paru bibliotek osiągniemy oczekiwany efekt. Będę się opierał na bibliotekach Mocha i Chai, wybór oczywiście jest dużo szerszy.
+
+Jeżeli chcesz podążać krok za krokiem mojego rozwiązania u siebie lokalnie będziesz potrzebować, wykonać odrobinę pracy i przejść przez setup projektu, który opisałem już w poście: [Przygotowanie środowiska]({% post_url 2019-09-30-environment-setup %}) Playground jest ten sam co w przypadku serii testów o Cypress. Oba rozwiązania są stworzone na podstawie JS także będzie ciekawa okazja do porównania tych dwóch narzędzi.
 
 Poprzedni post znajdziesz tutaj: [Selenium WebDriver i zadanie rekrutacyjne rozwiązane przez czytelnika, review kodu]({% post_url 2020-02-29-selenium-recruitment-task-solution-from-blog-reader %})
 
@@ -30,7 +32,7 @@ W projekcie _react-redux-realworld-example-app_ tworzę nowy katalog o nazwie _p
 
     npm init
 
-Prechodzę przez setup odpowiadając na pytania. Tworzę projekt w osobnym katalogu i projekcie, żeby odrobinę odizolować się od zależności już istniejących w projekcie. Następnie:
+Prechodzę przez setup odpowiadając na pytania. Tworzę projekt w osobnym katalogu i projekcie, żeby odizolować się od zależności już istniejących w projekcie. Następnie:
 
     npm i playwright
 
@@ -39,6 +41,7 @@ Spowoduje to zainstalowanie Playwright wraz z jego zależnościami i plikami bin
 Po udanej instalacji zamierzam zweryfikować działanie.
 
 Tworzę pierwszy skrypt który:
+
 1. Uruchomi przeglądarkę w 3 wariantach. Chromium, Firefox, WebKit.
 2. Przejdzie na stronę: http://localhost:4100/
 3. Wykona screenshot
@@ -62,11 +65,11 @@ Skrypt uruchamiam poleceniem:
 
     node example.js
 
-Wykonuję się on bez problemów. Skrypt uruchamia się w trybie headless. Produkuję 3 screenshoty dla każdej z przeglądarek.
+Wykonuję się on bez problemów. Uruchamia się w trybie headless. Produkuję 3 screenshoty dla każdej z przeglądarek.
 
 ## Pierwszy test
 
-W przeciwieństwie do Cypressa nie mamy całego środowiska do tworzenia testów out of the box, czy tam npm i. ;) Nie jest to na szczęście dużym problemem. Zaczynam od narzędzia Mocha. To platforma testowa, która pozwoli mi na uruchomienie testów. Instaluję zależność przy pomocy polecenia:
+W przeciwieństwie do Cypressa nie mamy całego środowiska do tworzenia testów out of the box. Nie jest to na szczęście dużym problemem. Zaczynam od narzędzia Mocha. To platforma testowa, która pozwoli mi na uruchomienie testów. Instaluję zależność przy pomocy polecenia:
 
     npm i mocha
 
@@ -74,21 +77,19 @@ Następnym krokiem będzie instalacja biblioteki Chai. Będę używał jej do tw
 
     npm i chai
 
-Edytuję plik _package.json_ zamieniając skrypt test aby używał mocha jako test runnera:
+Edytuję plik _package.json_ zamieniając skrypt _test_ aby używał mocha jako test runnera:
 
 {% highlight json %}
-(...)
   "scripts": {
     "test": "mocha"
   },
-(...)
 {% endhighlight %}
 
 Tworzę nowy plik:
 
     playwrighttests/test/SmokeTest.js
 
-Opakowuje poprzedni w przykład w najprostszy test:
+Opakowuje poprzedni w przykład w najprostszy test przy użyciu _Mocha_:
 
 {% highlight javascript %}
 const playwright = require('playwright');
@@ -118,7 +119,7 @@ Wywołując polecenie:
 
     npm t
 
-Uruchamiamy test. Działanie jest to samo co skryptu powyżej jednak użyliśmy już tego narzędzia w kontekście które pozwala nam pisać testy.
+Uruchamiam test. Działanie jest to samo co skryptu powyżej jednak użyliśmy już opoiisywanego narzędzia w kontekście które pozwala nam pisać testy.
 
 Nie podoba mi się ta pętla w teście. Definitywnie anty-pattern. Pozbywam się go w najprostszy sposób, jaki mi przychodzi go głowy - odrobinę lepiej, chociaż nie wiem, czy to jest jedyny sposób, żeby zrobić to w Mocha.:
 
@@ -137,7 +138,7 @@ Nie podoba mi się ta pętla w teście. Definitywnie anty-pattern. Pozbywam się
     });
 {% endhighlight %}
 
-## Szukanie elementu!
+## Szukanie elementu
 
 Aby wyszukać element na stronie musimy użyć funkcji:
 
@@ -165,7 +166,9 @@ it("Find element - " + browserType, async () => {
 });
 {% endhighlight %}
 
-Test po prostu weryfikuje czy element, który oczekuje, że istnieje na stronie został odnaleziony poprzez wykonanie asercji która sprawdza czy zmienna, do której zostanie przypisany element nie jest nullem. Łatwo zauważyć też pilną potrzebę refactoringu. Po odpowiednim przesunięciu kodu do funkcji _beforeEach_ i _afterEach_ kod wygląda w ten sposób:
+Test po prostu weryfikuje czy element, który oczekuje, że istnieje na stronie został odnaleziony poprzez wykonanie asercji która sprawdza czy zmienna, do której zostanie przypisany element nie jest nullem. 
+
+Łatwo zauważyć też pilną potrzebę refactoringu. Po odpowiednim przesunięciu kodu do funkcji _beforeEach_ i _afterEach_ kod wygląda w ten sposób:
 
 {% highlight javascript %}
 const playwright = require('playwright');
@@ -209,13 +212,14 @@ describe('Smoke tests', function smoketests() {
 
 ## Klik
 
-Klik możemy wykonać za pomocą metody:
+Możemy wykonać go za pomocą funkcji:
 
     page.click(selector[, options])
 
 Ta metoda pobiera element za pomocą selektora, w razie potrzeby przewija go do widoku, a następnie klika na środku elementu. Jeśli nie ma selektora pasującego do elementu, metoda wyrzuci błąd.
 
 Test będzie wyglądał w ten sposób:
+
 {% highlight javascript %}
 it("Click - " + browserType, async () => {
     await page.goto('http://localhost:4100/');
@@ -276,9 +280,9 @@ Ta funkcja uruchamia _document.querySelector_ na stronie i przekazuje go jako pi
 
 Jeśli funkcja pageFunction zwróci Promise, wówczas funkcja ta poczeka na rozwiązanie Promise i zwróci jej wartość.
 
-Użyłem tego podejścia, aby pobrać wartość pola email w celu weryfikacji działania funkcji type. Aby to wykonać pobieram po prostu wartość atrybutu value, tam przechowywana jest wartość przekazanego inputu, na obiekcie webelemnt, którego selektor przekazałem jako pierwszy argument funkcji. Następnie wykonuje asercje przy pomocy biblioteki chai.
+Użyłem tego podejścia, aby pobrać wartość pola email w celu weryfikacji działania funkcji _type_. Aby to wykonać pobieram po prostu wartość atrybutu value, tam przechowywana jest wartość przekazanego inputu, na obiekcie, którego selektor przekazałem jako pierwszy argument funkcji. Następnie wykonuje asercje przy pomocy biblioteki chai.
 
-Tę samą operację może wykonać w kontekście WebElementu, którego wcześniej znaleźliśmy na stronie.
+Tę samą operację może wykonać w kontekście elementu, którego wcześniej znaleźliśmy na stronie.
 
     elementHandle.type(text[, options])
 
