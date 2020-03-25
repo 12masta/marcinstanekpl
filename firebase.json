@@ -105,7 +105,12 @@
         "source": "/playwright-1",
         "destination": "/playwright-1.html",
         "type": 301
-      }                       
+      },
+      {
+        "source": "/cypress-7",
+        "destination": "/cypress-7.html",
+        "type": 301
+      }                 
     ],
     "rewrites": [{
       "source": "**",
