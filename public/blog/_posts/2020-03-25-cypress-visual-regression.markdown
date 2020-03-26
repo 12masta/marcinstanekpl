@@ -14,13 +14,13 @@ ogdescription:
 
 ---
 
-## Co to wizualna regresja?
+## Czym jest wizualna regresja?
 
-Koncepcja jest bardzo prosta. Mając obraz tego jak powinien wyglądać interfejs który testujesz urchamiając testy porównujesz ten obraz ze stanem faktycznym. W ten sposób dowiadujesz się czy zaszły jakieś zmiany. Umożliwia to wykrycie defektów, które nie zostałyby wychwycone ani przez klasyczne testy automatyczne regresji, ani najprawdopodobniej, przez sprawne oko testera wykonującego testy eksploracyjne.
+Koncepcja jest bardzo prosta. Mając obraz tego, jak powinien wyglądać interfejs, który testujesz urchamiając testy porównujesz ten obraz ze stanem faktycznym. W ten sposób dowiadujesz się, czy zaszły jakieś zmiany. Umożliwia to wykrycie defektów, które nie zostałyby wychwycone ani przez klasyczne testy automatyczne regresji, ani najprawdopodobniej, przez sprawne oko testera wykonującego testy eksploracyjne.
 
 Poprzedni post znajdziesz tutaj: [Pierwsze testy z Playwright]({% post_url 2020-03-16-playwright-introduction %})
 
-Cypress nie udostępnia nam tej funkcji. Koniec. :) Na szczęście są zewnętrzne pluginy, te płatne i te darmowe. Postanowiłem wybrać darmowy, z największą liczbą gwiazdek na githubie - _cypress-image-snapshot_. Narzędzie to wrapper na narzędzie _jest-image-snapshot_ 2,3k gwiazdek na githubie daje wysoką pewność, że narzędzie dostarczy to czego oczekujemy i nie zawiedziemy się w połowie implementacji.
+Cypress nie udostępnia nam tej funkcji. Koniec. :) Na szczęście są zewnętrzne pluginy, te płatne i te darmowe. Postanowiłem wybrać darmowy, z największą liczbą gwiazdek na githubie - _cypress-image-snapshot_. Narzędzie to wrapper na narzędzie _jest-image-snapshot_ 2,3k gwiazdek na githubie daje wysoką pewność, że narzędzie dostarczy to, czego oczekujemy i nie zawiedziemy się w połowie implementacji.
 
 {% include_relative leadmagnet-selenium-homework.markdown %}
 
@@ -62,7 +62,7 @@ Po tym procesie mamy gotowy projekt do przeprowadzania testów wizualnych!
 
 ## Testy
 
-W katalogu _cypress/integration_ dodaje plik: VisualTest.spec.js. Tworzę test który sprawdzi ekran wyświetlony użytkownikowi po zalogowaniu się do aplikacji:
+W katalogu _cypress/integration_ dodaje plik: VisualTest.spec.js. Tworzę test, który sprawdzi ekran wyświetlony użytkownikowi po zalogowaniu się do aplikacji:
 
 {% highlight javascript %}
     it('Successfull login', function () {
@@ -90,13 +90,13 @@ Dokładna logika funkcji _cy.matchImageSnapshot()_ wygląda w następujący spos
 Pora na weryfikację dokładności działania biblioteki. Na stronie po zalogowaniu wyświetla się tekst: "No articles are here... yet."
 Usuwam jedną kropkę - zmiana ciężka do zweryfikowania podczas regresji. Po zmianie string wygląda w następujący sposób: "No articles are here... yet".
 
-Po uruchomieniu testu okazuję się żę biblioteka zachowała się doskonale. Tak mała zmiana została wyłapana i zakomunikowana poprzez niezaliczenie testu.
+Po uruchomieniu testu okazuję się, że biblioteka zachowała się doskonale. Tak mała zmiana została wyłapana i zakomunikowana poprzez niezaliczenie testu.
 
-Sfailowany test jest komunikowany w szczegółowy sposób. Możemy się z niego dowiedzieć jak duzą jest różnica, w procentach i w pikselach:
+Sfailowany test jest komunikowany w szczegółowy sposób. Możemy się z niego dowiedzieć jak duża jest różnica, w procentach i w pikselach:
 
 ![cypress nie zaliczony test](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2020-03-29-cypress-visual-regression%2Fcypress-7-2.png?alt=media&token=96fdbe41-8730-4a28-ae39-6418451ee5ee){:alt="cypress nie zaliczony test"}
 
-Oprócz wyżej wymienionych informacji biblioteka produkuję również diffa gdzie możemy zobaczyć wizualnie różnicę. Zmiany podkreślone czerwonym kolorem. Różnica jest tylko na 8 pikselach także trzeba przybliżyć żeby zobaczyć efekt.
+Oprócz wyżej wymienionych informacji biblioteka produkuje również diffa, gdzie możemy zobaczyć wizualnie różnicę. Zmiany podkreślone czerwonym kolorem. Różnica jest tylko na 8 pikselach także trzeba przybliżyć żeby zobaczyć efekt.
 
 ![Diff](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2020-03-29-cypress-visual-regression%2Fcypress-7-3.png?alt=media&token=7150c4ad-2b58-4077-8ed0-6827d5c6ae79){:alt="Diff"}
 
@@ -113,7 +113,7 @@ Implementuję tego typu test weryfikując przycisk logowania:
     })
 {% endhighlight %}
 
-Działanie jest analogiczne tak jak dla całego ekranu. Jedyną różnicą jest jedynie kontekst weryfikacji. W tym przypadku zamierzam tak samo zweryfikować działanie funkcji. Zmieniłem dla przycisku jedną klasę, z "btn-primary" na "btn-secondary" co powoduje zmianę koloru przycisku. Biblioteka oczywiście z tym sobie radzi. A zmiany są znacznie bardziej widoczne.
+Działanie jest analogiczne tak, jak dla całego ekranu. Jedyną różnicą jest jedynie kontekst weryfikacji. W tym przypadku zamierzam tak samo zweryfikować działanie funkcji. Zmieniłem dla przycisku jedną klasę, z "btn-primary" na "btn-secondary", co powoduje zmianę koloru przycisku. Biblioteka oczywiście z tym sobie radzi. A zmiany są znacznie bardziej widoczne.
 
 ![rezultat testu](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2020-03-29-cypress-visual-regression%2Fcypress-7-4.png?alt=media&token=16378f70-751c-4306-ad50-3f3a458bbfb9){:alt="rezultat testu"}
 
@@ -123,7 +123,7 @@ Działanie jest analogiczne tak jak dla całego ekranu. Jedyną różnicą jest 
 
     --env failOnSnapshotDiff=false
 
-Jeżeli tymczasowo chcemy zignorować wyniki testów wizualnych to polecenie nam to umożliwi. Co istotne, ignorujemy tylko wyniki, testy zostaną wykonane. Przykład użycia:
+Jeżeli tymczasowo chcemy zignorować wyniki testów wizualnych, to polecenie nam to umożliwi. Co istotne, ignorujemy tylko wyniki, testy zostaną wykonane. Przykład użycia:
 
     npx cypress run --env failOnSnapshotDiff=false
 
@@ -145,7 +145,7 @@ Polecenie to spowoduje aktualizacje zrzutów ekranów, które są użyte jako wz
 
 ## Podsumowanie
 
-Jestem bardzo pozytywnie zaskoczony łatwością implementacji testów wizualnych, kiedy mamy już gotowe fundamenty testów funkcjonalnych. Wszystkie funkcje są dobrze udokumentowane. Zaimplementowałem wszystko czego potrzebowałem w prosty i czytelny sposób. Ich wyniki również są przejrzyste. Jedyną niewiadomą dla mnie jest użycie testów wizualnych w CI, teoretycznie mamy wszystkie narzędzia, które pozwolą skonfigurować testy. Jednak w tym poście nie rozwiewam moich wątpliwości.
+Jestem bardzo pozytywnie zaskoczony łatwością implementacji testów wizualnych, kiedy mamy już gotowe fundamenty testów funkcjonalnych. Wszystkie funkcje są dobrze udokumentowane. Zaimplementowałem wszystko, czego potrzebowałem w prosty i czytelny sposób. Ich wyniki również są przejrzyste. Jedyną niewiadomą dla mnie jest użycie testów wizualnych w CI. Teoretycznie mamy wszystkie narzędzia, które pozwolą skonfigurować testy. Jednak w tym poście nie rozwiewam moich wątpliwości.
 
 Kod można zobaczyć tutaj:
 
