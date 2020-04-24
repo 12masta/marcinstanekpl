@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cypress i CI z Azure Devops"
-date:   2020-04-13 08:00:00 +0200
+date:   2020-04-24 08:00:00 +0200
 categories: [testautomation, cypress]
 tags: [testautomation, cypress]
 permalink: /cypress-8
