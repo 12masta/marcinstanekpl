@@ -115,7 +115,12 @@
         "source": "/cypress-8",
         "destination": "/cypress-8.html",
         "type": 301
-      }  
+      },
+      {
+        "source": "/cypress-9",
+        "destination": "/cypress-9.html",
+        "type": 301
+      }
     ],
     "rewrites": [{
       "source": "**",
