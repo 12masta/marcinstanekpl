@@ -18,9 +18,9 @@ This and next posts requires download and configuration of two below projects:
 
     https://github.com/12masta/aspnetcore-realworld-example-app
 
-I described their setup in this post: [Environment preparation]({% post_url 2019-09-30-environment-setup %})
+I described their setup in this post: [Environment preparation]({% post_url 2019-09-30-environment-setup-en %})
 
-{% include_relative subForm.markdown %}
+{% include_relative subForm-en.markdown %}
 
 ## Quick setup
 
