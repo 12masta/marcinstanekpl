@@ -1,409 +1,325 @@
-<!DOCTYPE html>
-<html lang="pl-PL">
+<!doctype html>
+<html lang="pl">
 
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119547384-2"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-  <script src="js/firebaseInit.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <script>
-    window.dataLayer = window.dataLayer || [];
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" async />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" async />
 
-    gtag('config', 'UA-119547384-2');
-  </script>
-  
-  <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="./assets/img/favicon.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>
-    marcinstanek.pl, kontrola jakości oprogramowania
-  </title>
-  <meta name="description" content="Wdrażam i usprawniam procesy kontroli jakości oprogramowania. Specjalista od budowy testów automatycznych. QA lider.">
-  <meta property="og:description" content="Wdrażam i usprawniam procesy kontroli jakości oprogramowania. Specjalista od budowy testów automatycznych. QA lider.">
-  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  <!-- CSS Files -->
-  <link href="./assets/css/cookie-consent.css" rel="stylesheet" />
-  <link href="./assets/css/custom.css" rel="stylesheet" />
-  <link href="./assets/css/material-kit.css" rel="stylesheet" />
+    <!-- google analityycs -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119547384-2"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script src="js/firebaseInit.js" async></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119547384-2');
+    </script>
+
+    <title>marcinstanek.pl, kontrola jakości oprogramowania</title>
+    <meta name="description"
+        content="Wdrażam i usprawniam procesy kontroli jakości oprogramowania. Specjalista od budowy testów automatycznych. QA lider.">
+    <meta property="og:description"
+        content="Wdrażam i usprawniam procesy kontroli jakości oprogramowania. Specjalista od budowy testów automatycznych. QA lider.">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+
 </head>
 
-<body class="index-page sidebar-collapse">
-  <nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
-    <div class="container">
-      <div class="navbar-translate">
-        <a class="navbar-brand" style="color:#3c4857;" href="">
-          marcinstanek.pl
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-      
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                  <a class="nav-link" href="/blog/index.html"  style="color:#3c4857;">Blog</a>
-                </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://github.com/12masta/" target="_blank" data-original-title="Śledź mnie na Github" style="color:#3c4857;">
-              <i class="fa fa-github"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.linkedin.com/in/marcin-stanek-524485114/" target="_blank" data-original-title="Śledź mnie na Linkedin" style="color:#3c4857;">
-              <i class="fa fa-linkedin"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.facebook.com/marcinstanek.qa" target="_blank" data-original-title="Śledź mnie na Facebook" style="color:#3c4857;">
-              <i class="fa fa-facebook-square"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.instagram.com/marcinstanek/" target="_blank" data-original-title="Śledź mnie na Instagram" style="color:#3c4857;">
-              <i class="fa fa-instagram"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url('./assets/img/bg2.png');">
-    <div class="container">
-    </div>
-  </div>
-  <div class="main main-raised">
-    <div class="profile-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-          </div>
-          <div class="col-md-4 ml-auto mr-auto">
-            <div class="profile">
-              <div class="name text-center">
-                <h2>Marcin Stanek</h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-          </div>
-        </div>
-      </div>
-    </div>
+<body>
 
-    <div class="section section-examples">
-      <div class="container-fluid text-center">
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-              <img src="./assets/img/me.jpg" alt="Rounded Image" class="rounded img-fluid">
-          </div>
-          <div class="col-md-4">
-              <h3>Cześć</h3>
-              Jestem inżynierem kontroli jakości oprogramowania. Pasjonuje mnie tworzenie i projektowanie efektywnych, łatwych w zarządzaniu bibliotek automatyzujących testy. Oprócz testowania oprogramowania zajmuję się również jego tworzeniem. Z przyjemnością stworzę dla Ciebie oprogramowanie, które pomoże rozwniąć Twój biznes.
-          </div>
-          <div class="col-md-2">
-          </div>
-        </div>
-      </div>
-    </div>
+    <main role="main">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light rounded">
+                <a class="navbar-brand" href="#">marcinstanek.pl</a>
 
-    <div class="section section-examples">
-      <div class="container-fluid text-center">
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-              <h3>QA</h3>
-              Poszukujesz kontrolera jakości? Potrzebujesz zautomatyzować procesy testowe w Twojej firmie? Masz problem z jakością kodu w Twojej organizacji? Trafiłeś w dobre miejsce, aby rozwiązać te problemy!
-          </div>
-          <div class="col-md-4">
-              <img src="./assets/img/undraw_real-time_sync.svg" alt="Rounded Image" class="rounded img-fluid">
-          </div>
-
-          <div class="col-md-2">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section section-examples">
-      <div class="container-fluid text-center">
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-              <img src="./assets/img/undraw_designer.svg" alt="Rounded Image" class="rounded img-fluid">
-          </div>
-          <div class="col-md-4">
-              <h3>Tworzę rozwiązania IT</h3>
-              Twój biznes jest unikatowy. Twoje oprogramowanie również powinno takie być. Indywidualne podejsćie, skrojone na wymiar rozwiązania, aby sprostać Twoim wymaganiom.
-          </div>
-          <div class="col-md-2">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section section-examples">
-      <div class="container-fluid text-center">
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-              <h3>Dostarczam na czas</h3>
-              Ciężko pracuję, aby zapewnić dostarczanie serwisów na czas, bez kompromisów w dziedzinie jakośći.
-          </div>
-          <div class="col-md-4">
-              <img src="./assets/img/undraw_filing_system.svg" alt="Rounded Image" class="rounded img-fluid">
-          </div>
-          <div class="col-md-2">
-        </div>
-      </div>
-    </div>
-
-    <div class="section section-examples">
-      <div class="container-fluid text-center">
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-              <img src="./assets/img/undraw_outer_space.svg" alt="Rounded Image" class="rounded img-fluid">
-          </div>
-          <div class="col-md-4">
-              <h3>Informuję na bieżąco</h3>
-              Moi klienci są informowani na każdym etapie procesu produkcji oprogramowania. Bez niespodzianek. Prosty punkt widzenia.
-          </div>
-          <div class="col-md-2">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section section-examples">
-      <div class="container-fluid text-center">
-        <h2>Moje projekty</h2>
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-            <a href="https://mariaproject-af92e.firebaseapp.com" target="_blank">
-              <img src="./assets/img/projects_mammoo.png" alt="Rounded Image" class="img-raised rounded img-fluid">
-              <button class="btn  btn-link btn-primary btn-lg">mammoo.pl - strona internetowa</button>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="https://mariaproject-af92e.firebaseapp.com" target="_blank">
-              <img src="./assets/img/mammoo-app-mockup.png" alt="Rounded Image" class="img-raised rounded img-fluid">
-              <button class="btn btn-link btn-primary btn-lg">mammoo.pl - mobilna aplikacja</button>
-            </a>
-          </div>
-          <div class="col-md-2">
-          </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog/index.html" style="color:#3c4857;">Blog</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
-        <div class="collapse" id="collapseExample">
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-            <a href="https://github.com/12masta/manager" target="_blank">
-              <img src="./assets/img/manager_app_mockup.png" alt="Rounded Image" class="img-raised rounded img-fluid">
-              <button class="btn  btn-link btn-primary btn-lg">Aplikacja mobilna manager</button>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="https://github.com/12masta/tech_stack" target="_blank">
-              <img src="./assets/img/techstack_mockup.png" alt="Rounded Image" class="img-raised rounded img-fluid">
-              <button class="btn btn-link btn-primary btn-lg">Aplikacja mobilna Tech Stack</button>
-            </a>
-          </div>
-          <div class="col-md-2">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-            <a href="https://github.com/12masta/twitterTests" target="_blank">
-              <img src="./assets/img/selenium.png" alt="Rounded Image" style="width:100%"  class="img-raised rounded img-fluid">
-              <button class="btn  btn-link btn-primary btn-lg">Testy twittera napisane w Selenium</button>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="https://github.com/12masta/BaseHomeWork" target="_blank">
-              <img src="./assets/img/selenium.png" alt="Rounded Image" style="width:100%"  class="img-raised rounded img-fluid">
-              <button class="btn btn-link btn-primary btn-lg">Testy Base CRM napisane w Selenium</button>
-            </a>
-          </div>
-          <div class="col-md-2">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-4">
-            <a href="https://github.com/12masta/textRecognitionService" target="_blank">
-              <img src="./assets/img/spring-boot-project-logo.png" alt="Rounded Image" style="width:100%" class="img-raised rounded img-fluid">
-              <button class="btn  btn-link btn-primary btn-lg">Web Serwis rozponający tekst na obrazku</button>
-            </a>
-          </div>
-          <div class="col-md-4">
-            <a href="https://github.com/12masta/RowingSectionSite" target="_blank">
-              <img src="./assets/img/rowingSectionWebSite.png" alt="Rounded Image" style="width:100%" class="img-raised rounded img-fluid">
-              <button class="btn btn-link btn-primary btn-lg">Projekt stworzony na potrzeby pracy inżynierskiej</button>
-            </a>
-          </div>
-          <div class="col-md-2">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-8">
-          <button id="collapseButton" type="button" class="btn" data-toggle="collapse" data-target="#collapseExample">Rozwiń</button>
-        </div>
-        <div class="col-md-2">
-        </div>
-      </div>
-      </div>
-    </div>
-
-    <div class="section section-examples">
-        <div class="container-fluid">
-            <h2 class="text-center">Kontakt</h2>
-            <div class="row">
-                <div class="col-md-2">
-                </div>
-                <div class="col-md-8">
-            <form id="messageForm">
-                <div class="form-group">
-                  <label for="exampleInputEmail1" class="bmd-label-floating">Email</label>
-                  <input id="emailInput" type="email" class="form-control" id="inputEmail">
-                </div>
-                <div class="form-group">
-                    <label for="exampleTextarea" class="bmd-label-floating">Wiadomość</label>
-                    <textarea class="form-control" id="messageTextArea" rows="6"></textarea>
-                  </div>
-                  <div class="text-center">
-
-                <div class="checkbox">
-                  <label>
-                    <input id="messageCheckbox" type="checkbox"> Dodam Cię do listy mailowej, z której możesz wypisać się w dowolnym momencie (jeden klik) <a href="/regulamin.html">Polityka Prywatności</a>
-                  </label>
-                </div>
-
-                <button class="btn btn-default">Anuluj</button>
-                <button id="SendButton" type="submit" class="btn btn-primary btn-raised ">Wyślij</button>
-                </div>
-              </form>
-            </div>
-                  <div class="col-md-2">
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <div class="jumbotron bg-transparent text-center">
+            <div class="container">
+                <div class="row h-100">
+                    <div class="col-md-6 my-auto">
+                        <img class="w-75 img-fluid" src="assets/img/homepage/me_avatar.png" alt="avatar"/>
                     </div>
-                  </div>
+                    <div class="col-md-6 my-auto">
+                        <h1>Inicjuję i naprawiam procesy kontroli jakości oprogramowania</h1>
+                        <p>
+                            <a href="#want-to-know" class="btn btn-primary my-2">Chcę wiedzieć więcej</a>
+                            <a href="/blog/index.html" class="btn btn-secondary my-2">Blog</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-  </div>
-
-  <footer class="footer" data-background-color="black">
-    <div class="container">
-      <nav class="float-left">
-        <ul>
-          <li>
-            <a href="">
-              Marcin Stanek
-            </a>
-          </li>
-          <li>
-            <a href="">
-              O mnie
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright float-right">
-        &copy;
-        <script>
-          document.write(new Date().getFullYear())
-        </script>, stworzone z <i class="material-icons">favorite</i> przez
-        <a href="" target="_blank">Marcin Stanek</a>
-      </div>
-    </div>
-  </footer>
-  <!--   Core JS Files   -->
-  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
-  <script src="./assets/js/cookie-consent.js"></script>
-  <script src="./assets/js/cookie.js"></script>
-
-  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-  <script src="./assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
-  <script src="./assets/js/plugins/moment.min.js"></script>
-  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-  <script src="./assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
-  <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./assets/js/material-kit.js?v=2.0.3" type="text/javascript"></script>
-  <script>
-    $(document).ready(function() {
-      //init DateTimePickers
-      materialKit.initFormExtendedDatetimepickers();
-
-      // Sliders Init
-      materialKit.initSliders();
-    });
 
 
-    function scrollToDownload() {
-      if ($('.section-download').length != 0) {
-        $("html, body").animate({
-          scrollTop: $('.section-download').offset().top
-        }, 1000);
-      }
-    }
-  </script>
+        <div class="container text-center mt-5">
+            <hr>
+            <!-- Example row of columns -->
+            <h2>Ostatnie wpisy na blogu</h2>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="/cypress-9"
+                        target="_blank">
+                        <h3>Raportowanie testów Cypress w Azure DevOps &raquo;</h3>
+                    </a>
+                    <p>Kiedy mamy gotowy piepline z testami Cypress relatywnie łatwo możemy utworzyć raport z
+                        przeprowadzonych testów. Służy do tego krok Publish Test Results, który umożliwia nam
+                        transformację wyników testów w czytelny raport.
 
-  <script src="./assets/js/collapseButton.js" type="text/javascript"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script>
-  (function(i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function() {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                        Raporty z testów zapewniają skuteczny i spójny sposób przeglądania wyników testów wykonanych
+                        przy użyciu różnych platform testowych, ponadto służą w celu pomiaru jakości pipeline’u,
+                        ułatwiają identyfikowanie i rozwiązywanie problemów.
+                    </p>
+                </div>
+            </div>
 
-  ga('create', 'UA-119547384-2', 'auto');
-  ga('send', 'pageview');
-</script>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="/cypress-8"
+                        target="_blank">
+                        <h3>Cypress i CI z Azure Devops &raquo;</h3>
+                    </a>
+                    <p>Moim zdaniem od współczesnego testera wymagamy czegoś więcej niż tylko samego poprawnego
+                        utworzenia testów automatycznych. Jednym z atrybutów wyróżniających nowoczesnych inżynierów QA
+                        jest umiejętność samodzielnego zarządzania procesem ciągłej integracji. W tym poście dotykam
+                        zagadnienia właśnie wpięcia testów w proces CI. Zamierzam wykorzystać platformę Azure DevOps -
+                        uruchomię jedynie testy, bez kroku deploy backendu i frontendu, te komponenty wystawiłem jako
+                        osobny proces nieopisany w tym materiale.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="/cypress-7"
+                        target="_blank">
+                        <h3>Wizualna regresja z Cypress &raquo;</h3>
+                    </a>
+                    <p>Koncepcja jest bardzo prosta. Mając obraz tego, jak powinien wyglądać interfejs, który testujesz
+                        urchamiając testy porównujesz ten obraz ze stanem faktycznym. W ten sposób dowiadujesz się, czy
+                        zaszły jakieś zmiany. Umożliwia to wykrycie defektów, które nie zostałyby wychwycone ani przez
+                        klasyczne testy automatyczne regresji, ani najprawdopodobniej, przez sprawne oko testera
+                        wykonującego testy eksploracyjne.
+                    </p>
+                </div>
+            </div>
 
 
-<!-- End Google Analytics -->
+            <hr>
+        </div> <!-- /container -->
+
+        <div class="container text-center mt-5" id="want-to-know">
+            <!-- Example row of columns -->
+            <div class="row h-100">
+                <div class="col-md-6 my-auto order-2 order-md-1">
+                    <h3>Quality Assurance</h3>
+                    <p>Poszukujesz kontrolera jakości? Potrzebujesz zautomatyzować procesy testowe w Twojej firmie? Masz
+                        problem z jakością kodu w Twojej organizacji? Trafiłeś w dobre miejsce, aby rozwiązać te
+                        problemy!
+                    </p>
+                </div>
+                <div class="col-md-6 my-auto order-1 order-md-2">
+                    <img class="w-75 img-fluid" src="assets/img/homepage/qa.png" alt="kontrola jakości" />
+                </div>
+            </div>
 
 
-<script src="js/bootstrap-notify/bootstrap-notify.js"></script>
-<script src="js/sendButton.js"></script>
-<script src="js/preventDefaultForm.js"></script>
 
+        </div> <!-- /container -->
+
+        <div class="container text-center mt-5">
+            <!-- Example row of columns -->
+            <div class="row h-100">
+                <div class="col-md-6 my-auto">
+                    <img class="w-75 img-fluid" src="assets/img/homepage/automation.png" alt="automatyzacja" />
+                </div>
+                <div class="col-md-6 my-auto">
+                    <h3>Automatyzacja</h3>
+                    <p> Pasjonuję się tworzeniem frameworków testowych, które usprawniają pracę zespołów deweloperskich,
+                        są efektywne i łatwe w zarządzaniu.
+                    </p>
+                </div>
+            </div>
+
+
+
+        </div> <!-- /container -->
+
+        <div class="container text-center mt-5">
+            <!-- Example row of columns -->
+            <div class="row h-100">
+                <div class="col-md-6 my-auto order-2 order-md-1">
+                    <h3>Tworzę kompletne rozwiązania</h3>
+                    <p>Twój biznes jest unikatowy. Sposób jego dostarczania również powinien taki być. Tworzę
+                        kompleksowe rozwiązania zapewniania jakości aby za każdym razem wydawać oprogramowanie
+                        najwyższej jakości.</p>
+                </div>
+                <div class="col-md-6 my-auto order-1 order-md-2">
+                    <img class="w-75 img-fluid" src="assets/img/homepage/complete_solutions.png" alt="Kompletne rozwiązania" />
+                </div>
+            </div>
+
+
+
+        </div> <!-- /container -->
+
+        <div class="container text-center mt-5">
+            <!-- Example row of columns -->
+            <div class="row h-100">
+                <div class="col-md-6 my-auto">
+                    <img class="w-75 img-fluid" src="assets/img/homepage/on_time.png" alt="Dostarczam na czas" />
+                </div>
+                <div class="col-md-6 my-auto">
+                    <h3>Dostarczam na czas</h3>
+                    <p>Zapewniam dostarczanie serwisów na czas, bez kompromisów w dziedzinie jakośći.
+                    </p>
+                </div>
+
+            </div>
+
+
+
+        </div> <!-- /container -->
+
+        <div class="container text-center mt-5">
+            <!-- Example row of columns -->
+            <div class="row h-100">
+                <div class="col-md-6 my-auto order-2 order-md-1">
+                    <h3>Informuję na bieżąco</h3>
+                    <p>Moi klienci są informowani na każdym etapie procesu produkcji oprogramowania. Bez niespodzianek.
+                        Prosty punkt widzenia.
+                    </p>
+                </div>
+                <div class="col-md-6 my-auto order-1 order-md-2">
+                    <img class="w-75 img-fluid" src="assets/img/homepage/inform.png" alt="Informuję na bieżąco"/>
+                </div>
+            </div>
+
+
+            <hr>
+        </div> <!-- /container -->
+
+        <div class="container text-center mt-5">
+            <!-- Example row of columns -->
+            <h2>Kontakt</h2>
+            <form id="messageForm">
+
+                <div class="input-group mb-3">
+                    <label for="emailInput" class="bmd-label-floating sr-only">Email</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <input id="emailInput" type="text" class="form-control" placeholder="exmaple@gmail.com"
+                        aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="form-group">
+                    <label for="messageTextArea">Wiadomość</label>
+                    <textarea class="form-control" id="messageTextArea" rows="6"></textarea>
+                </div>
+
+                <div class="text-center">
+                    <div class="checkbox">
+                        <label>
+                            <input id="messageCheckbox" type="checkbox"> Dodam Cię do listy mailowej, z której możesz
+                            wypisać się w dowolnym momencie (jeden klik) <a href="/regulamin.html">Polityka
+                                Prywatności</a>
+                        </label>
+                    </div>
+
+                    <button id="SendButton" type="submit" class="btn btn-primary btn-raised ">Wyślij</button>
+                </div>
+            </form>
+            <hr>
+        </div> <!-- /container -->
+
+
+    </main>
+
+    <footer class="container mt-5">
+        <div class="container">
+            <!-- Example row of columns -->
+            <div class="row h-100">
+                <div class="col-md-6 col-6">
+                    <p>&copy; marcinstanek.pl 2020</p>
+                </div>
+                <div class="col">
+                </div>
+                <div class="col-md-1 col-1">
+                    <a class="nav-link" rel="noopener" title="" data-placement="bottom"
+                        href="https://github.com/12masta/" target="_blank" data-original-title="Śledź mnie na Github"
+                        style="color:#3c4857;">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </div>
+                <div class="col-md-1 col-1">
+                    <a class="nav-link" rel="noopener" title="" data-placement="bottom"
+                        href="https://www.linkedin.com/in/marcin-stanek-524485114/" target="_blank"
+                        data-original-title="Śledź mnie na Linkedin" style="color:#3c4857;">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+                <div class="col-md-1 col-1">
+                    <a class="nav-link" rel="noopener" title="" data-placement="bottom"
+                        href="https://www.facebook.com/marcinstanekpl/" target="_blank"
+                        data-original-title="Śledź mnie na Facebook" style="color:#3c4857;">
+                        <i class="fa fa-facebook-square"></i>
+                    </a>
+                </div>
+                <div class="col-md-1 col-1">
+                    <a class="nav-link" rel="noopener" title="" data-placement="bottom"
+                        href="https://www.instagram.com/marcinstanek/" target="_blank"
+                        data-original-title="Śledź mnie na Instagram" style="color:#3c4857;">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        </div> <!-- /container -->
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
+    <script src="js/bootstrap-notify/bootstrap-notify.js"></script>
+    <script src="js/sendButton.js"></script>
+    <script src="js/preventDefaultForm.js"></script>
 </body>
 
 </html>
