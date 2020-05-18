@@ -4,9 +4,11 @@ $('#SendButton').on('click', function(e) {
   var messageCheckbox = $('#messageCheckbox').is(":checked")
   if (validateEmail(emailFieldValue)) {
     console.log("Valid");
+    $('#emailInput').removeAttr('style')
     saveToFirebase(emailFieldValue, msgFieldValue, messageCheckbox)
   } else {
     console.log("Invalid");
+    $('#emailInput').attr('style', 'border: 2px solid red;')
     $('#SendButton').text('Spróbuj ponownie');
     $.notify({
       icon: 'fa fa-exclamation',
