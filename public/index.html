@@ -7,18 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    <link defer rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" async />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" async />
+    <link defer rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons&display=swap"
+        async />
+    <link defer rel="preload" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" async />
 
     <!-- google analityycs -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119547384-2"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
-    <script src="js/firebaseInit.js" async></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -53,7 +52,7 @@
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/blog/index.html" style="color:#3c4857;">Blog</a>
+                        <a class="btn-link" href="/blog/index.html" style="color:rgba(0,0,0,.9);">Blog</a>
                     </li>
                 </ul>
             </nav>
@@ -64,12 +63,12 @@
             <div class="container">
                 <div class="row h-100">
                     <div class="col-md-6 my-auto">
-                        <img class="w-75 img-fluid" src="assets/img/homepage/me_avatar.png" alt="avatar"/>
+                        <img class="w-75 img-fluid" src="assets/img/homepage/hero.png" alt="hero" />
                     </div>
                     <div class="col-md-6 my-auto">
                         <h1>Inicjuję i naprawiam procesy kontroli jakości oprogramowania</h1>
                         <p>
-                            <a href="#want-to-know" class="btn btn-primary my-2">Chcę wiedzieć więcej</a>
+                            <a href="#want-to-know" class="btn btn-primary my-2" style="background-color:#3c5bff; border-color:#3c5bff;">Chcę wiedzieć więcej</a>
                             <a href="/blog/index.html" class="btn btn-secondary my-2">Blog</a>
                         </p>
                     </div>
@@ -181,7 +180,8 @@
                         najwyższej jakości.</p>
                 </div>
                 <div class="col-md-6 my-auto order-1 order-md-2">
-                    <img class="w-75 img-fluid" src="assets/img/homepage/complete_solutions.png" alt="Kompletne rozwiązania" />
+                    <img class="w-75 img-fluid" src="assets/img/homepage/complete_solutions.png"
+                        alt="Kompletne rozwiązania" />
                 </div>
             </div>
 
@@ -217,7 +217,7 @@
                     </p>
                 </div>
                 <div class="col-md-6 my-auto order-1 order-md-2">
-                    <img class="w-75 img-fluid" src="assets/img/homepage/inform.png" alt="Informuję na bieżąco"/>
+                    <img class="w-75 img-fluid" src="assets/img/homepage/inform.png" alt="Informuję na bieżąco" />
                 </div>
             </div>
 
@@ -248,12 +248,12 @@
                     <div class="checkbox">
                         <label>
                             <input id="messageCheckbox" type="checkbox"> Dodam Cię do listy mailowej, z której możesz
-                            wypisać się w dowolnym momencie (jeden klik) <a href="/regulamin.html">Polityka
+                            wypisać się w dowolnym momencie (jeden klik) <a href="/regulamin.html" style="color:#3c5bff;">Polityka
                                 Prywatności</a>
                         </label>
                     </div>
 
-                    <button id="SendButton" type="submit" class="btn btn-primary btn-raised ">Wyślij</button>
+                    <button id="SendButton" type="submit" class="btn btn-primary" style="background-color:#3c5bff; border-color:#3c5bff;">Wyślij</button>
                 </div>
             </form>
             <hr>
@@ -275,6 +275,7 @@
                     <a class="nav-link" rel="noopener" title="" data-placement="bottom"
                         href="https://github.com/12masta/" target="_blank" data-original-title="Śledź mnie na Github"
                         style="color:#3c4857;">
+                        <p class="sr-only">Sprawdź moją stronę na Github: </p>
                         <i class="fa fa-github"></i>
                     </a>
                 </div>
@@ -282,20 +283,24 @@
                     <a class="nav-link" rel="noopener" title="" data-placement="bottom"
                         href="https://www.linkedin.com/in/marcin-stanek-524485114/" target="_blank"
                         data-original-title="Śledź mnie na Linkedin" style="color:#3c4857;">
+                        <p class="sr-only">Sprawdź moją stronę na Linkedin: </p>
                         <i class="fa fa-linkedin"></i>
                     </a>
                 </div>
                 <div class="col-md-1 col-1">
-                    <a class="nav-link" rel="noopener" title="" data-placement="bottom"
-                        href="https://www.facebook.com/marcinstanekpl/" target="_blank"
+                     <a class="nav-link" rel="noopener" title=""
+                        data-placement="bottom" href="https://www.facebook.com/marcinstanekpl/" target="_blank"
                         data-original-title="Śledź mnie na Facebook" style="color:#3c4857;">
+                        <p class="sr-only">Sprawdź moją stronę na Facebook: </p>
                         <i class="fa fa-facebook-square"></i>
                     </a>
+
                 </div>
                 <div class="col-md-1 col-1">
                     <a class="nav-link" rel="noopener" title="" data-placement="bottom"
                         href="https://www.instagram.com/marcinstanek/" target="_blank"
                         data-original-title="Śledź mnie na Instagram" style="color:#3c4857;">
+                        <p class="sr-only">Sprawdź moją stronę na Instagram: </p>
                         <i class="fa fa-instagram"></i>
                     </a>
                 </div>
@@ -318,6 +323,8 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
     <script src="js/bootstrap-notify/bootstrap-notify.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+    <script src="js/firebaseInit.js" async></script>
     <script src="js/sendButton.js"></script>
     <script src="js/preventDefaultForm.js"></script>
 </body>
