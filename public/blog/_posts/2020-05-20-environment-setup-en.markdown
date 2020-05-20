@@ -5,7 +5,8 @@ date:   2020-05-20 08:00:00 +0200
 categories: environment
 tags: en
 permalink: /en/cypress-0
-
+ogdescription:
+  - I would like to show you how to prepare your local environment, which can be used to work with test automation.
 ---
 
 ## Introduction

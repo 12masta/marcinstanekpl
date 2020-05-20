@@ -5,6 +5,8 @@ date:   2020-05-20 08:00:00 +0200
 categories: [cypress, testautomation]
 tags: [cypress, testautomation, en]
 permalink: /en/cypress-1
+ogdescription:
+  - I would like to share with you my own technique of creating tests with usage of Cypress tool.
 ---
 
 ## Introduction

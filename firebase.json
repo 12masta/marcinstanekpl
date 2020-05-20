@@ -135,6 +135,16 @@
         "source": "/en/helloworld",
         "destination": "/en/helloworld.html",
         "type": 301
+      },
+      {
+        "source": "/en/cypress-0",
+        "destination": "/en/cypress-0.html",
+        "type": 301
+      },
+      {
+        "source": "/en/cypress-1",
+        "destination": "/en/cypress-1.html",
+        "type": 301
       }
     ],
     "rewrites": [{
