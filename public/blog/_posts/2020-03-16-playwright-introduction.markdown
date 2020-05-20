@@ -3,7 +3,7 @@ layout: post
 title:  "Pierwsze testy z Playwright"
 date:   2020-03-16 08:00:00 +0200
 categories: [testautomation, playwright]
-tags: [testautomation, playwright]
+tags: [testautomation, playwright, pl]
 permalink: /playwright-1
 ogimage:
   - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2020-03-08-playwright-introduction%2Fpost_cover.png?alt=media&token=2a44c1c7-46ac-49b2-a737-984998cdbd6f

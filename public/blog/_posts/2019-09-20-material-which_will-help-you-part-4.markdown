@@ -3,6 +3,7 @@ layout: post
 title:  "Sylabus? Mówi Ci To Coś?"
 date:   2019-09-20 18:03:22 +0200
 categories: materials
+tags: pl
 ---
 
 ## ISTQB

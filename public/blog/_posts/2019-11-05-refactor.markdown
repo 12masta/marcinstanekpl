@@ -3,7 +3,7 @@ layout: post
 title:  "Refaktoryzacja testów - App Actions vs Page Object Model"
 date:   2019-11-05 08:00:00 +0200
 categories: [testautomation, cypress]
-tags: [testautomation, cypress]
+tags: [testautomation, cypress, pl]
 permalink: /cypress-3
 ogimage:
   - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-11-05-refactor%2Fblog_post_cover.png?alt=media&token=5dc8a4e0-cda0-4138-99d6-25cea5138a2d

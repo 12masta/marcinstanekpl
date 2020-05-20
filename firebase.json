@@ -120,6 +120,21 @@
         "source": "/cypress-9",
         "destination": "/cypress-9.html",
         "type": 301
+      },
+      {
+        "source": "/blog/index.html",
+        "destination": "/blog/pl/index.html",
+        "type": 301
+      },
+      {
+        "source": "/blog/index",
+        "destination": "/blog/pl/index.html",
+        "type": 301
+      },
+      {
+        "source": "/en/helloworld",
+        "destination": "/en/helloworld.html",
+        "type": 301
       }
     ],
     "rewrites": [{

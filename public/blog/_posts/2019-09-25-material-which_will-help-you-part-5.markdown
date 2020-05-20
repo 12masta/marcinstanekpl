@@ -3,6 +3,7 @@ layout: post
 title:  "Wygrywać ludzi"
 date:   2019-09-25 18:03:22 +0200
 categories: materials
+tags: pl
 ---
 
 ## Wygrywać ludzi

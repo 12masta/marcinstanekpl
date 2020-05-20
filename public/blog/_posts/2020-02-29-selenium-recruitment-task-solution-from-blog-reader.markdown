@@ -3,7 +3,7 @@ layout: post
 title:  "Selenium WebDriver i zadanie rekrutacyjne rozwiązane przez czytelnika, review kodu"
 date:   2020-02-29 08:00:00 +0200
 categories: [testautomation, selenium, zadanie rekrutacyjne]
-tags: [testautomation, selenium, zadanie rekrutacyjne]
+tags: [testautomation, selenium, zadanie rekrutacyjne, pl]
 permalink: /selenium-zadanie-rekrutacyjne-2
 ogimage:
   - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2020-02-29-selenium-recruitment-task-solution-from-blog-reader%2Fpost_cover.png?alt=media&token=2566edd6-2d6a-485e-8f42-5450fc03d163

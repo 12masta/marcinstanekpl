@@ -3,6 +3,7 @@ layout: post
 title:  "Techniczne Mięsko"
 date:   2019-09-15 18:03:22 +0200
 categories: materials
+tags: pl
 ---
 
 ## Spragniony technicznego tematu? Mam coś dobrego.

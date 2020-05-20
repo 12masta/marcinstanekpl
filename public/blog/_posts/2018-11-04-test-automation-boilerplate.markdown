@@ -3,6 +3,7 @@ layout: post
 title:  "Test automation boilerplate"
 date:   2020-11-01 18:03:22 +0200
 categories: selenium
+tags: pl
 ---
 
 ## Wstęp

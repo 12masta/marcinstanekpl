@@ -3,7 +3,7 @@ layout: post
 title:  "Wizualna regresja z Cypress"
 date:   2020-03-25 08:00:00 +0200
 categories: [testautomation, cypress]
-tags: [testautomation, cypress]
+tags: [testautomation, cypress, pl]
 permalink: /cypress-7
 ogimage:
   - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2020-03-29-cypress-visual-regression%2Fpost_cover.png?alt=media&token=0c3c0db2-1c8c-48c7-8b3c-c4a49eaf3dda
