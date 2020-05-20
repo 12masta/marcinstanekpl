@@ -1,11 +1,12 @@
 ---
 layout: post
-title:  "Hello world!"
-date:   2018-10-09 18:03:22 +0200
+title:  "Hello world EN!"
+date:   2020-05-18 08:00:00 +0200
 categories: jekyll
-tags: pl
+tags: [testautomation, en]
+permalink: /en/helloworld
 ---
-Hello world from jekyll :)
+Hello world from jekyll EN :)
 
 {% highlight ruby %}
 def print_hi(name)

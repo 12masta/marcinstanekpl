@@ -3,7 +3,7 @@ layout: post
 title:  "Zapoznanie się z Cypress"
 date:   2019-10-01 10:03:22 +0200
 categories: [cypress, testautomation]
-tags: [cypress, testautomation]
+tags: [cypress, testautomation, pl]
 ---
 
 ## Wstęp

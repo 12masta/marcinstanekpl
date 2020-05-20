@@ -3,7 +3,7 @@ layout: post
 title:  "AI dla Selenium WebDriver?!"
 date:   2020-01-10 08:00:00 +0200
 categories: [testautomation, selenium, AI]
-tags: [testautomation, selenium, AI]
+tags: [testautomation, selenium, AI, pl]
 permalink: /selenium-ai-1
 ogimage:
   - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2020-01-10-selenium-with-ai%2Fcover.png?alt=media&token=8e0ffe7a-9075-45dc-a0ab-a942981dbd18

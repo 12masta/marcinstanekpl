@@ -3,7 +3,7 @@ layout: post
 title:  "Cypress i CI z Azure Devops"
 date:   2020-04-24 08:00:00 +0200
 categories: [testautomation, cypress]
-tags: [testautomation, cypress]
+tags: [testautomation, cypress, pl]
 permalink: /cypress-8
 ogimage:
   - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2020-04-13-cypress-and-ci%2Fpost_cover.png?alt=media&token=582925ff-bf77-4edb-96f7-341c5a06668d

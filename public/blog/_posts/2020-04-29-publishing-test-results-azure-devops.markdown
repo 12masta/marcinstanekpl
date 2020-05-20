@@ -3,7 +3,7 @@ layout: post
 title:  "Raportowanie testów Cypress w Azure DevOps"
 date:   2020-04-29 08:00:00 +0200
 categories: [testautomation, cypress, ci, azuredevops]
-tags: [testautomation, cypress, ci, azuredevops]
+tags: [testautomation, cypress, ci, azuredevops, pl]
 permalink: /cypress-9
 ogimage:
   - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2020-04-29-publishing-test-results-azure-devops%2Fpost_cover.png?alt=media&token=9800ca92-ef08-4b5a-beee-7b20ace97430

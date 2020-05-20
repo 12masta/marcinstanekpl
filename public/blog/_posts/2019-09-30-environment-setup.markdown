@@ -3,6 +3,7 @@ layout: post
 title:  "Przygotowanie środowiska"
 date:   2019-09-30 16:03:22 +0200
 categories: environment
+tags: pl
 ---
 
 ## Wstęp

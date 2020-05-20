@@ -3,7 +3,7 @@ layout: post
 title:  "Cypress i Cross Browser Testing teraz już dostępne"
 date:   2020-02-13 08:00:00 +0200
 categories: [testautomation, cypress]
-tags: [testautomation, cypress]
+tags: [testautomation, cypress, pl]
 permalink: /cypress-6
 ogimage:
   - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/cypress-6%2Fblog-post-cover.png?alt=media&token=937f5e7b-8ef9-480f-ab8a-27193ce2f86f

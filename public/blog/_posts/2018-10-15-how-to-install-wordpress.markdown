@@ -3,6 +3,7 @@ layout: post
 title:  "O tym jak skonfigurować projekt który zamierzamy testować"
 date:   2020-07-26 23:03:00 +0200
 categories: jekyll
+tags: pl
 ---
 
 # Wstęp
