@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Introduction into Cypress"
-date:   2019-10-01 10:03:22 +0200
+date:   2020-05-20 08:00:00 +0200
 categories: [cypress, testautomation]
-tags: [cypress, testautomation]
+tags: [cypress, testautomation, en]
+permalink: /en/cypress-1
 ---
 
 ## Introduction
@@ -18,7 +19,7 @@ This and next posts requires download and configuration of two below projects:
 
     https://github.com/12masta/aspnetcore-realworld-example-app
 
-I described their setup in this post: [Environment preparation]({% post_url 2019-09-30-environment-setup-en %})
+I described their setup in this post: [Environment preparation]({% post_url 2020-05-20-environment-setup-en %})
 
 {% include_relative subForm-en.markdown %}
 
@@ -212,4 +213,4 @@ Complete code can be found also on my repository:
 
 Cypress is a powerful tool. I am going to continue writing more tests, so expect a new post ;)
 
-{% include_relative leadmagnet.markdown %}
+<!-- {% include_relative leadmagnet.markdown %} -->

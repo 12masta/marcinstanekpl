@@ -1,8 +1,11 @@
 ---
 layout: post
 title:  "Environment preparation"
-date:   2019-09-30 16:03:22 +0200
+date:   2020-05-20 08:00:00 +0200
 categories: environment
+tags: en
+permalink: /en/cypress-0
+
 ---
 
 ## Introduction
@@ -94,4 +97,4 @@ For example:
 
     http://localhost:3000
 
-{% include_relative leadmagnet.markdown %}
+<!-- {% include_relative leadmagnet.markdown %} -->
