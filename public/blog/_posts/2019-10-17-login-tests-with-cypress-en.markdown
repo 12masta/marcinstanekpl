@@ -260,50 +260,43 @@ passing parameter:
 
     'failOnStatusCode: false'
 
-Jednak myślę, że nie chce tego robić, ponieważ użytkownik, którego chce
-utworzyć może już istnieć w systemie, np. z innym hasłem. Więc aby być pewnym
-stanu aplikacji powinienem usunąć użytkownika, a następnie utworzyć go w takim
-stanie, jakiego wymaga test. Więc następnym krokiem będzie znów odwiedzenie
-dokumentacji API i znalezienie endpointu, który odpowiada za usunięcie
-użytkownika. Szukamy najprawdopobniej endpointu o nazwie user lub users typu
-DELETE.
+Nonetheless I will not do it, because user I want to create might already exists
+with different password. To be ensured about application state, I should remove
+user first and then create him again in state which tests requires to.
+So next step will be again visit API documentation and find endpoint which
+removes the user. We look for endpoint named user or users with DELETE type.
 
 ![5-swagger-delete](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F5-swagger-delete.png?alt=media)
 
-Niestety nie ma takiego endpointu. Co można zrobić w takim przypadku? Jeżeli
-pracujemy nad komercyjnym projektem, prawdopodobnie idziemy do naszych
-developerów i planujemy dodanie endpointu na kolejny sprint. Słabo. Ja wyznaje
-zasadę, że specjalista od automatyzacji, jakkolwiek by go nie nazwać, powinien
-mieć też wystarczająco wiedzy, aby móc dostarczyć sobie wystarczająco funkcji
-od strony aplikacji, którą testuje, aby moc ją najzwyczajniej w świecie
-przetestować. A więc? Otwieram projekt backendu i dopisuje sobie ten endpoint.
-Jedna uwaga, w prawdziwym projekcie prawdopodobnie powinno to być osobne
-testowe API niewystawione do klienta, zapewnie nie chcemy mu udostępnić, ot,
-tak, funkcji usunięcia każdego użytkownika w systemie? Nie będę opisywał tego
-procesu. Jeżeli jednak jesteś ciekawy, changeset znajdziesz tu:
+Unfortunately such endpoint doesn't exists. What can we do in such case? If
+we work on commercial project, we probably contact with our developers and we
+plan add DELETE endpoint for next sprint. That's inefficient. I believe that
+QA specialist should have enough knowledge to be able alone provide functionality
+he needs to test a site. So I am editing backend code by adding the endpoint.
+One note, in real project it should be probably a separate API for tests. We
+don't want expose DELETE option for clients. I will not describe process of
+implementation. If you are curious, changeset can be found here:
 
     https://github.com/12masta/aspnetcore-realworld-example-app/pull/1/files
 
-A gotowy backend w stanie dokładnym jak w tym poście ze zmianami znajdziesz
-tutaj:
+And ready to use backend is here:
 
     https://github.com/12masta/aspnetcore-realworld-example-app/tree/cypress-2
 
-Przypominam że po tych zmianach, aby zmiany zaszły tez w dockerze przed
-uruchomieniem komendy:
+As reminder, to apply changes in docker as well, after command:
 
     make run
 
-Należy uruchomić komendę:
+You need execute:
 
     make build
 
-Która spowoduje utworzenie obrazu na nowo. Po wykonaniu tych czynności mam
-dostęp endpointu DELETE users:
+Which triggers the image creation. After execution we have access to user DELETE
+endpoint.
 
 ![5-swagger-delete-exists](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F5-swagger-delete-exists.png?alt=media)
 
-Więc nareszcie możemy napisać kompletny pierwszy test. Kod wygląda tak:
+Finally we can write our first complete test. Code looks as follow:
 
     describe('Login Tests', function () {
         it('Successfull login', function () {
@@ -342,17 +335,16 @@ Więc nareszcie możemy napisać kompletny pierwszy test. Kod wygląda tak:
         })
     })
 
-Egzekucja:
+Execution:
 
 ![6-successfull-login-complete](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F6-successfull-login-complete.png?alt=media&token=ea33f4c3-13d2-4f41-9057-3fa0b40112d1)
 
-## Implementacja kolejnych testów
+## Implementation the next tests
 
-Myślę, że mamy już wszystkie składniki potrzebne do implementacji reszty
-przypadków i powinno pójść to bardzo sprawnie. Kolejny test to _Incorrect
-password_. W kroku podawania hasła należy podać błędne hasło i stworzyć
-asercje, która zweryfikuje czy został wyświetlony poprawny komunikat
-użytkownikowi. Do dzieła:
+I think we have all components ready to finish remaining tests cases. It should
+go very smooth now. Next test is named _Incorrect password_. In step where
+password is provided, we need type wrong password and create assertion which
+verifies whether error message is displayed to user. Let's do it:
 
     it('Incorrect password', function () {
         cy.request('DELETE', 'http://localhost:5000/users', {
@@ -387,10 +379,9 @@ użytkownikowi. Do dzieła:
 
 ![7-incorrect-password](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F7-incorrect-password.png?alt=media&token=94f0aecd-9293-40cd-94a3-fc25686feef0)
 
-Implementacja testu _Not existing user_ również będzie prosta. Należy usunąć
-krok tworzenia użytkownika, musimy zadbac o to zeby miec pewnosc ze nie
-istnieje on w bazie i że zostanie zastosowana odpowiednie asercja ktora
-sprawdzi czy został wyświetlony poprawny komunikat błędu.:
+Implementation of test _Not existing user_  is also simple. We need to remove
+create user step, ensure that he doesn't exists in database and use assertion
+which tests error message is displayed:
 
     it('Not existing user', function () {
         cy.request('DELETE', 'http://localhost:5000/users', {
@@ -418,9 +409,8 @@ sprawdzi czy został wyświetlony poprawny komunikat błędu.:
 
 ![8-not-existing-user](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F8-not-existing-user.png?alt=media&token=b66f8eca-c912-406d-b8de-222008e62fa3)
 
-Pozostał jedynie przypadek _Empty fields_ tutaj zostawiamy pola puste i
-naciskamy przycisk Logowania, powinien pojawić się użytkownikowi odpowiedni
-komunikat błędu:
+Now left only _Empty fields_  case. We will not fill login fields and after push
+of Login button, a correct error message will be displayed:
 
     it('Empty fields', function () {
         cy.visit('http://localhost:4100/login')
@@ -436,21 +426,22 @@ komunikat błędu:
         .should('have.text', '\'Password\' must not be empty.')
     })
 
-Jak widać oczekiwany tekst to: 'Email' must not be empty. Jako ze znak ' jest
-użyty jako znak zarezerwowany do przekazywania argumentu do funkcji typu string
-musiałem użyć znaku ucieczki \ który służy do obejścia tego problemu. W tym
-przypadku dla Cypressa \'Email\' must not be empty. oznacza 'Email' must not be
-empty. Zobaczmy egzekucje testu:
+As we see expected text is: 'Email' must not be empty. A sign ' is used. It is
+reserved to pass a string argument to a function. In that case I had to use
+escape character \ which allows bypass that problem. In this case
+for Cypress \'Email\' must not be empty means 'Email' must not be empty.
+Let's see how it works:
 
 ![9-empty-fields](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F9-empty-fields.png?alt=media&token=42e52bb2-9f81-484c-9147-d76996fd357d)
 
+As we see test haven't passed because error message is incorrect:
 Jak widać nie został zaliczony poniewaz komunikat bledu nie jest poprawny:
-_User.Email 'Email' must not be empty._ oraz _User.Password 'Password' must not
-be empty._ Właśnie znaleźliśmy pierwszego buga w aplikacji. :)
+_User.Email 'Email' must not be empty._ and _User.Password 'Password' must not
+be empty._ We've just found first bug in our application. :)
 
-## Podsumowanie
+## Summary
 
-Całość zmian znajdziesz na moim repo na branchu, tutaj:
+All changes can be found on my repository on branch here:
 
     https://github.com/12masta/react-redux-realworld-example-app/tree/2-cypress
 
@@ -458,7 +449,7 @@ Changeset:
 
     https://github.com/12masta/react-redux-realworld-example-app/pull/2/files
 
-Po wykonaniu tych operacji specyfikacja testowa wygląda tak:
+After execution of those operation, test specification will look as follow:
 
     describe('Login Tests', function () {
         it('Successfull login', function () {
@@ -566,4 +557,4 @@ Po wykonaniu tych operacji specyfikacja testowa wygląda tak:
         })
     })
 
-{% include_relative leadmagnet.markdown %}
+{% include_relative leadmagnet-en.markdown %}
