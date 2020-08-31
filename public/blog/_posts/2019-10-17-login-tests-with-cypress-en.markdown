@@ -206,7 +206,7 @@ Swagger tool can be found under URL:
     http://localhost:5000/swagger/index.html
 
 What? A localhost?! You will find answer in this post: [Environment
-preparation]({% post_url 2019-09-30-environment-setup-en %}).  So I check
+preparation]({% post_url 2020-05-20-environment-setup-en %}).  So I check
 provided URL link, I search for user section and bingo, endpoint POST allows
 create an user. How do I know it? It's REST API so as long it follows
 convention and good practices then this particular type of endpoint - POST -
