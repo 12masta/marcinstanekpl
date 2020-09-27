@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cleanup, systematization of URLs"
-date:   2019-11-11 08:00:00 +0200
+date:   2020-09-26 08:00:00 +0200
 categories: [testautomation, cypress]
 tags: [testautomation, cypress, en]
 permalink: /en/cypress-4
@@ -19,11 +19,11 @@ In this post, I bring up another important missing element in my tests. It is
 the proper management of the URLs of the application that I am automating tests
 of.
 
-Poprzedni post w tej tematyce znajdziesz tutaj: [Test refactoring - App Actions vs Page Object Model]({% post_url 2019-11-05-refactor-en %})
+Poprzedni post w tej tematyce znajdziesz tutaj: [Test refactoring - App Actions vs Page Object Model]({% post_url 2020-09-20-refactor-en %})
 
 {% include_relative subForm-en.markdown %}
 
-## Hacks ;)
+## Hooks
 
 The first item which qualifies for refactoring today is loading the appropriate
 subpage of the application. This operation is performed on each test which
@@ -41,7 +41,7 @@ test.  Cypress's authors call them _hooks_.  We have 4 functions of this type
 to choose from:
 
 {% highlight javascript %}
-describe('Haki', function() {
+describe('Hooks', function() {
   before(function() {
     // runs once before execution of the entire set of tests in the describe block
   })
@@ -336,7 +336,7 @@ export default User;
 
 As above, there is also a defect in this function. This is a logical error - I
 do not delete the user before creating the new one. The reason why I am doing
-this is discussed in the post: [Login tests with Cypress]({% post_url 2019-10-17-login-tests-with-cypress-en %})
+this is discussed in the post: [Login tests with Cypress]({% post_url 2020-09-13-login-tests-with-cypress-en %})
 in the section _Implementation of first test_. The correct version of the
 _create()_ function:
 

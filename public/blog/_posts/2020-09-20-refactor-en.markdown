@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Test refactoring - App Actions vs Page Object Model"
-date:   2019-11-05 08:00:00 +0200
+date:   2020-09-20 08:00:00 +0200
 categories: [testautomation, cypress]
 tags: [testautomation, cypress, en]
 permalink: /en/cypress-3
@@ -25,7 +25,7 @@ It suggests to try tackle it in different way - so I will use both solutions
 to compare.
 
 Previous post about that topic you can find here: [Login tests with Cypress]({%
-post_url 2019-10-17-login-tests-with-cypress-en %})
+post_url 2020-09-13-login-tests-with-cypress-en %})
 
 ## App Actions
 

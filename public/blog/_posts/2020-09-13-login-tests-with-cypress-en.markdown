@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "Login tests with Cypress"
-date:   2019-10-17 08:03:22 +0200
+date:   2020-09-13 08:03:22 +0200
+permalink: /en/cypress-2
 categories: [testautomation, cypress]
 tags: [testautomation, cypress, en]
 ---
