@@ -6,7 +6,8 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "redirects": [{
+    "redirects": [
+      {
         "source": "/cypress-0",
         "destination": "/blog/cypress/testautomation/2019/10/01/first-tests-with-cypress.html",
         "type": 301
@@ -150,11 +151,28 @@
         "source": "/azure-devops-1",
         "destination": "/azure-devops-1.html",
         "type": 301
+      },
+      {
+        "source": "/en/cypress-2",
+        "destination": "/en/cypress-2.html",
+        "type": 301
+      },
+      {
+        "source": "/en/cypress-3",
+        "destination": "/en/cypress-3.html",
+        "type": 301
+      },
+      {
+        "source": "/en/cypress-4",
+        "destination": "/en/cypress-4.html",
+        "type": 301
       }
     ],
-    "rewrites": [{
-      "source": "**",
-      "destination": "/index.html"
-    }]
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
