@@ -145,6 +145,11 @@
         "source": "/en/cypress-1",
         "destination": "/en/cypress-1.html",
         "type": 301
+      },
+      {
+        "source": "/azure-devops-1",
+        "destination": "/azure-devops-1.html",
+        "type": 301
       }
     ],
     "rewrites": [{
