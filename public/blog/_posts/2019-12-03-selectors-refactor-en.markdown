@@ -85,7 +85,7 @@ File:
 
 After opening it, we find the JavaScript code that returns JSX code. It's a
 JavaScript extended with the ability to return HTML tags. More
-[here](https://pl.reactjs.org/docs/introducing-jsx.html). After anlyzing the
+[here](https://pl.reactjs.org/docs/introducing-jsx.html). After analyzing the
 code, I can see that the _input_ tag is responsible for displaying the text
 fields. In React's nomenclature, we call it a controlled component:
 
