@@ -37,7 +37,7 @@ Personally I prefer write cases in following manner:
 
 I will not explain them. Cases are not complicated, well it just a login test.
 
-### Successfull login
+### Successful login
 
 **Preconditions:**
 
@@ -52,8 +52,8 @@ I will not explain them. Cases are not complicated, well it just a login test.
 
 **Expected results:**
 
-* Successfuly logged in
-* Redirected to base url
+* Successfully logged in
+* Redirected to base URL
 
 ### Incorrect password
 
@@ -126,7 +126,7 @@ in directory:
 
     ../cypress/integration/LoginTests.spec.js
 
-We're are taking on table implementation of first test - Successfull login. At
+We're are taking on table implementation of first test - Successful login. At
 beginning I start work with user I've created manually via register form. Code
 looks as follow:
 
@@ -176,7 +176,7 @@ Lines:
     .should('have.attr', 'href', '/editor')
 
 Have to check whether user is logged in. They check if elements are displayed in
-navivar which are visible after login the user. For now I've haven't found better
+navibar which are visible after login the user. For now I've haven't found better
 solution since application doesn't set any cookie in browser which I could relay
 on.
 
@@ -436,7 +436,6 @@ Let's see how it works:
 ![9-empty-fields](https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2019-10-18-login-tests-with-cypress%2F9-empty-fields.png?alt=media&token=42e52bb2-9f81-484c-9147-d76996fd357d)
 
 As we see test haven't passed because error message is incorrect:
-Jak widać nie został zaliczony poniewaz komunikat bledu nie jest poprawny:
 _User.Email 'Email' must not be empty._ and _User.Password 'Password' must not
 be empty._ We've just found first bug in our application. :)
 

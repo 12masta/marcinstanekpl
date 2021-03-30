@@ -22,7 +22,7 @@ Repository I forked can be found here:
 
     https://github.com/12masta/aspnetcore-realworld-example-app
 
-To prepare environment tou need a Git tool. How to install Git?
+To prepare environment you need a Git tool. How to install Git?
 
     https://git-scm.com/book/en/v1/Getting-Started
 

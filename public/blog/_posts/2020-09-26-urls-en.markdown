@@ -19,7 +19,7 @@ In this post, I bring up another important missing element in my tests. It is
 the proper management of the URLs of the application that I am automating tests
 of.
 
-Poprzedni post w tej tematyce znajdziesz tutaj: [Test refactoring - App Actions vs Page Object Model]({% post_url 2020-09-20-refactor-en %})
+You can find the previous post on this topic here: [Test refactoring - App Actions vs Page Object Model]({% post_url 2019-11-05-refactor-en %})
 
 {% include_relative subForm-en.markdown %}
 
