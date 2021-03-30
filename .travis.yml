@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 rvm:
-  - 2.6
+- 2.6
 node_js:
 - '10.16'
 install:
@@ -14,7 +14,7 @@ install:
 script:
 - npm test
 - JEKYLL_ENV=production jekyll build --trace
-before_deploy: 
+before_deploy:
 - ls
 - cd ..
 - ls
@@ -24,3 +24,6 @@ deploy:
   provider: firebase
   token:
     secure: Wrquqqg894NjrVhzdLKi77D746EWSe4dJVataEIAky5l+K6M1eJJQ1+anSROc27Atcl36sqsDvitpeNI8WJ4bW2wV/jHsXG92NaWkkoTi6jUEkvC/6X+rjf1hKvnl7iOC8URbvTiuts2MM1BUe6qy61u93dQ4Q2ulyjmVV8f9iSa4xRcTU/Ef1Qg4BHsdjWI3geQk4laivu/qe0iVRsoupoc2XRDCy87u49fM1cmGFcuzJoTibyTPZcrFgupZYA5OpRDTBbEUxOzptBMnu0JlnO4mhsLHBzvokkLIsXv6wKsBRGQCGvSJ6hC6BJMqaI33v9s3L9ZuxWi06RBe8pULfxW3JuHWr7hzKPonZqUiR5CKrpWQwG+Th1GwMhi/eVan6sB2u88CxrtCJL4PO7df5XLdYnjeAqjya7yPVSlqJeeDbCozoAtFgWgUiQRkxUWvxtW7nW3+Dot2wr+mx8mrxuYaPaImEw2Nlr1ys6sLHwX5GHvuJicWo5C0eZXpk36K5YUxIUfnd7I25gftHc2JC0MZm3gB1q2jl8aa0qCuMU81ML9b3iUC+97hM6I5C0C2XJpE7Hr+CUvZwdWYwfz98v74bIJz56tz4cYNoWzBcln+tXB6nAQrVl80ToNYgQxvAmUoqgahAdRo6keqNlWmi/qv249KkmxaD+nzsEWtMg=
+env:
+  global:
+    secure: cRVCEm7WMtUL+Rc0AUxkrDyiWnc9cU4vKquCx1Yx4suOF8mIayKxkcK+vpt4AZulZSfmuEwdwXIxDsj4akI1kahPWjwVKB6m0pQbgT/BBEzgrrUdJXRf74wj+JnoI31jIJYeA2cpZC/ZVjsVALw18tboOG0b+6ZttxYlK3WcoV3DUwi+tm9M+WsLsHsSAAg9aQHkDQnkuIRU/VbJTKyh5Q2SjfR7abrHob+K9AdpqJhO7egen32+QtQgVYYHx40TmBG1zPN5sZnRhEEXKZdyxNnBiIV9zxBQjRRWsOz+JJO7L+3OzgQ4yxaR7BKHKVKhe/e9vuMBYDw9Ha/Zes7rP+NPEe11uO9TAVFuLiOv3CofKOGxZxGeCm/WyjT+QhuKqeXbYaFJmbDZy8syjklFpXOg+SR1jg7VO41pyrw8Dm5I9Kd4xwEKyxqDfE4BQavDOXAOoz1ch3cDlyfvn2C3ZM8iPDIjMNp5AMM6NQPiFMO0SIhnKu0zhjys44DLIwFAntTc2qtmTmQVKvnbqrCEqWimXILRlHOP1FUoAJkJGlpU5HYbF1GkpaSL7lKWYAMdKmM5BWATTfRk09eOH1FKThexwGT3/SibpI/qU0rcj0cquLVKTi4612knqQ9nX6/wIpmPvJg2y20/hGbt9w57hWURaszX+AM5oMMZmlSVt9A=
