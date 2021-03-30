@@ -20,7 +20,7 @@ stability, and thus the quality of automated tests. So far, in my project they
 have been treated on the least line of resistance. It's high time to change
 that.
 
-You can find the previous post on this topic here [Cleanup, systematization of URLs]({% post_url 2019-11-11-urls-en %})
+You can find the previous post on this topic here [Cleanup, systematization of URLs]({% post_url 2020-09-26-urls-en %})
 
 {% include_relative subForm-en.markdown %}
 
