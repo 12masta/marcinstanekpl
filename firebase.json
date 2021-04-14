@@ -166,6 +166,11 @@
         "source": "/en/cypress-4",
         "destination": "/en/cypress-4.html",
         "type": 301
+      },
+      {
+        "source": "/testcontainers-1",
+        "destination": "/testcontainers-1.html",
+        "type": 301
       }
     ],
     "rewrites": [
