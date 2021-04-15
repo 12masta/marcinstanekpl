@@ -22,6 +22,9 @@ Służy do zarządzania kontenerami w kontekście testów. Powinna ona nam umoż
 
 W moim przypadku najczęściej potrzebuję bazy MSSQL, jeżeli chcę przeprowadzić testy z zapisem do bazy danych. Dlatego w tym poście spróbuję uruchomić taki kontener z sewerem MSSQL w kontekście testu. Obraz taki znajduję się w predefiniwoanej kolekcji, dlatego zadanie wydaję się proste.
 
+Poprzedni post znajdziesz tutaj: [Wiadomość Slack z wynikami testów po zakończonym procesie budowania na CI
+]({% post_url 2020-09-26-sending-slack-message-after-test-execution-on-ci %})
+
 ## Tworzenie nowego projektu .NET
 Tworzę nowy projekt z testami Xunit
 
@@ -84,3 +87,5 @@ Changeset na githubie:
 Jak widać, uruchomienie takiej bazy danych jest bardzo prostym zadaniem. Pierwsze uruchomienie testu trwa dosyć długo. W moim przypadku około 3 minut. Na już rozgrzanym środowisku trwa to już 10 sekund, należy jednak wziąć pod uwagę, że możemy rozkręcić instancję, a potem jej reużyć dla więcej niż jednego testu. Dlatego też podejrzewam, że dla większego zestawu testów wynik ten nie będzie problemem.
 
 Na horyzoncie pojawia się też problem utworzenia bardziej skomplikowanego setupu z odtworzeniem backupu lub predefiniowanego obrazu z gotowym backupem bazy danych do przeprowadzenia testu. Poruszę ten problem w następnym poście dotyczącego tego narzędzia.
+
+{% include leadmagnet-selenium-homework.markdown %}
