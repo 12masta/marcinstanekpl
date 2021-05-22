@@ -171,6 +171,11 @@
         "source": "/testcontainers-1",
         "destination": "/testcontainers-1.html",
         "type": 301
+      },
+      {
+        "source": "/en/testcontainers-1",
+        "destination": "/en/testcontainers-1.html",
+        "type": 301
       }
     ],
     "rewrites": [
