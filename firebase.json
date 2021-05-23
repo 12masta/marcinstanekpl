@@ -177,6 +177,12 @@
         "destination": "/en/testcontainers-1.html",
         "type": 301
       }
+    ,
+      {
+        "source": "/en/azure-devops-1",
+        "destination": "/en/azure-devops-1.html",
+        "type": 301
+      }
     ],
     "rewrites": [
       {
