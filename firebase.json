@@ -176,11 +176,20 @@
         "source": "/en/testcontainers-1",
         "destination": "/en/testcontainers-1.html",
         "type": 301
-      }
-    ,
+      },
       {
         "source": "/en/azure-devops-1",
         "destination": "/en/azure-devops-1.html",
+        "type": 301
+      },
+      {
+        "source": "/dotnet-polly",
+        "destination": "/dotnet-polly.html",
+        "type": 301
+      },
+      {
+        "source": "/en/dotnet-polly",
+        "destination": "/en/dotnet-polly.html",
         "type": 301
       }
     ],
