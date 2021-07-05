@@ -6,7 +6,7 @@ categories: [testautomation, .net, polly]
 tags: [testautomation, .net, polly, en]
 permalink: /en/dotnet-polly
 ogimage:
-  - TODO
+  - https://firebasestorage.googleapis.com/v0/b/marcinstanek-a2c3b.appspot.com/o/2021-07-01-retry-policy-in-test-methods%2FRetry%20policy%20for%20methods%20in%20terms%20of%20integration%20tests.png?alt=media&token=e5a5db4b-7f5b-4ffb-94fa-9d22751f79f6
 ogimagetype:
   - image/png
 ogdescription:
@@ -16,6 +16,9 @@ ogdescription:
 ## Retry policy
 
 During several integrations of tests implementation across the .NET-based projects, I was struggling very often race conditions across the methods which try to pull some state from the DB to make some assertion on it. Very often this is a point of failure which makes the integration tests flaky.
+
+You can find the previous post here: [.NET Testcontainers library, infrastructure for the tests
+]({% post_url 2021-05-18-testcontainers_en %})
 
  I saw some implementation of Polly library in the case where as a team we were trying to consume 3rd parties API’s to increase resilience. I decided to try the same in the tests in terms of methods that pull some data from the database. The solution looks promising it already fixes some issues in the project which I am currently working on.
  
